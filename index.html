@@ -3,316 +3,290 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Personal portfolio of [Your Name] - Web Developer, Designer, and Innovator"
+    <title>Portfolio - Muhammad Aji Sukma</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
     />
-    <title>MUHAMMAD AJI SUKMA - Portfolio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <style>
-      /* Global styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
-
       body {
-        background: #1d1f27;
-        color: #ffffff;
+        font-family: Arial, sans-serif;
         overflow-x: hidden;
       }
 
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        animation: slideInDown 1s ease-in-out;
-      }
-
-      .navbar a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 1rem;
-        font-weight: bold;
-      }
-
-      .navbar a:hover {
-        color: #ffcc00;
-      }
-
-      /* Header Section */
-      .header {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: url("https://source.unsplash.com/random/1920x1080") no-repeat center
-          center/cover;
-        color: #fff;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .header h1 {
-        font-size: 3.5rem;
-        margin-bottom: 0.5rem;
-        animation: zoomIn 1.5s ease-in-out;
-      }
-
-      .header p {
-        font-size: 1.2rem;
-        max-width: 600px;
-        align-items: center;
-        animation: fadeInUp 1.5s ease-in-out;
-      }
-
-      .header .btn {
-        display: inline-block;
-        margin-top: 1.5rem;
-        padding: 0.8rem 1.5rem;
-        background-color: #ffcc00;
-        color: #1d1f27;
-        font-weight: bold;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        animation: fadeInUp 2s ease-in-out;
-        transition: transform 0.3s;
-      }
-
-      .header .btn:hover {
-        transform: scale(1.1);
-      }
-
-      /* About Section */
-      .about {
-        padding: 5rem 2rem;
-        background-color: #282a36;
-        text-align: center;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .about h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: #ffcc00;
-      }
-
-      .about p {
-        font-size: 1rem;
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      /* Portfolio Section */
-      .portfolio {
-        padding: 5rem 2rem;
-        background-color: #1d1f27;
-        text-align: center;
-        animation: fadeIn 2.5s ease-in-out;
-      }
-
-      .portfolio h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        color: #ffcc00;
-      }
-
-      .portfolio-items {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .portfolio-item {
-        width: 300px;
-        height: 200px;
-        background: #282a36;
+      .hero {
         position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: transform 0.4s ease-in-out;
-      }
-
-      .portfolio-item:hover {
-        transform: scale(1.05);
-      }
-
-      .portfolio-item img {
+        background: black; /* Latar belakang hitam */
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: 100vh; /* Tinggi penuh viewport */
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Bayangan teks untuk keterbacaan */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
-
-      .portfolio-item .overlay {
+      /* Overlay untuk transparansi gambar */
+      .hero::before {
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        opacity: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.5s;
+        width: 100%;
+        height: 100%;
+        background: url("images/ajipro.jpg") center/cover no-repeat; /* Ganti dengan path gambar Anda */
+        opacity: 0.1; /* Transparansi gambar */
+        z-index: 1; /* Letakkan gambar di bawah teks */
       }
 
-      .portfolio-item:hover .overlay {
-        opacity: 1;
+      /* Konten tetap di atas gambar */
+      .hero h1,
+      .hero p {
+        position: relative;
+        z-index: 2; /* Letakkan teks di atas gambar */
       }
 
-      .portfolio-item .overlay h3 {
-        color: #ffcc00;
-        font-size: 1.2rem;
-        text-align: center;
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+      .vh-100 {
+        height: 100vh; /* Full height viewport */
+      }
+      .vh-80 {
+        height: 80vh; /* Full height viewport */
+      }
+      #rotating-skills {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-top: 20px;
       }
 
-      /* Contact Section */
-      .contact {
-        padding: 5rem 2rem;
-        background-color: #282a36;
-        text-align: center;
-        animation: fadeIn 3s ease-in-out;
-      }
-
-      .contact h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: #ffcc00;
-      }
-
-      .contact p {
-        margin-bottom: 2rem;
-      }
-
-      .contact .btn {
-        padding: 0.8rem 1.5rem;
-        background-color: #ffcc00;
-        color: #1d1f27;
+      .hero h1 {
+        font-size: 3rem;
         font-weight: bold;
-        border: none;
-        border-radius: 50px;
+        animation: fadeInDown 2s;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+      }
+
+      .section-title {
+        margin: 50px 0 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .portfolio-item {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
-        transition: transform 0.3s;
       }
 
-      .contact .btn:hover {
-        transform: scale(1.1);
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
       }
 
-      /* Keyframes for animations */
-      @keyframes slideInDown {
-        from {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      .icon {
+        font-size: 1.5rem;
+        margin-right: 10px;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+      footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
       }
 
-      @keyframes fadeInUp {
-        from {
-          transform: translateY(20px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      footer .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        color: #343a40;
+        transition: color 0.3s ease;
       }
 
-      @keyframes zoomIn {
-        from {
-          transform: scale(0.7);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
+      footer .social-icons a:hover {
+        color: #007bff;
       }
     </style>
   </head>
+
   <body>
-    <!-- Navbar -->
-    <div class="navbar">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
+    <!-- Hero Section -->
+    <div
+      class="hero d-flex flex-column justify-content-center align-items-center vh-100"
+      id="scroll-button"
+    >
+      <h1 data-aos="fade-down">Muhammad Aji Sukma</h1>
+      <p id="rotating-skills" data-aos="fade-up"></p>
     </div>
 
-    <!-- Header Section -->
-    <section class="header" id="home">
-      <div>
-        <h1>Hello, I'm MUHAMMAD AJI SUKMA</h1>
-        <p>Web Developer, Designer, and Creative Innovator</p>
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <h2>About Me</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies nulla in efficitur
-        gravida. Vivamus varius, erat et tincidunt congue, nisl nisl consequat eros, ut feugiat mi
-        nulla ut elit.
-      </p>
-    </section>
-
     <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-      <h2>Portfolio</h2>
-      <div class="portfolio-items">
-        <div class="portfolio-item">
-          <img src="https://source.unsplash.com/random/300x200" alt="Project 1" />
-          <div class="overlay">
-            <h3>Project 1</h3>
+    <div class="container py-5 vh-100" id="next-container">
+      <h2 class="section-title" data-aos="zoom-in">Keahlian</h2>
+      <div class="row">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="portfolio-item">
+            <i class="bi bi-laptop icon"></i>
+            <h4>Developer</h4>
+            <p>developer web dengan php native/ framework</p>
           </div>
         </div>
-        <div class="portfolio-item">
-          <img src="https://source.unsplash.com/random/300x201" alt="Project 2" />
-          <div class="overlay">
-            <h3>Project 2</h3>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="portfolio-item">
+            <i class="bi bi-palette icon"></i>
+            <h4>Layouter</h4>
+            <p>Layouter untuk keperluan bahan cetak.</p>
           </div>
         </div>
-        <div class="portfolio-item">
-          <img src="https://source.unsplash.com/random/300x202" alt="Project 3" />
-          <div class="overlay">
-            <h3>Project 3</h3>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="portfolio-item">
+            <i class="bi bi-wifi icon"></i>
+            <h4>Network Enginer</h4>
+            <p>Pengembang dan perancang manajemen jaringan.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <h2>Contact Me</h2>
-      <p>If you're interested in collaborating or just want to say hi, feel free to reach out!</p>
-      <a href="mailto:your-email@example.com" class="btn">Email Me</a>
-    </section>
+    <!-- Experience Section -->
+    <!-- <div class="container">
+      <h2 class="section-title" data-aos="zoom-in">Pengalaman</h2>
+      <ul class="list-group">
+        <li class="list-group-item" data-aos="fade-right">
+          <i class="bi bi-wifi icon"></i>
+          <strong>Network Engineer</strong> - SukmajiNet (2021 - Sekarang)
+        </li>
+        <li class="list-group-item" data-aos="fade-right" data-aos-delay="200">
+          <i class="bi bi-laptop icon"></i>
+          <strong>Web Developer</strong> - Freelance (2022 - now)
+        </li>
+        <li class="list-group-item" data-aos="fade-right" data-aos-delay="400">
+          <i class="bi bi-brush icon"></i>
+          <strong>Designer</strong> - Muria Batik Kudus (2021 - now)
+        </li>
+      </ul>
+    </div> -->
+
+    <!-- Education Section -->
+    <!-- Education Section -->
+    <div class="container vh-80" id="next-container1">
+      <h2 class="section-title" data-aos="zoom-in">Pendidikan</h2>
+      <ul class="list-group">
+        <li class="list-group-item" data-aos="fade-left">
+          <i class="bi bi-book icon"></i>
+          <strong>SD 2 Dersalam</strong> - (2009 - 2015)
+        </li>
+        <li class="list-group-item" data-aos="fade-left" data-aos-delay="200">
+          <i class="bi bi-building icon"></i>
+          <strong>SMP 2 Bae Kudus</strong> - (2015 - 2018)
+        </li>
+        <li class="list-group-item" data-aos="fade-left" data-aos-delay="400">
+          <i class="bi bi-laptop icon"></i>
+          <strong>Teknik Komputer Jaringan, SMK Negeri 2 Kudus</strong> - (2018 - 2021)
+        </li>
+        <li class="list-group-item" data-aos="fade-left" data-aos-delay="600">
+          <i class="bi bi-university icon"></i>
+          <strong>Sistem Informasi, Fakultas Teknik, Universitas Muria Kudus</strong> - (2022 -
+          Sekarang)
+        </li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="">
+      <div class="text-center">
+        <p>&copy; 2024 Muhammad Aji Sukma. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/sukmaaji.digital/" target="_blank"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://github.com/sukmaajidigital/" target="_blank"
+            ><i class="bi bi-github"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      // Array of skills to rotate
+      const skills = ["Desainer", "Network Engineer", "Developer"];
+      let currentSkillIndex = 0;
+
+      const skillElement = document.getElementById("rotating-skills");
+
+      // Function to change skills
+      function rotateSkills() {
+        skillElement.textContent = skills[currentSkillIndex];
+        currentSkillIndex = (currentSkillIndex + 1) % skills.length; // Loop through skills
+      }
+
+      // Initial display
+      rotateSkills();
+      // Initial display with delay
+      setTimeout(rotateSkills, 500);
+      // Change skill every 2 seconds
+      setInterval(rotateSkills, 2000);
+    </script>
+    <script>
+      // Tombol scroll
+      const scrollButton = document.getElementById("scroll-button");
+      const nextContainer = document.getElementById("next-container");
+
+      // Event listener untuk scroll ke container berikutnya
+      scrollButton.addEventListener("click", () => {
+        nextContainer.scrollIntoView({
+          behavior: "smooth", // Efek scroll halus
+          block: "start", // Posisi elemen setelah scroll
+        });
+      });
+    </script>
+    <script>
+      // Tombol scroll
+      const scrollButton1 = document.getElementById("next-container");
+      const nextContainer1 = document.getElementById("next-container1");
+
+      // Event listener untuk scroll ke container berikutnya
+      scrollButton1.addEventListener("click", () => {
+        nextContainer1.scrollIntoView({
+          behavior: "smooth", // Efek scroll halus
+          block: "start", // Posisi elemen setelah scroll
+        });
+      });
+    </script>
+    <script>
+      // Tombol scroll
+      const scrollButton2 = document.getElementById("next-container1");
+      const nextContainer2 = document.getElementById("scroll-button");
+
+      // Event listener untuk scroll ke container berikutnya
+      scrollButton2.addEventListener("click", () => {
+        nextContainer2.scrollIntoView({
+          behavior: "smooth", // Efek scroll halus
+          block: "start", // Posisi elemen setelah scroll
+        });
+      });
+    </script>
   </body>
 </html>
