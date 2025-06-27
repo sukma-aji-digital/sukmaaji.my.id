@@ -1,108 +1,522 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <title>Muhammad Aji Sukma | Laravel Developer & Tech Specialist</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lottie Animation Player CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
     <style>
+      /* Custom base styles */
       body {
-        background: linear-gradient(135deg, #132224 0%, #ff3700 100%);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #333;
+        background-color: #0a192f;
+        color: #ccd6f6;
         font-family: "Poppins", sans-serif;
-        padding: 20px;
       }
-      .card {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        border: none;
-        border-radius: 20px;
-        width: 100%;
-        max-width: 800px;
+
+      /* Custom accent color and other utilities */
+      .text-accent {
+        color: #64ffda;
       }
-      .card-body {
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
+      .bg-accent {
+        background-color: #64ffda;
       }
-      img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid #0aefff;
+      .border-accent {
+        border-color: #64ffda;
       }
-      .btn-social {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 8px;
+      .bg-navy-light {
+        background-color: #112240;
       }
-      .list-group-item {
-        border: none;
-        padding-left: 0;
+      .text-slate-light {
+        color: #ccd6f6;
+      }
+      .text-slate-dark {
+        color: #8892b0;
+      }
+
+      /* Scroll reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <div class="card mx-auto">
-        <div class="card-body text-center">
-          <h1 class="card-title">About Me</h1>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRdteME2-Y02AfIetsERRjIdALhXnvym4qA&s"
-            class="mb-3"
-            alt="Profile Picture"
-          />
-          <p class="card-text fs-5">
-            Hello! I'm <strong>Muhammad Aji Sukma</strong>, a
-            <span style="color: #6c5ce7">designer</span>,
-            <span style="color: #00cec9">network engineer</span>, and
-            <span style="color: #ff7675">developer</span>.
-          </p>
-          <h3 class="mt-4">Hobbies</h3>
-          <ul class="list-group list-group-flush text-start">
-            <li class="list-group-item">🎨 Coding</li>
-            <li class="list-group-item">📐 Designing</li>
-            <li class="list-group-item">📖 Reading</li>
-          </ul>
-          <h3 class="mt-4">Social Media</h3>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center flex-wrap">
-            <a href="https://www.linkedin.com/in/sukma-aji-08b470286/" class="btn btn-primary btn-social" target="_blank">
-              <i class="fab fa-linkedin me-2"></i>LinkedIn
-            </a>
-            <a href="https://github.com/sukmaajidigital" class="btn btn-dark btn-social" target="_blank">
-              <i class="fab fa-github me-2"></i>GitHub
-            </a>
-            <a href="https://twitter.com/sukmaajidigital" class="btn btn-info btn-social" target="_blank">
-              <i class="fab fa-twitter me-2"></i>Twitter
-            </a>
-            <a href="https://instagram.com/sukmaaji.digital" class="btn btn-danger btn-social" target="_blank">
-              <i class="fab fa-instagram me-2"></i>Instagram
-            </a>
-            <a href="https://facebook.com/tiktod.id" class="btn btn-primary btn-social" target="_blank">
-              <i class="fab fa-facebook me-2"></i>Facebook
-            </a>
-            <a href="https://youtube.com/@muhammadajisukma7360" class="btn btn-danger btn-social" target="_blank">
-              <i class="fab fa-youtube me-2"></i>YouTube
+  <body class="antialiased">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-[#0a192f]/80 backdrop-blur-sm shadow-md">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#hero" class="text-accent font-bold text-2xl">MA.S</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="text-slate-light hover:text-accent transition-colors duration-300"
+            >Tentang Saya</a
+          >
+          <a
+            href="#skills"
+            class="text-slate-light hover:text-accent transition-colors duration-300"
+            >Keahlian</a
+          >
+          <a
+            href="#portfolio"
+            class="text-slate-light hover:text-accent transition-colors duration-300"
+            >Portofolio</a
+          >
+          <a
+            href="#contact"
+            class="text-slate-light hover:text-accent transition-colors duration-300"
+            >Kontak</a
+          >
+          <a
+            href="#"
+            class="text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition-colors duration-300"
+            >Resume</a
+          >
+        </div>
+        <button id="mobile-menu-button" class="md:hidden text-2xl text-slate-light">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-navy-light flex-col items-center p-6 space-y-4"
+      >
+        <a href="#about" class="text-slate-light hover:text-accent transition-colors duration-300"
+          >Tentang Saya</a
+        >
+        <a href="#skills" class="text-slate-light hover:text-accent transition-colors duration-300"
+          >Keahlian</a
+        >
+        <a
+          href="#portfolio"
+          class="text-slate-light hover:text-accent transition-colors duration-300"
+          >Portofolio</a
+        >
+        <a href="#contact" class="text-slate-light hover:text-accent transition-colors duration-300"
+          >Kontak</a
+        >
+        <a
+          href="#"
+          class="w-full text-center text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition-colors duration-300 mt-4"
+          >Resume</a
+        >
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+      <!-- Hero Section -->
+      <section id="hero" class="min-h-screen flex items-center">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="text-center md:text-left">
+            <p class="text-accent text-lg">Halo, nama saya</p>
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-light mt-2"
+            >
+              Muhammad Aji Sukma. (porto ini masih draft)
+            </h1>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-dark mt-2">
+              Saya membangun aplikasi web.
+            </h2>
+            <p class="text-slate-dark mt-6 max-w-xl mx-auto md:mx-0">
+              <!-- Ganti dengan deskripsi singkat Anda -->
+              Saya seorang developer dengan spesialisasi pada ekosistem Laravel, mengubah ide
+              kompleks menjadi solusi digital yang elegan dan fungsional.
+            </p>
+            <a
+              href="#portfolio"
+              class="inline-block bg-accent text-gray-900 font-bold py-3 px-8 rounded mt-8 hover:bg-teal-300 transition-colors duration-300 shadow-lg"
+            >
+              Lihat Karya Saya
             </a>
           </div>
+          <!-- Lottie Animation Container -->
+          <div id="lottie-animation-hero" class="w-full h-auto max-w-lg mx-auto"></div>
         </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="py-24 reveal">
+        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Tentang Saya</h2>
+        <div class="grid md:grid-cols-5 gap-10 items-center">
+          <div class="md:col-span-3 text-slate-dark space-y-4">
+            <!-- Ganti paragraf ini dengan cerita tentang diri Anda -->
+            <p>
+              Halo! Nama saya Aji, dan saya sangat suka membangun aplikasi web yang handal dan
+              berskala. Minat saya pada teknologi dimulai sejak beberapa tahun yang lalu dan terus
+              berkembang menjadi keahlian mendalam di bidang backend development, khususnya dengan
+              PHP dan framework Laravel.
+            </p>
+            <p>
+              Tujuan saya adalah menciptakan aplikasi yang tidak hanya kuat dan efisien di balik
+              layar, tetapi juga memberikan pengalaman yang mulus dan menyenangkan bagi pengguna
+              akhir. Saya menikmati proses menjembatani logika server yang kompleks dengan antarmuka
+              pengguna yang intuitif.
+            </p>
+            <p>Berikut adalah beberapa teknologi inti yang saya kuasai:</p>
+            <ul class="grid grid-cols-2 gap-2 mt-4 text-slate-light">
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>PHP & Laravel
+              </li>
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Livewire & Alpine.js
+              </li>
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>MySQL & PostgreSQL
+              </li>
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Desain REST API
+              </li>
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Tailwind CSS
+              </li>
+              <li class="flex items-center">
+                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Docker & Git
+              </li>
+            </ul>
+          </div>
+          <div class="md:col-span-2 relative group w-max mx-auto">
+            <!-- Ganti dengan foto profesional Anda -->
+            <div
+              class="absolute -inset-0.5 bg-accent rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+            ></div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRdteME2-Y02AfIetsERRjIdALhXnvym4qA&s"
+              alt="Muhammad Aji Sukma"
+              class="relative w-64 h-64 object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section with Lottie -->
+      <section id="skills" class="py-24 reveal">
+        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Area Keahlian Saya</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Skill 1: Programming -->
+          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
+            <div
+              class="lottie-skill-animation h-40 mx-auto"
+              data-path="https://lottie.host/e8c87392-563b-43a9-83d1-7e04918a5997/t2yT6H1oSS.json"
+            ></div>
+            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Programming</h3>
+            <p class="text-slate-dark text-sm">
+              Laravel, PHP, Livewire, JavaScript, Python, API Development.
+            </p>
+          </div>
+          <!-- Skill 2: Jaringan & Server -->
+          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
+            <div
+              class="lottie-skill-animation h-40 mx-auto"
+              data-path="https://lottie.host/80a25091-5a4c-443b-8255-6e41b017a8f8/HlD1S1B9q0.json"
+            ></div>
+            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Jaringan & Server</h3>
+            <p class="text-slate-dark text-sm">
+              Linux Server, Nginx, Docker, TCP/IP, Konfigurasi Firewall.
+            </p>
+          </div>
+          <!-- Skill 3: UI/UX -->
+          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
+            <div
+              class="lottie-skill-animation h-40 mx-auto"
+              data-path="https://lottie.host/97a028c1-638e-4b67-8547-36e579736c2a/8X932Qe35B.json"
+            ></div>
+            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Desain UI/UX</h3>
+            <p class="text-slate-dark text-sm">
+              Figma, Tailwind CSS, Wireframing, Desain Responsif.
+            </p>
+          </div>
+          <!-- Skill 4: Simple Animation -->
+          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
+            <div
+              class="lottie-skill-animation h-40 mx-auto"
+              data-path="https://lottie.host/62b85a36-6019-45f8-a15d-8a211e406f36/nQ69dD2HlZ.json"
+            ></div>
+            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Animasi Sederhana</h3>
+            <p class="text-slate-dark text-sm">
+              Lottie/JSON, Transisi CSS, Dasar-dasar After Effects.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="py-24 reveal">
+        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Proyek Pilihan Saya</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <!-- PROYEK 1: SISFOSTOKMBK -->
+          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
+            <div class="w-full h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1590987337624-b73792a84350?q=80&w=2832&auto=format&fit=crop"
+                alt="[Gambar Sistem Informasi Stok]"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-bold text-xl text-slate-light mb-2">
+                Sistem Informasi Stok (SISFOSTOKMBK)
+              </h3>
+              <p class="text-slate-dark mb-4 text-sm flex-grow">
+                Sistem informasi untuk manajemen stok barang menggunakan Laravel, dirancang untuk
+                efisiensi dan kemudahan pelacakan inventaris.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
+                  >Manajemen Stok</span
+                >
+              </div>
+              <div class="text-right mt-auto pt-4">
+                <a
+                  href="https://github.com/sukmaajidigital/sisfostokmbk"
+                  target="_blank"
+                  class="text-slate-dark hover:text-accent text-xl mr-4"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <!-- <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"><i class="fas fa-external-link-alt"></i></a> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- PROYEK 2 -->
+          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
+            <div class="w-full h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2940&auto=format&fit=crop"
+                alt="[Gambar Proyek Laravel 2]"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 2</h3>
+              <p class="text-slate-dark mb-4 text-sm flex-grow">
+                Ini adalah contoh proyek lain. Mungkin sebuah sistem manajemen atau aplikasi booking
+                online. Jelaskan fiturnya.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Blade</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">API</span>
+              </div>
+              <div class="text-right mt-auto pt-4">
+                <a
+                  href="https://github.com/sukmaajidigital/nama-repo-2"
+                  target="_blank"
+                  class="text-slate-dark hover:text-accent text-xl mr-4"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"
+                  ><i class="fas fa-external-link-alt"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROYEK 3 -->
+          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
+            <div class="w-full h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2940&auto=format&fit=crop"
+                alt="[Gambar Proyek Laravel 3]"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 3</h3>
+              <p class="text-slate-dark mb-4 text-sm flex-grow">
+                Proyek ketiga bisa jadi REST API untuk aplikasi mobile atau service lain. Tunjukkan
+                kemampuan backend Anda di sini.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Sanctum</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
+                  >PostgreSQL</span
+                >
+              </div>
+              <div class="text-right mt-auto pt-4">
+                <a
+                  href="https://github.com/sukmaajidigital/nama-repo-3"
+                  target="_blank"
+                  class="text-slate-dark hover:text-accent text-xl mr-4"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROYEK 4 -->
+          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
+            <div class="w-full h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2831&auto=format&fit=crop"
+                alt="[Gambar Proyek Laravel 4]"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 4</h3>
+              <p class="text-slate-dark mb-4 text-sm flex-grow">
+                Deskripsi singkat proyek ini. Jelaskan apa tujuannya, teknologi utama yang
+                digunakan, dan apa peran Anda dalam proyek tersebut.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
+                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
+                  >Livewire</span
+                >
+              </div>
+              <div class="text-right mt-auto pt-4">
+                <a
+                  href="https://github.com/sukmaajidigital/nama-repo-4"
+                  target="_blank"
+                  class="text-slate-dark hover:text-accent text-xl mr-4"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"
+                  ><i class="fas fa-external-link-alt"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-24 text-center reveal">
+        <h2 class="text-3xl font-bold text-slate-light">Hubungi Saya</h2>
+        <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+          Saat ini saya terbuka untuk peluang dan kolaborasi baru. Jika Anda memiliki pertanyaan
+          atau hanya ingin menyapa, jangan ragu untuk menghubungi saya.
+        </p>
+        <a
+          href="mailto:emailanda@example.com"
+          class="inline-block bg-accent text-gray-900 font-bold py-3 px-8 rounded mt-8 hover:bg-teal-300 transition-colors duration-300 shadow-lg"
+        >
+          Kirim Email
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+      <div class="container mx-auto px-6 text-center text-slate-dark">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a
+            href="https://github.com/sukmaajidigital"
+            target="_blank"
+            class="hover:text-accent transition-colors"
+            ><i class="fab fa-github fa-lg"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+            target="_blank"
+            class="hover:text-accent transition-colors"
+            ><i class="fab fa-linkedin fa-lg"></i
+          ></a>
+          <a
+            href="https://instagram.com/sukmaaji.digital"
+            target="_blank"
+            class="hover:text-accent transition-colors"
+            ><i class="fab fa-instagram fa-lg"></i
+          ></a>
+        </div>
+        <p class="text-sm">&copy; 2025 Muhammad Aji Sukma. Dibuat dengan Tailwind CSS & ❤️</p>
       </div>
-    </div>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button
+      id="to-top-button"
+      class="hidden fixed bottom-8 right-8 bg-accent p-3 rounded-full shadow-lg text-gray-900 hover:bg-teal-300 transition-colors z-50"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hero Lottie Animation
+        lottie.loadAnimation({
+          container: document.getElementById("lottie-animation-hero"),
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "https://lottie.host/1f7a8423-7478-4364-9721-729d59218d22/c52xna9jkb.json",
+        });
+
+        // Skills Lottie Animations
+        document.querySelectorAll(".lottie-skill-animation").forEach((container) => {
+          const path = container.dataset.path;
+          if (path) {
+            lottie.loadAnimation({
+              container: container,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              path: path,
+            });
+          }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          mobileMenu.classList.toggle("flex");
+        });
+
+        // Scroll to Top Button
+        const toTopButton = document.getElementById("to-top-button");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            toTopButton.classList.remove("hidden");
+          } else {
+            toTopButton.classList.add("hidden");
+          }
+        });
+        toTopButton.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      });
+    </script>
   </body>
 </html>
