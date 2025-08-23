@@ -7,6 +7,10 @@
 
 Portfolio website profesional untuk **Muhammad Aji Sukma**, seorang **Laravel & Backend Developer**, dengan desain dark theme yang elegan dan modern.
 
+## 📷 Screenshot
+
+![My Project Screenshot](images/screenshot.png)
+
 ## ✨ Fitur Utama
 
 - **Desain Profesional** - Tema dark dengan aksen ungu yang elegan
