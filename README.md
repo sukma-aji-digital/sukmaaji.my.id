@@ -34,13 +34,13 @@ Portfolio website profesional untuk **Muhammad Aji Sukma**, seorang **Laravel & 
 1. **Clone repository**:
 
    ```bash
-   git clone https://github.com/sukmaajidigital/portfolio-website.git
+   git clone https://github.com/sukmaajidigital/sukmaajidigital.github.io.git
    ```
 
 2. **Masuk ke direktori project**:
 
    ```bash
-   cd portfolio-website
+   cd sukmaajidigital.github.io
    ```
 
 3. **Buka di browser**:
