@@ -3,519 +3,872 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Aji Sukma | Laravel Developer & Tech Specialist</title>
+    <title>Muhammad Aji Sukma | Laravel & Backend Developer</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
 
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Lottie Animation Player CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <link rel="stylesheet" href="/style.css" />
 
-    <style>
-      /* Custom base styles */
-      body {
-        background-color: #0a192f;
-        color: #ccd6f6;
-        font-family: "Poppins", sans-serif;
-      }
-
-      /* Custom accent color and other utilities */
-      .text-accent {
-        color: #64ffda;
-      }
-      .bg-accent {
-        background-color: #64ffda;
-      }
-      .border-accent {
-        border-color: #64ffda;
-      }
-      .bg-navy-light {
-        background-color: #112240;
-      }
-      .text-slate-light {
-        color: #ccd6f6;
-      }
-      .text-slate-dark {
-        color: #8892b0;
-      }
-
-      /* Scroll reveal animation */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                100: "#1E293B",
+                200: "#172033",
+                300: "#0F172A",
+                400: "#0A0F1C",
+              },
+              accent: {
+                DEFAULT: "#6366F1",
+                light: "#818CF8",
+                dark: "#4F46E5",
+              },
+              slate: {
+                light: "#F1F5F9",
+                dark: "#94A3B8",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body class="antialiased">
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-[#0a192f]/80 backdrop-blur-sm shadow-md">
-      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#hero" class="text-accent font-bold text-2xl">MA.S</a>
+  <body class="antialiased text-slate-light font-sans">
+    <!-- Header/Navigation -->
+    <header
+      class="fixed w-full z-50 bg-dark-300/90 backdrop-blur-md border-b border-dark-100"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-xl font-bold gradient-text flex items-center"
+        >
+          <div class="gradient-bg p-2 rounded-lg mr-2">
+            <i class="fas fa-code text-white"></i>
+          </div>
+          <span class="text-white"
+            >Aji<span class="text-accent">Sukma</span></span
+          >
+        </a>
+
         <div class="hidden md:flex items-center space-x-8">
-          <a href="#about" class="text-slate-light hover:text-accent transition-colors duration-300"
-            >Tentang Saya</a
+          <a
+            href="#home"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Tentang</a
           >
           <a
             href="#skills"
-            class="text-slate-light hover:text-accent transition-colors duration-300"
+            class="nav-link text-slate-dark hover:text-white transition"
             >Keahlian</a
           >
           <a
             href="#portfolio"
-            class="text-slate-light hover:text-accent transition-colors duration-300"
-            >Portofolio</a
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Portfolio</a
           >
           <a
             href="#contact"
-            class="text-slate-light hover:text-accent transition-colors duration-300"
+            class="nav-link text-slate-dark hover:text-white transition"
             >Kontak</a
           >
           <a
-            href="#"
-            class="text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition-colors duration-300"
-            >Resume</a
+            href="#contact"
+            class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition shadow-lg shadow-accent/20"
           >
+            Mulai Projek
+          </a>
         </div>
-        <button id="mobile-menu-button" class="md:hidden text-2xl text-slate-light">
-          <i class="fas fa-bars"></i>
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-xl bg-dark-200 p-2 rounded-lg"
+        >
+          <i class="fas fa-bars text-slate-light"></i>
         </button>
       </nav>
+
       <!-- Mobile Menu -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-navy-light flex-col items-center p-6 space-y-4"
+        class="hidden md:hidden bg-dark-200 border-t border-dark-100"
       >
-        <a href="#about" class="text-slate-light hover:text-accent transition-colors duration-300"
-          >Tentang Saya</a
-        >
-        <a href="#skills" class="text-slate-light hover:text-accent transition-colors duration-300"
-          >Keahlian</a
-        >
-        <a
-          href="#portfolio"
-          class="text-slate-light hover:text-accent transition-colors duration-300"
-          >Portofolio</a
-        >
-        <a href="#contact" class="text-slate-light hover:text-accent transition-colors duration-300"
-          >Kontak</a
-        >
-        <a
-          href="#"
-          class="w-full text-center text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition-colors duration-300 mt-4"
-          >Resume</a
-        >
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <a
+            href="#home"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Tentang</a
+          >
+          <a
+            href="#skills"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Keahlian</a
+          >
+          <a
+            href="#portfolio"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Kontak</a
+          >
+          <a
+            href="#contact"
+            class="bg-accent text-white px-4 py-2 rounded-lg text-center hover:bg-accent-dark transition mt-4"
+          >
+            Mulai Projek
+          </a>
+        </div>
       </div>
     </header>
 
-    <main class="container mx-auto px-6">
-      <!-- Hero Section -->
-      <section id="hero" class="min-h-screen flex items-center">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div class="text-center md:text-left">
-            <p class="text-accent text-lg">Halo, nama saya</p>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="text-center md:text-left animate-fade-in">
+            <p class="text-accent font-medium mb-4">
+              <span
+                class="w-8 h-px bg-accent inline-block mr-3 align-middle"
+              ></span>
+              Hallo, Saya Muhammad Aji Sukma
+            </p>
             <h1
-              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-light mt-2"
+              class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             >
-              Muhammad Aji Sukma. (porto ini masih draft)
+              Backend &
+              <span class="gradient-text">Laravel</span>
+              Developer
             </h1>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-dark mt-2">
-              Saya membangun aplikasi web.
-            </h2>
-            <p class="text-slate-dark mt-6 max-w-xl mx-auto md:mx-0">
-              <!-- Ganti dengan deskripsi singkat Anda -->
-              Saya seorang developer dengan spesialisasi pada ekosistem Laravel, mengubah ide
-              kompleks menjadi solusi digital yang elegan dan fungsional.
+            <p class="text-slate-dark text-lg mb-8 max-w-xl">
+              Saya mengkhususkan diri dalam mengembangkan aplikasi web yang
+              skalabel dan efisien dengan fokus pada kode yang bersih,
+              arsitektur yang solid, dan performa optimal.
             </p>
-            <a
-              href="#portfolio"
-              class="inline-block bg-accent text-gray-900 font-bold py-3 px-8 rounded mt-8 hover:bg-teal-300 transition-colors duration-300 shadow-lg"
-            >
-              Lihat Karya Saya
-            </a>
-          </div>
-          <!-- Lottie Animation Container -->
-          <div id="lottie-animation-hero" class="w-full h-auto max-w-lg mx-auto"></div>
-        </div>
-      </section>
-
-      <!-- About Me Section -->
-      <section id="about" class="py-24 reveal">
-        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Tentang Saya</h2>
-        <div class="grid md:grid-cols-5 gap-10 items-center">
-          <div class="md:col-span-3 text-slate-dark space-y-4">
-            <!-- Ganti paragraf ini dengan cerita tentang diri Anda -->
-            <p>
-              Halo! Nama saya Aji, dan saya sangat suka membangun aplikasi web yang handal dan
-              berskala. Minat saya pada teknologi dimulai sejak beberapa tahun yang lalu dan terus
-              berkembang menjadi keahlian mendalam di bidang backend development, khususnya dengan
-              PHP dan framework Laravel.
-            </p>
-            <p>
-              Tujuan saya adalah menciptakan aplikasi yang tidak hanya kuat dan efisien di balik
-              layar, tetapi juga memberikan pengalaman yang mulus dan menyenangkan bagi pengguna
-              akhir. Saya menikmati proses menjembatani logika server yang kompleks dengan antarmuka
-              pengguna yang intuitif.
-            </p>
-            <p>Berikut adalah beberapa teknologi inti yang saya kuasai:</p>
-            <ul class="grid grid-cols-2 gap-2 mt-4 text-slate-light">
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>PHP & Laravel
-              </li>
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Livewire & Alpine.js
-              </li>
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>MySQL & PostgreSQL
-              </li>
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Desain REST API
-              </li>
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Tailwind CSS
-              </li>
-              <li class="flex items-center">
-                <i class="fa-solid fa-caret-right text-accent mr-2"></i>Docker & Git
-              </li>
-            </ul>
-          </div>
-          <div class="md:col-span-2 relative group w-max mx-auto">
-            <!-- Ganti dengan foto profesional Anda -->
-            <div
-              class="absolute -inset-0.5 bg-accent rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
-            ></div>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRdteME2-Y02AfIetsERRjIdALhXnvym4qA&s"
-              alt="Muhammad Aji Sukma"
-              class="relative w-64 h-64 object-cover rounded-lg"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section with Lottie -->
-      <section id="skills" class="py-24 reveal">
-        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Area Keahlian Saya</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Skill 1: Programming -->
-          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
-            <div
-              class="lottie-skill-animation h-40 mx-auto"
-              data-path="https://lottie.host/e8c87392-563b-43a9-83d1-7e04918a5997/t2yT6H1oSS.json"
-            ></div>
-            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Programming</h3>
-            <p class="text-slate-dark text-sm">
-              Laravel, PHP, Livewire, JavaScript, Python, API Development.
-            </p>
-          </div>
-          <!-- Skill 2: Jaringan & Server -->
-          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
-            <div
-              class="lottie-skill-animation h-40 mx-auto"
-              data-path="https://lottie.host/80a25091-5a4c-443b-8255-6e41b017a8f8/HlD1S1B9q0.json"
-            ></div>
-            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Jaringan & Server</h3>
-            <p class="text-slate-dark text-sm">
-              Linux Server, Nginx, Docker, TCP/IP, Konfigurasi Firewall.
-            </p>
-          </div>
-          <!-- Skill 3: UI/UX -->
-          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
-            <div
-              class="lottie-skill-animation h-40 mx-auto"
-              data-path="https://lottie.host/97a028c1-638e-4b67-8547-36e579736c2a/8X932Qe35B.json"
-            ></div>
-            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Desain UI/UX</h3>
-            <p class="text-slate-dark text-sm">
-              Figma, Tailwind CSS, Wireframing, Desain Responsif.
-            </p>
-          </div>
-          <!-- Skill 4: Simple Animation -->
-          <div class="bg-navy-light p-6 rounded-lg shadow-lg text-center">
-            <div
-              class="lottie-skill-animation h-40 mx-auto"
-              data-path="https://lottie.host/62b85a36-6019-45f8-a15d-8a211e406f36/nQ69dD2HlZ.json"
-            ></div>
-            <h3 class="font-bold text-xl text-slate-light mt-4 mb-2">Animasi Sederhana</h3>
-            <p class="text-slate-dark text-sm">
-              Lottie/JSON, Transisi CSS, Dasar-dasar After Effects.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="py-24 reveal">
-        <h2 class="text-3xl font-bold text-slate-light text-center mb-12">Proyek Pilihan Saya</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          <!-- PROYEK 1: SISFOSTOKMBK -->
-          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
-            <div class="w-full h-48 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1590987337624-b73792a84350?q=80&w=2832&auto=format&fit=crop"
-                alt="[Gambar Sistem Informasi Stok]"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href="#portfolio"
+                class="bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-dark transition shadow-lg shadow-accent/20"
+              >
+                <i class="fas fa-briefcase mr-2"></i>Lihat Portfolio
+              </a>
+              <a
+                href="#contact"
+                class="border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
+              >
+                <i class="fas fa-paper-plane mr-2"></i>Hubungi Saya
+              </a>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl text-slate-light mb-2">
-                Sistem Informasi Stok (SISFOSTOKMBK)
+
+            <div class="flex gap-6 mt-12 justify-center md:justify-start">
+              <a
+                href="https://github.com/sukmaajidigital"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://instagram.com/sukmaaji.digital"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="animate-fade-in delay-300 flex justify-center">
+            <div class="relative">
+              <div
+                class="absolute -inset-4 bg-accent/20 rounded-full blur-xl"
+              ></div>
+              <div class="relative bg-dark-200 rounded-2xl p-1 shadow-xl">
+                <div class="bg-dark-300 rounded-2xl p-6 border border-dark-100">
+                  <div class="flex items-center mb-6">
+                    <div class="flex space-x-2 mr-4">
+                      <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div class="text-slate-dark text-sm">index.php</div>
+                  </div>
+
+                  <div class="space-y-2 font-mono text-sm">
+                    <div class="text-purple-400">&lt;?php</div>
+                    <div>
+                      <span class="text-blue-400">class</span>
+                      <span class="text-yellow-300">Portfolio</span> {
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">public</span>
+                      <span class="text-blue-400">function</span>
+                      <span class="text-green-400">__construct</span>() {
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-green-400">$this</span>-&gt;name =
+                      <span class="text-orange-400">"Muhammad Aji Sukma"</span>;
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-green-400">$this</span>-&gt;role =
+                      <span class="text-orange-400">"Laravel Developer"</span>;
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-green-400">$this</span>-&gt;skills =
+                      [<span class="text-orange-400">"PHP"</span>,
+                      <span class="text-orange-400">"Laravel"</span>,
+                      <span class="text-orange-400">"API Development"</span>];
+                    </div>
+                    <div class="ml-4">}</div>
+                    <div>}</div>
+                    <div class="text-purple-400">?&gt;</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-white section-title inline-block"
+          >
+            Tentang Saya
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Mengenal lebih dekat latar belakang, passion, dan nilai-nilai yang
+            saya junjung dalam setiap proyek
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover"
+            >
+              <h3 class="text-xl font-semibold text-white mb-4">
+                Latar Belakang & Passion
               </h3>
-              <p class="text-slate-dark mb-4 text-sm flex-grow">
-                Sistem informasi untuk manajemen stok barang menggunakan Laravel, dirancang untuk
-                efisiensi dan kemudahan pelacakan inventaris.
+              <p class="text-slate-dark mb-6">
+                Sejak memulai perjalanan di dunia pemrograman 5 tahun yang lalu,
+                saya telah mengembangkan passion yang mendalam untuk menciptakan
+                solusi backend yang elegan dan efisien.
               </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
-                  >Manajemen Stok</span
+              <p class="text-slate-dark mb-6">
+                Saya percaya bahwa kode yang baik tidak hanya berfungsi dengan
+                benar, tetapi juga mudah dipahami, dikembangkan, dan dirawat.
+                Fokus saya adalah membangun aplikasi yang tidak hanya memenuhi
+                kebutuhan saat ini, tetapi juga siap untuk tantangan masa depan.
+              </p>
+              <p class="text-slate-dark">
+                Di luar coding, saya terus mengikuti perkembangan teknologi
+                terbaru dan menikmati berbagi pengetahuan melalui blog dan
+                komunitas developer.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-code text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Clean Code</h3>
+                <p class="text-slate-dark text-sm">
+                  Menulis kode yang bersih, terstruktur, dan mudah dipahami
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-layer-group text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">
+                  Software Architecture
+                </h3>
+                <p class="text-slate-dark text-sm">
+                  Mendesain arsitektur yang skalabel dan maintainable
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Performance</h3>
+                <p class="text-slate-dark text-sm">
+                  Mengoptimalkan performa aplikasi untuk pengalaman terbaik
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Security</h3>
+                <p class="text-slate-dark text-sm">
+                  Menerapkan praktik keamanan terbaik dalam setiap proyek
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-white section-title inline-block"
+          >
+            Keahlian Teknis
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Keterampilan dan teknologi yang saya kuasai untuk membangun solusi
+            digital yang powerful
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100">
+            <h3 class="text-xl font-semibold text-white mb-6">
+              Teknologi Inti
+            </h3>
+
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white font-medium">PHP & Laravel</span>
+                  <span class="text-accent">95%</span>
+                </div>
+                <div class="w-full bg-dark-300 rounded-full h-2.5">
+                  <div
+                    class="skill-bar bg-accent h-2.5 rounded-full"
+                    style="width: 95%"
+                  ></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white font-medium">MySQL & Database</span>
+                  <span class="text-accent">90%</span>
+                </div>
+                <div class="w-full bg-dark-300 rounded-full h-2.5">
+                  <div
+                    class="skill-bar bg-accent h-2.5 rounded-full"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white font-medium">API Development</span>
+                  <span class="text-accent">92%</span>
+                </div>
+                <div class="w-full bg-dark-300 rounded-full h-2.5">
+                  <div
+                    class="skill-bar bg-accent h-2.5 rounded-full"
+                    style="width: 92%"
+                  ></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-white font-medium">JavaScript</span>
+                  <span class="text-accent">85%</span>
+                </div>
+                <div class="w-full bg-dark-300 rounded-full h-2.5">
+                  <div
+                    class="skill-bar bg-accent h-2.5 rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100">
+            <h3 class="text-xl font-semibold text-white mb-6">
+              Tools & Framework
+            </h3>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-laravel text-red-500 text-2xl mr-3"></i>
+                <span class="text-white">Laravel</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-livewire text-blue-500 text-2xl mr-3"></i>
+                <span class="text-white">Livewire</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fas fa-database text-yellow-500 text-2xl mr-3"></i>
+                <span class="text-white">MySQL</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-docker text-blue-400 text-2xl mr-3"></i>
+                <span class="text-white">Docker</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-git-alt text-orange-500 text-2xl mr-3"></i>
+                <span class="text-white">Git</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fas fa-server text-green-500 text-2xl mr-3"></i>
+                <span class="text-white">Nginx</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-ubuntu text-orange-400 text-2xl mr-3"></i>
+                <span class="text-white">Linux</span>
+              </div>
+              <div class="bg-dark-300 p-4 rounded-lg flex items-center">
+                <i class="fab fa-react text-blue-400 text-2xl mr-3"></i>
+                <span class="text-white">React</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-white section-title inline-block"
+          >
+            Project Portfolio
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Beberapa project terpilih yang menunjukkan kemampuan teknis dan
+            solusi inovatif
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-dark-400/30 flex items-center justify-center"
+              >
+                <span
+                  class="bg-white text-dark-300 px-4 py-2 rounded-lg font-semibold"
+                  >Laravel Project</span
                 >
               </div>
-              <div class="text-right mt-auto pt-4">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">
+                Sistem Manajemen Inventori
+              </h3>
+              <p class="text-slate-dark mb-4">
+                Sistem inventori lengkap dengan manajemen stok, pelacakan
+                barang, dan laporan otomatis.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Laravel</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Livewire</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >MySQL</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Tailwind</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
                 <a
-                  href="https://github.com/sukmaajidigital/sisfostokmbk"
-                  target="_blank"
-                  class="text-slate-dark hover:text-accent text-xl mr-4"
-                  ><i class="fab fa-github"></i
-                ></a>
-                <!-- <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"><i class="fas fa-external-link-alt"></i></a> -->
+                  href="#"
+                  class="text-accent hover:text-accent-light text-sm font-medium"
+                >
+                  <i class="fas fa-external-link-alt mr-1"></i> Lihat Detail
+                </a>
+                <a
+                  href="https://github.com/sukmaajidigital"
+                  class="text-slate-dark hover:text-white"
+                >
+                  <i class="fab fa-github text-lg"></i>
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- PROYEK 2 -->
-          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
-            <div class="w-full h-48 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2940&auto=format&fit=crop"
-                alt="[Gambar Proyek Laravel 2]"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+          <div
+            class="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-green-600 to-teal-600 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-dark-400/30 flex items-center justify-center"
+              >
+                <span
+                  class="bg-white text-dark-300 px-4 py-2 rounded-lg font-semibold"
+                  >API Development</span
+                >
+              </div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 2</h3>
-              <p class="text-slate-dark mb-4 text-sm flex-grow">
-                Ini adalah contoh proyek lain. Mungkin sebuah sistem manajemen atau aplikasi booking
-                online. Jelaskan fiturnya.
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">
+                Platform E-commerce API
+              </h3>
+              <p class="text-slate-dark mb-4">
+                RESTful API untuk platform e-commerce dengan fitur pembayaran,
+                keranjang, dan manajemen produk.
               </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Blade</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">API</span>
-              </div>
-              <div class="text-right mt-auto pt-4">
-                <a
-                  href="https://github.com/sukmaajidigital/nama-repo-2"
-                  target="_blank"
-                  class="text-slate-dark hover:text-accent text-xl mr-4"
-                  ><i class="fab fa-github"></i
-                ></a>
-                <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"
-                  ><i class="fas fa-external-link-alt"></i
-                ></a>
-              </div>
-            </div>
-          </div>
 
-          <!-- PROYEK 3 -->
-          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
-            <div class="w-full h-48 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2940&auto=format&fit=crop"
-                alt="[Gambar Proyek Laravel 3]"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 3</h3>
-              <p class="text-slate-dark mb-4 text-sm flex-grow">
-                Proyek ketiga bisa jadi REST API untuk aplikasi mobile atau service lain. Tunjukkan
-                kemampuan backend Anda di sini.
-              </p>
               <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Sanctum</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Laravel</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >API</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >JWT</span
+                >
+                <span
+                  class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
                   >PostgreSQL</span
                 >
               </div>
-              <div class="text-right mt-auto pt-4">
-                <a
-                  href="https://github.com/sukmaajidigital/nama-repo-3"
-                  target="_blank"
-                  class="text-slate-dark hover:text-accent text-xl mr-4"
-                  ><i class="fab fa-github"></i
-                ></a>
-              </div>
-            </div>
-          </div>
 
-          <!-- PROYEK 4 -->
-          <div class="bg-navy-light rounded-lg shadow-lg overflow-hidden group flex flex-col">
-            <div class="w-full h-48 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2831&auto=format&fit=crop"
-                alt="[Gambar Proyek Laravel 4]"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl text-slate-light mb-2">Nama Proyek Laravel Anda 4</h3>
-              <p class="text-slate-dark mb-4 text-sm flex-grow">
-                Deskripsi singkat proyek ini. Jelaskan apa tujuannya, teknologi utama yang
-                digunakan, dan apa peran Anda dalam proyek tersebut.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Laravel</span>
-                <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full"
-                  >Livewire</span
-                >
-              </div>
-              <div class="text-right mt-auto pt-4">
+              <div class="flex justify-between items-center">
                 <a
-                  href="https://github.com/sukmaajidigital/nama-repo-4"
-                  target="_blank"
-                  class="text-slate-dark hover:text-accent text-xl mr-4"
-                  ><i class="fab fa-github"></i
-                ></a>
-                <a href="#" target="_blank" class="text-slate-dark hover:text-accent text-xl"
-                  ><i class="fas fa-external-link-alt"></i
-                ></a>
+                  href="#"
+                  class="text-accent hover:text-accent-light text-sm font-medium"
+                >
+                  <i class="fas fa-external-link-alt mr-1"></i> Lihat Detail
+                </a>
+                <a
+                  href="https://github.com/sukmaajidigital"
+                  class="text-slate-dark hover:text-white"
+                >
+                  <i class="fab fa-github text-lg"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="py-24 text-center reveal">
-        <h2 class="text-3xl font-bold text-slate-light">Hubungi Saya</h2>
-        <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
-          Saat ini saya terbuka untuk peluang dan kolaborasi baru. Jika Anda memiliki pertanyaan
-          atau hanya ingin menyapa, jangan ragu untuk menghubungi saya.
-        </p>
-        <a
-          href="mailto:emailanda@example.com"
-          class="inline-block bg-accent text-gray-900 font-bold py-3 px-8 rounded mt-8 hover:bg-teal-300 transition-colors duration-300 shadow-lg"
-        >
-          Kirim Email
-        </a>
-      </section>
-    </main>
+        <div class="text-center mt-12">
+          <a
+            href="https://github.com/sukmaajidigital"
+            class="inline-flex items-center border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
+          >
+            <i class="fab fa-github mr-2"></i>Lihat Lebih Banyak di GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-white section-title inline-block"
+          >
+            Hubungi Saya
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Tertarik untuk berkolaborasi? Mari berbicara tentang proyek Anda
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-envelope text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Email</h3>
+            <p class="text-slate-dark mb-3">sukmaajidigital@gmail.com</p>
+            <a
+              href="mailto:sukmaajidigital@gmail.com"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Kirim Pesan <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-linkedin text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">LinkedIn</h3>
+            <p class="text-slate-dark mb-3">sukma-aji-08b470286</p>
+            <a
+              href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Terhubung <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-whatsapp text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">WhatsApp</h3>
+            <p class="text-slate-dark mb-3">+62 812-3456-7890</p>
+            <a
+              href="https://wa.me/6281234567890"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Chat Sekarang <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- <div class="max-w-2xl mx-auto bg-dark-200 rounded-2xl p-8 mt-12 border border-dark-100">
+                <h3 class="text-xl font-semibold text-white mb-6 text-center">Kirim Pesan Langsung</h3>
+                
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-slate-dark mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full bg-dark-300 border border-dark-100 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-slate-dark mb-2">Alamat Email</label>
+                            <input type="email" id="email" class="w-full bg-dark-300 border border-dark-100 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-slate-dark mb-2">Subjek</label>
+                        <input type="text" id="subject" class="w-full bg-dark-300 border border-dark-100 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-slate-dark mb-2">Pesan</label>
+                        <textarea id="message" rows="4" class="w-full bg-dark-300 border border-dark-100 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition shadow-lg shadow-accent/20">
+                        <i class="fas fa-paper-plane mr-2"></i>Kirim Pesan
+                    </button>
+                </form>
+            </div> -->
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-gray-800">
-      <div class="container mx-auto px-6 text-center text-slate-dark">
-        <div class="flex justify-center space-x-6 mb-4">
+    <footer class="py-12 bg-dark-400 border-t border-dark-300">
+      <div class="container mx-auto px-6 text-center">
+        <a
+          href="#home"
+          class="text-xl font-bold gradient-text flex items-center justify-center"
+        >
+          <div class="gradient-bg p-2 rounded-lg mr-2">
+            <i class="fas fa-code text-white"></i>
+          </div>
+          <span class="text-white"
+            >Aji<span class="text-accent">Sukma</span></span
+          >
+        </a>
+
+        <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+          Seorang Laravel Developer yang berfokus pada pembuatan aplikasi web
+          yang efisien, skalabel, dan user-friendly.
+        </p>
+
+        <div class="flex justify-center space-x-6 my-6">
           <a
             href="https://github.com/sukmaajidigital"
             target="_blank"
-            class="hover:text-accent transition-colors"
-            ><i class="fab fa-github fa-lg"></i
-          ></a>
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-github"></i>
+          </a>
           <a
             href="https://www.linkedin.com/in/sukma-aji-08b470286/"
             target="_blank"
-            class="hover:text-accent transition-colors"
-            ><i class="fab fa-linkedin fa-lg"></i
-          ></a>
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
           <a
             href="https://instagram.com/sukmaaji.digital"
             target="_blank"
-            class="hover:text-accent transition-colors"
-            ><i class="fab fa-instagram fa-lg"></i
-          ></a>
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://twitter.com/sukmaaji"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
         </div>
-        <p class="text-sm">&copy; 2025 Muhammad Aji Sukma. Dibuat dengan Tailwind CSS & ❤️</p>
+
+        <p class="text-sm text-slate-dark">
+          &copy; 2023 Muhammad Aji Sukma. All rights reserved.
+        </p>
       </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button
-      id="to-top-button"
-      class="hidden fixed bottom-8 right-8 bg-accent p-3 rounded-full shadow-lg text-gray-900 hover:bg-teal-300 transition-colors z-50"
-    >
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
+    <!-- Script -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Hero Lottie Animation
-        lottie.loadAnimation({
-          container: document.getElementById("lottie-animation-hero"),
-          renderer: "svg",
-          loop: true,
-          autoplay: true,
-          path: "https://lottie.host/1f7a8423-7478-4364-9721-729d59218d22/c52xna9jkb.json",
-        });
-
-        // Skills Lottie Animations
-        document.querySelectorAll(".lottie-skill-animation").forEach((container) => {
-          const path = container.dataset.path;
-          if (path) {
-            lottie.loadAnimation({
-              container: container,
-              renderer: "svg",
-              loop: true,
-              autoplay: true,
-              path: path,
-            });
-          }
-        });
-
-        // Mobile Menu Toggle
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-          mobileMenu.classList.toggle("flex");
-        });
 
-        // Scroll to Top Button
-        const toTopButton = document.getElementById("to-top-button");
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 300) {
-            toTopButton.classList.remove("hidden");
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          const icon = mobileMenuButton.querySelector("i");
+
+          if (mobileMenu.classList.contains("hidden")) {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
           } else {
-            toTopButton.classList.add("hidden");
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
           }
         });
-        toTopButton.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            const icon = mobileMenuButton.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          });
         });
 
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll(".reveal");
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+          const skillBars = document.querySelectorAll(".skill-bar");
+
+          skillBars.forEach((bar) => {
+            const width = bar.style.width;
+            bar.style.width = "0";
+
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 300);
+          });
+        }
+
+        // Initialize animations when skills section is in view
+        const skillsSection = document.getElementById("skills");
         const observer = new IntersectionObserver(
-          (entries, observer) => {
+          (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add("active");
+                animateSkillBars();
                 observer.unobserve(entry.target);
               }
             });
           },
-          { threshold: 0.1 }
+          { threshold: 0.5 }
         );
-        revealElements.forEach((el) => observer.observe(el));
+
+        if (skillsSection) {
+          observer.observe(skillsSection);
+        }
       });
     </script>
   </body>
