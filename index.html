@@ -138,12 +138,12 @@
             >Portfolio</a
           >
           <a href="#contact" class="nav-link text-slate-dark hover:text-white transition">Kontak</a>
-          <a
+          <!-- <a
             href="#contact"
             class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition shadow-lg shadow-accent/20"
           >
             Mulai Projek
-          </a>
+          </a> -->
         </div>
 
         <button id="mobile-menu-button" class="md:hidden text-xl bg-dark-200 p-2 rounded-lg">
@@ -161,12 +161,12 @@
             >Portfolio</a
           >
           <a href="#contact" class="py-2 text-slate-dark hover:text-white transition">Kontak</a>
-          <a
+          <!-- <a
             href="#contact"
             class="bg-accent text-white px-4 py-2 rounded-lg text-center hover:bg-accent-dark transition mt-4"
           >
             Mulai Projek
-          </a>
+          </a> -->
         </div>
       </div>
     </header>
@@ -175,6 +175,7 @@
     <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text Section -->
           <div class="text-center md:text-left animate-fade-in">
             <p class="text-accent font-medium mb-4">
               <span class="w-8 h-px bg-accent inline-block mr-3 align-middle"></span>
@@ -182,12 +183,11 @@
             </p>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Backend &
-              <span class="gradient-text">Laravel</span>
+              <span class="gradient-text">Web</span>
               Developer
             </h1>
             <p class="text-slate-dark text-lg mb-8 max-w-xl">
-              Saya mengkhususkan diri dalam mengembangkan aplikasi web yang skalabel dan efisien
-              dengan fokus pada kode yang bersih, arsitektur yang solid, dan performa optimal.
+              Seorang penggiat teknologi informasi yang suka belajar hal baru dan berbagi ilmu.
             </p>
             <div class="flex flex-wrap gap-4 justify-center md:justify-start">
               <a
@@ -196,12 +196,12 @@
               >
                 <i class="fas fa-briefcase mr-2"></i>Lihat Portfolio
               </a>
-              <a
+              <!-- <a
                 href="#contact"
                 class="border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
               >
                 <i class="fas fa-paper-plane mr-2"></i>Hubungi Saya
-              </a>
+              </a> -->
             </div>
 
             <div class="flex gap-6 mt-12 justify-center md:justify-start">
@@ -226,151 +226,13 @@
             </div>
           </div>
 
+          <!-- Image Section -->
           <div class="animate-fade-in delay-300 flex justify-center">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-accent/20 rounded-full blur-xl"></div>
-              <div class="relative bg-dark-200 rounded-2xl p-1 shadow-xl">
-                <div class="bg-dark-300 rounded-2xl p-6 border border-dark-100">
-                  <div class="flex items-center mb-6">
-                    <div class="flex space-x-2 mr-4">
-                      <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div class="text-slate-dark text-sm">index.php</div>
-                  </div>
-
-                  <div class="space-y-2 font-mono text-sm">
-                    <div class="text-purple-400">&lt;?php</div>
-                    <div>
-                      <span class="text-blue-400">class</span>
-                      <span class="text-yellow-300">Portfolio</span> {
-                    </div>
-                    <div class="ml-4">
-                      <span class="text-blue-400">public</span>
-                      <span class="text-blue-400">function</span>
-                      <span class="text-green-400">__construct</span>() {
-                    </div>
-                    <div class="ml-8">
-                      <span class="text-green-400">$this</span>-&gt;name =
-                      <span class="text-orange-400">"Muhammad Aji Sukma"</span>;
-                    </div>
-                    <div class="ml-8">
-                      <span class="text-green-400">$this</span>-&gt;role =
-                      <span class="text-orange-400">"Laravel Developer"</span>;
-                    </div>
-                    <div class="ml-8">
-                      <span class="text-green-400">$this</span>-&gt;skills = [<span
-                        class="text-orange-400"
-                        >"PHP"</span
-                      >, <span class="text-orange-400">"Laravel"</span>,
-                      <span class="text-orange-400">"API Development"</span>];
-                    </div>
-                    <div class="ml-4">}</div>
-                    <div>}</div>
-                    <div class="text-purple-400">?&gt;</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-dark-300">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
-            Tentang Saya
-          </h2>
-          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
-            Mengenal lebih dekat latar belakang, passion, dan nilai-nilai yang saya junjung dalam
-            setiap proyek
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
-              <h3 class="text-xl font-semibold text-white mb-4">Latar Belakang & Passion</h3>
-              <p class="text-slate-dark mb-6">
-                Sejak memulai perjalanan di dunia pemrograman 5 tahun yang lalu, saya telah
-                mengembangkan passion yang mendalam untuk menciptakan solusi backend yang elegan dan
-                efisien.
-              </p>
-              <p class="text-slate-dark mb-6">
-                Saya percaya bahwa kode yang baik tidak hanya berfungsi dengan benar, tetapi juga
-                mudah dipahami, dikembangkan, dan dirawat. Fokus saya adalah membangun aplikasi yang
-                tidak hanya memenuhi kebutuhan saat ini, tetapi juga siap untuk tantangan masa
-                depan.
-              </p>
-              <p class="text-slate-dark">
-                Di luar coding, saya terus mengikuti perkembangan teknologi terbaru dan menikmati
-                berbagi pengetahuan melalui blog dan komunitas developer.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <div class="grid grid-cols-2 gap-6">
-              <div
-                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
-              >
-                <div
-                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <i class="fas fa-code text-white text-2xl"></i>
-                </div>
-                <h3 class="text-white font-semibold mb-2">Clean Code</h3>
-                <p class="text-slate-dark text-sm">
-                  Menulis kode yang bersih, terstruktur, dan mudah dipahami
-                </p>
-              </div>
-
-              <div
-                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
-              >
-                <div
-                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <i class="fas fa-layer-group text-white text-2xl"></i>
-                </div>
-                <h3 class="text-white font-semibold mb-2">Software Architecture</h3>
-                <p class="text-slate-dark text-sm">
-                  Mendesain arsitektur yang skalabel dan maintainable
-                </p>
-              </div>
-
-              <div
-                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
-              >
-                <div
-                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <i class="fas fa-rocket text-white text-2xl"></i>
-                </div>
-                <h3 class="text-white font-semibold mb-2">Performance</h3>
-                <p class="text-slate-dark text-sm">
-                  Mengoptimalkan performa aplikasi untuk pengalaman terbaik
-                </p>
-              </div>
-
-              <div
-                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
-              >
-                <div
-                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <i class="fas fa-shield-alt text-white text-2xl"></i>
-                </div>
-                <h3 class="text-white font-semibold mb-2">Security</h3>
-                <p class="text-slate-dark text-sm">
-                  Menerapkan praktik keamanan terbaik dalam setiap proyek
-                </p>
-              </div>
-            </div>
+            <img
+              src="images/ajipro.jpg"
+              alt="Muhammad Aji Sukma"
+              class="w-full h-full object-cover rounded-2xl filter grayscale shadow-xl"
+            />
           </div>
         </div>
       </div>
@@ -381,15 +243,15 @@
       <div class="container mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
-            Keahlian Teknis
+            Skills &amp; Tools
           </h2>
           <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
-            Keterampilan dan teknologi yang saya kuasai untuk membangun solusi digital yang powerful
+            Beberapa keahlian dan tools yang saya kuasai
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100">
+        <div class="grid md:grid-cols-1 gap-8">
+          <!-- <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100">
             <h3 class="text-xl font-semibold text-white mb-6">Teknologi Inti</h3>
 
             <div class="space-y-6">
@@ -433,7 +295,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100">
             <h3 class="text-xl font-semibold text-white mb-6">Tools & Framework</h3>
@@ -567,7 +429,7 @@
 
               <div class="flex justify-between items-center">
                 <a
-                  href="https://sukmaaji.my.id/dashboardumkm_public/"
+                  href="https://sukmaaji.my.id/mycode/dashboard_umkm/"
                   target="_blank"
                   class="text-accent hover:text-accent-light text-sm font-medium"
                 >
@@ -588,11 +450,108 @@
 
         <div class="text-center mt-12">
           <a
-            href="https://github.com/sukmaajidigital"
+            href="https://sukmaaji.my.id/mycode"
             class="inline-flex items-center border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
           >
-            <i class="fab fa-github mr-2"></i>Lihat Lebih Banyak di GitHub
+            <i class="fab fa-github mr-2"></i>show more projects
           </a>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Tentang Saya
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Mengenal lebih dekat latar belakang, passion, dan nilai-nilai yang saya junjung dalam
+            setiap proyek
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+              <h3 class="text-xl font-semibold text-white mb-4">Latar Belakang & Passion</h3>
+              <p class="text-slate-dark mb-6">
+                Sejak memulai perjalanan di dunia pemrograman 5 tahun yang lalu, saya telah
+                mengembangkan passion yang mendalam untuk menciptakan solusi backend yang elegan dan
+                efisien.
+              </p>
+              <p class="text-slate-dark mb-6">
+                Saya percaya bahwa kode yang baik tidak hanya berfungsi dengan benar, tetapi juga
+                mudah dipahami, dikembangkan, dan dirawat. Fokus saya adalah membangun aplikasi yang
+                tidak hanya memenuhi kebutuhan saat ini, tetapi juga siap untuk tantangan masa
+                depan.
+              </p>
+              <p class="text-slate-dark">
+                Di luar coding, saya terus mengikuti perkembangan teknologi terbaru dan menikmati
+                berbagi pengetahuan melalui blog dan komunitas developer.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-code text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Clean Code</h3>
+                <p class="text-slate-dark text-sm">
+                  Menulis kode yang bersih, terstruktur, dan mudah dipahami
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-layer-group text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Software Architecture</h3>
+                <p class="text-slate-dark text-sm">
+                  Mendesain arsitektur yang skalabel dan maintainable
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Performance</h3>
+                <p class="text-slate-dark text-sm">
+                  Mengoptimalkan performa aplikasi untuk pengalaman terbaik
+                </p>
+              </div>
+
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Security</h3>
+                <p class="text-slate-dark text-sm">
+                  Menerapkan praktik keamanan terbaik dalam setiap proyek
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -633,7 +592,7 @@
               <i class="fab fa-linkedin text-white text-2xl"></i>
             </div>
             <h3 class="text-white font-semibold mb-2">LinkedIn</h3>
-            <p class="text-slate-dark mb-3">sukma-aji-08b470286</p>
+            <p class="text-slate-dark mb-3">MUHAMMAD AJI SUKMA</p>
             <a
               href="https://www.linkedin.com/in/sukma-aji-08b470286/"
               target="_blank"
@@ -650,9 +609,9 @@
               <i class="fab fa-whatsapp text-white text-2xl"></i>
             </div>
             <h3 class="text-white font-semibold mb-2">WhatsApp</h3>
-            <p class="text-slate-dark mb-3">+62 812-3456-7890</p>
+            <p class="text-slate-dark mb-3">+62 851-7974-2322</p>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6285179742322"
               target="_blank"
               class="text-accent text-sm hover:text-accent-light"
             >
@@ -674,8 +633,7 @@
         </a>
 
         <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
-          Seorang Laravel Developer yang berfokus pada pembuatan aplikasi web yang efisien,
-          skalabel, dan user-friendly.
+          Seorang penggiat teknologi informasi yang suka belajar hal baru dan berbagi ilmu.
         </p>
 
         <div class="flex justify-center space-x-6 my-6">
@@ -709,7 +667,7 @@
           </a>
         </div>
 
-        <p class="text-sm text-slate-dark">&copy; 2023 Muhammad Aji Sukma. All rights reserved.</p>
+        <p class="text-sm text-slate-dark">&copy; 2025 Muhammad Aji Sukma. All rights reserved.</p>
       </div>
     </footer>
 
