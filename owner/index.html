@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Muhammad Aji Sukma - Personal Profile</title>
+    <meta
+      name="description"
+      content="Muhammad Aji Sukma, seorang backend developer dan founder Sukmaaji Digital yang berpengalaman dalam pengembangan aplikasi web dan sistem informasi."
+    />
+    <meta
+      name="keywords"
+      content="Muhammad Aji Sukma, backend developer, Laravel, web developer, sistem informasi, personal profile"
+    />
+    <meta name="author" content="Muhammad Aji Sukma" />
+
+    <!-- Open Graph Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Muhammad Aji Sukma" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:title" content="Muhammad Aji Sukma - Personal Profile" />
+    <meta
+      property="og:description"
+      content="Profil pribadi Muhammad Aji Sukma, seorang backend developer dan founder Sukmaaji Digital yang berpengalaman dalam pengembangan aplikasi web dan sistem informasi."
+    />
+    <meta property="og:image" content="../images/logo.webp" />
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sukmaaji" />
+    <meta name="twitter:title" content="Muhammad Aji Sukma - Personal Profile" />
+    <meta
+      name="twitter:description"
+      content="Profil pribadi Muhammad Aji Sukma, seorang backend developer dan founder Sukmaaji Digital yang berpengalaman dalam pengembangan aplikasi web dan sistem informasi."
+    />
+    <meta name="twitter:image" content="../images/logo.webp" />
+
+    <meta name="robots" content="index, follow" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/logo.webp" />
+    <link rel="icon" type="image/png" href="../images/logo.webp" />
+    <link rel="shortcut icon" type="image/png" href="../images/logo.webp" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://sukmaaji.my.id/css/style.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                100: "#1E293B",
+                200: "#172033",
+                300: "#0F172A",
+                400: "#0A0F1C",
+              },
+              accent: {
+                DEFAULT: "#6366F1",
+                light: "#818CF8",
+                dark: "#4F46E5",
+              },
+              slate: {
+                light: "#F1F5F9",
+                dark: "#94A3B8",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="antialiased text-slate-light font-sans">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-dark-300/90 backdrop-blur-md border-b border-dark-100">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#home" class="text-xl font-bold gradient-text flex items-center">
+          <div class="p-2 mr-2">
+            <img
+              src="../images/logo.webp"
+              alt="Logo Sukma Aji Digital"
+              class="w-10 h-10 object-contain"
+            />
+          </div>
+          <span class="text-accent">Sukma</span>
+          <span class="text-white">Aji</span>
+          <span class="text-accent">Digital</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="https://sukmaaji.my.id/blogs"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Blog</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#about"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Tentang</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#services"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Jasa</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#portfolio"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Portfolio</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#contact"
+            class="nav-link text-slate-dark hover:text-white transition"
+            >Kontak</a
+          >
+          <a
+            href="https://sukmaaji.my.id/owner"
+            class="nav-link text-white bg-accent hover:text-white transition px-3 py-2 rounded-lg"
+            >Owner</a
+          >
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-xl bg-dark-200 p-2 rounded-lg">
+          <i class="fas fa-bars text-slate-light"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-dark-200 border-t border-dark-100">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <a
+            href="https://sukmaaji.my.id/blogs"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Blog</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#about"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Tentang</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#services"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Jasa</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#portfolio"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Portfolio</a
+          >
+          <a
+            href="https://sukmaaji.my.id/#contact"
+            class="py-2 text-slate-dark hover:text-white transition"
+            >Kontak</a
+          >
+          <a
+            href="https://sukmaaji.my.id/owner"
+            class="py-2 text-white bg-accent hover:text-white transition px-3 rounded-lg"
+            >Owner</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text Section -->
+          <div class="text-center md:text-left animate-fade-in">
+            <p class="text-accent font-medium mb-4">
+              <span class="w-8 h-px bg-accent inline-block mr-3 align-middle"></span>
+              Halo, Saya
+            </p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Muhammad Aji Sukma
+            </h1>
+            <p class="text-xl text-accent mb-4 font-medium">Backend Developer & Tech Enthusiast</p>
+            <p class="text-slate-dark text-lg mb-8 max-w-xl">
+              Seorang backend developer yang passionate dalam pengembangan aplikasi web dan sistem
+              informasi. Saya suka belajar teknologi baru dan berbagi pengetahuan dengan komunitas
+              developer.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href="#contact"
+                class="bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-dark transition shadow-lg shadow-accent/20"
+              >
+                <i class="fas fa-envelope mr-2"></i>Hubungi Saya
+              </a>
+              <a
+                href="https://github.com/sukmaajidigital"
+                target="_blank"
+                class="border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
+              >
+                <i class="fab fa-github mr-2"></i>Lihat Portfolio
+              </a>
+            </div>
+            <div class="flex gap-6 mt-12 justify-center md:justify-start">
+              <a
+                href="https://github.com/sukmaajidigital"
+                target="_blank"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+                target="_blank"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://instagram.com/sukmaaji.digital"
+                target="_blank"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Image Section -->
+          <div class="animate-fade-in delay-300 flex justify-center">
+            <div class="relative">
+              <img
+                src="../images/ajipro.jpg"
+                alt="Muhammad Aji Sukma"
+                class="w-80 h-80 object-cover rounded-2xl shadow-xl animate-float"
+              />
+              <div
+                class="absolute -bottom-4 -right-4 bg-accent text-white px-4 py-2 rounded-lg shadow-lg"
+              >
+                <i class="fas fa-code mr-2"></i>Developer
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Tentang Saya
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Mengenal lebih dekat tentang perjalanan dan passion saya di dunia teknologi
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+              <h3 class="text-xl font-semibold text-white mb-4">Perjalanan Saya</h3>
+              <p class="text-slate-dark mb-6">
+                Saya Muhammad Aji Sukma, seorang backend developer yang memulai perjalanan di dunia
+                programming sejak tahun 2020. Passion saya terhadap teknologi dimulai dari
+                ketertarikan pada bagaimana sistem bekerja dan bagaimana kode dapat menyelesaikan
+                masalah nyata.
+              </p>
+              <p class="text-slate-dark mb-6">
+                Sebagai founder Sukmaaji Digital, saya memiliki misi untuk membantu bisnis dan
+                organisasi bertransformasi digital dengan solusi teknologi yang tepat dan inovatif.
+              </p>
+              <p class="text-slate-dark">
+                Saat ini saya fokus pada pengembangan aplikasi web menggunakan Laravel, sistem
+                manajemen database, dan arsitektur API yang scalable.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Continuous Learning</h3>
+                <p class="text-slate-dark text-sm">
+                  Selalu belajar teknologi baru dan mengikuti perkembangan industri
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Kolaborasi</h3>
+                <p class="text-slate-dark text-sm">
+                  Suka bekerja dalam tim dan berbagi knowledge dengan developer lain
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-lightbulb text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Problem Solving</h3>
+                <p class="text-slate-dark text-sm">
+                  Passionate dalam memecahkan masalah kompleks dengan solusi sederhana
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-heart text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Passion</h3>
+                <p class="text-slate-dark text-sm">
+                  Mencintai apa yang saya kerjakan dan selalu berusaha memberikan yang terbaik
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Pengalaman & Project
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Beberapa pengalaman dan project yang telah saya kerjakan
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <!-- Experience Item 1 -->
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Founder & Backend Developer</h3>
+                <p class="text-accent font-medium">Sukmaaji Digital</p>
+              </div>
+              <span class="text-slate-dark text-sm mt-2 md:mt-0">2022 - Sekarang</span>
+            </div>
+            <p class="text-slate-dark mb-4">
+              Membangun dan memimpin perusahaan jasa digital yang berfokus pada pengembangan
+              website, sistem informasi, dan solusi teknologi untuk UMKM dan perusahaan.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">Laravel</span>
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">MySQL</span>
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                >Leadership</span
+              >
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                >Project Management</span
+              >
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Freelance Web Developer</h3>
+                <p class="text-accent font-medium">Various Clients</p>
+              </div>
+              <span class="text-slate-dark text-sm mt-2 md:mt-0">2020 - 2022</span>
+            </div>
+            <p class="text-slate-dark mb-4">
+              Mengerjakan berbagai project website dan aplikasi web untuk klien dari berbagai
+              industri, mulai dari e-commerce, sistem manajemen, hingga website company profile.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">PHP</span>
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                >JavaScript</span
+              >
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">WordPress</span>
+              <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                >Client Relations</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Keahlian Teknis
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Teknologi dan tools yang saya kuasai dan gunakan dalam pengembangan
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Backend -->
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-server text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4 text-center">Backend Development</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">Laravel</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">PHP</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">API Development</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-database text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4 text-center">Database & Tools</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">MySQL</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">Git</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">Docker</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-paint-brush text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4 text-center">Frontend & Design</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">Tailwind CSS</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">JavaScript</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-dark">React</span>
+                <div class="flex space-x-1">
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-accent rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                  <div class="w-3 h-3 bg-dark-100 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Mari Terhubung
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Tertarik untuk berkolaborasi atau sekedar ngobrol tentang teknologi? Jangan ragu untuk
+            menghubungi saya!
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-envelope text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Email</h3>
+            <p class="text-slate-dark mb-3">sukmaajidigital@gmail.com</p>
+            <a
+              href="mailto:sukmaajidigital@gmail.com"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Kirim Email <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-linkedin text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">LinkedIn</h3>
+            <p class="text-slate-dark mb-3">Muhammad Aji Sukma</p>
+            <a
+              href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Connect <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-whatsapp text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">WhatsApp</h3>
+            <p class="text-slate-dark mb-3">+62 851-7974-2322</p>
+            <a
+              href="https://wa.me/6285179742322"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Chat Sekarang <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Personal Quote -->
+        <div class="mt-16 text-center">
+          <div
+            class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover max-w-2xl mx-auto"
+          >
+            <i class="fas fa-quote-left text-accent text-2xl mb-4"></i>
+            <p class="text-lg text-white font-medium italic mb-4">
+              "Code is like poetry - it should be simple, elegant, and solve real problems."
+            </p>
+            <p class="text-slate-dark">- Muhammad Aji Sukma</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark-400 border-t border-dark-300">
+      <div class="container mx-auto px-6 text-center">
+        <a
+          href="https://sukmaaji.my.id/#home"
+          class="text-xl font-bold gradient-text flex items-center justify-center"
+        >
+          <div class="p-2 rounded-lg mr-2">
+            <img
+              src="../images/logo.webp"
+              alt="Logo Sukma Aji Digital"
+              class="w-10 h-10 object-contain"
+            />
+          </div>
+          <span class="text-accent">Sukma</span
+          ><span class="text-white">Aji<span class="text-accent">Digital</span></span>
+        </a>
+
+        <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+          Seorang penggiat teknologi informasi yang suka belajar hal baru dan berbagi ilmu.
+        </p>
+
+        <div class="flex justify-center space-x-6 my-6">
+          <a
+            href="https://github.com/sukmaajidigital"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sukma-aji-08b470286/"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://instagram.com/sukmaaji.digital"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://twitter.com/sukmaaji"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+
+        <p class="text-sm text-slate-dark">&copy; 2025 Sukma Aji Digital. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script src="https://sukmaaji.my.id/js/script.js"></script>
+  </body>
+</html>
