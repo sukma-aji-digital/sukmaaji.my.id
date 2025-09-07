@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProjectData, getAllProjectSlugs, getSortedProjectsData } from "@/lib/projects";
 import { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 interface ProjectPageProps {
   params: {
@@ -58,9 +60,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     .slice(0, 3);
 
   return (
-    <article className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white overflow-hidden">
+    <>
+      <Header />
+      <article className="min-h-screen bg-dark-400">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-accent via-accent-dark to-indigo-700 text-white overflow-hidden pt-20">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -85,13 +89,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-medium ${
                     project.status === "completed"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-yellow-100 text-yellow-800"
+                      ? "bg-green-500/20 text-green-300 border border-green-500/30"
+                      : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/30"
                   }`}
                 >
                   {project.status === "completed" ? "Completed" : "In Progress"}
                 </span>
-                <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full text-sm font-medium">
                   {project.category}
                 </span>
                 {project.year && (
@@ -100,7 +104,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </span>
                 )}
                 {project.featured && (
-                  <span className="px-3 py-1 bg-yellow-400 text-yellow-900 rounded-full text-sm font-bold">
+                  <span className="px-3 py-1 bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 rounded-full text-sm font-bold">
                     ⭐ Featured
                   </span>
                 )}
@@ -173,16 +177,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       {/* Project Details */}
-      <section className="py-16">
+      <section className="py-16 bg-dark-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
+              <div className="prose prose-lg prose-invert max-w-none">
                 {project.contentHtml && (
                   <div
                     dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-                    className="project-content"
+                    className="project-content text-slate-light"
                   />
                 )}
               </div>
@@ -191,47 +195,47 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Sidebar */}
             <div className="space-y-8">
               {/* Project Info Card */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="bg-dark-200 rounded-xl p-6 shadow-sm border border-dark-100">
+                <h3 className="text-xl font-bold text-white mb-4 section-title">
                   Project Details
                 </h3>
                 <div className="space-y-4">
                   {project.client && (
                     <div>
-                      <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      <dt className="text-sm font-medium text-slate-dark">
                         Client
                       </dt>
-                      <dd className="text-lg font-semibold text-gray-900 dark:text-white">
+                      <dd className="text-lg font-semibold text-white">
                         {project.client}
                       </dd>
                     </div>
                   )}
 
                   <div>
-                    <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <dt className="text-sm font-medium text-slate-dark">
                       Category
                     </dt>
-                    <dd className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <dd className="text-lg font-semibold text-white">
                       {project.category}
                     </dd>
                   </div>
 
                   {project.year && (
                     <div>
-                      <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Year</dt>
-                      <dd className="text-lg font-semibold text-gray-900 dark:text-white">
+                      <dt className="text-sm font-medium text-slate-dark">Year</dt>
+                      <dd className="text-lg font-semibold text-white">
                         {project.year}
                       </dd>
                     </div>
                   )}
 
                   <div>
-                    <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Status</dt>
+                    <dt className="text-sm font-medium text-slate-dark">Status</dt>
                     <dd
                       className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
                         project.status === "completed"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                          : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                          ? "bg-green-500/20 text-green-300 border border-green-500/30"
+                          : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/30"
                       }`}
                     >
                       {project.status === "completed" ? "Completed" : "In Progress"}
@@ -241,15 +245,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               {/* Technologies Used */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="bg-dark-200 rounded-xl p-6 shadow-sm border border-dark-100">
+                <h3 className="text-xl font-bold text-white mb-4 section-title">
                   Technologies Used
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-accent/20 text-accent-light border border-accent/30 rounded-full text-sm font-medium"
                     >
                       {tech}
                     </span>
@@ -258,8 +262,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               {/* Share Project */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="bg-dark-200 rounded-xl p-6 shadow-sm border border-dark-100">
+                <h3 className="text-xl font-bold text-white mb-4 section-title">
                   Share This Project
                 </h3>
                 <div className="flex gap-3">
@@ -310,16 +314,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
-        <section className="bg-white dark:bg-gray-800 py-16">
+        <section className="bg-dark-200 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center section-title">
               Related Projects
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedProjects.map((relatedProject) => (
                 <div
                   key={relatedProject.slug}
-                  className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                  className="bg-dark-300 rounded-xl shadow-sm overflow-hidden border border-dark-100 card-hover hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -333,27 +337,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded text-xs font-medium">
+                      <span className="px-2 py-1 bg-accent/20 text-accent-light border border-accent/30 rounded text-xs font-medium">
                         {relatedProject.category}
                       </span>
                       {relatedProject.year && (
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-slate-dark">
                           {relatedProject.year}
                         </span>
                       )}
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                       {relatedProject.title}
                     </h3>
 
-                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4">
+                    <p className="text-slate-dark text-sm line-clamp-2 mb-4">
                       {relatedProject.shortDescription || relatedProject.description}
                     </p>
 
                     <Link
                       href={`/projects/${relatedProject.slug}`}
-                      className="inline-flex items-center text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium text-sm transition-colors"
+                      className="inline-flex items-center text-accent hover:text-accent-light font-medium text-sm transition-colors"
                     >
                       View Project
                       <svg
@@ -379,7 +383,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       )}
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
+      <section className="bg-gradient-to-r from-accent to-accent-dark text-white py-16">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Interested in a Similar Project?</h2>
           <p className="text-xl text-indigo-100 mb-8">
@@ -388,20 +392,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-white text-indigo-600 hover:bg-gray-100 rounded-lg font-semibold transition-colors"
+              href="/#contact"
+              className="inline-flex items-center justify-center px-8 py-3 bg-white text-accent hover:bg-gray-100 rounded-lg font-semibold transition-colors"
             >
               Get Started Today
             </Link>
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-indigo-600 rounded-lg font-semibold transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-accent rounded-lg font-semibold transition-colors"
             >
               View All Projects
             </Link>
           </div>
         </div>
       </section>
-    </article>
+      </article>
+      <Footer />
+    </>
   );
 }
