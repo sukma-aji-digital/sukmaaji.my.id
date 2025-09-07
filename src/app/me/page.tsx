@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Muhammad Aji Sukma, seorang backend developer dan founder Sukmaaji Digital yang berpengalaman dalam pengembangan aplikasi web dan sistem informasi.",
 };
 
-export default function OwnerPage() {
+export default function MePage() {
   const experiences = [
     {
       title: "Founder & Backend Developer",
@@ -135,7 +135,7 @@ export default function OwnerPage() {
                   href="#contact"
                   className="bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-dark transition shadow-lg shadow-accent/20"
                 >
-                  <i className="fas fa-envelope mr-2"></i>Hubungi Saya
+                  <i className="fas fa-envelope mr-2"></i>Contact
                 </a>
                 <a
                   href="https://github.com/sukmaajidigital"
@@ -143,7 +143,7 @@ export default function OwnerPage() {
                   rel="noopener noreferrer"
                   className="border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
                 >
-                  <i className="fab fa-github mr-2"></i>Lihat Portfolio
+                  <i className="fab fa-github mr-2"></i>gitHub
                 </a>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function OwnerPage() {
                   className="w-80 h-80 object-cover rounded-2xl shadow-xl animate-float"
                 />
                 <div className="absolute -bottom-4 -right-4 bg-accent text-white px-4 py-2 rounded-lg shadow-lg">
-                  <i className="fas fa-code mr-2"></i>Developer
+                  <i className="fas fa-code mr-2"></i>IT Enthusiast
                 </div>
               </div>
             </div>
@@ -344,8 +344,7 @@ export default function OwnerPage() {
             <div className="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover max-w-2xl mx-auto">
               <i className="fas fa-quote-left text-accent text-2xl mb-4"></i>
               <p className="text-lg text-white font-medium italic mb-4">
-                &quot;Code is like poetry - it should be simple, elegant, and solve real
-                problems.&quot;
+                &quot;Make The World Better.&quot;
               </p>
               <p className="text-slate-dark">- Muhammad Aji Sukma</p>
             </div>

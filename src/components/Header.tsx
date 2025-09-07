@@ -3,12 +3,35 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
+
+  const getLinkClasses = (path: string) => {
+    const baseClasses = "nav-link transition-colors duration-200";
+    const activeClasses = "text-white font-semibold border-b-2 border-accent pb-1";
+    const inactiveClasses = "text-slate-dark hover:text-white";
+
+    return `${baseClasses} ${isActive(path) ? activeClasses : inactiveClasses}`;
+  };
+
+  const getMobileLinkClasses = (path: string) => {
+    const baseClasses = "py-2 transition-colors duration-200";
+    const activeClasses = "text-white font-semibold border-l-4 border-accent pl-4";
+    const inactiveClasses = "text-slate-dark hover:text-white";
+
+    return `${baseClasses} ${isActive(path) ? activeClasses : inactiveClasses}`;
   };
 
   return (
@@ -30,26 +53,26 @@ export default function Header() {
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
-          <Link href="/blog" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/blog" className={getLinkClasses("/blog")}>
             Blog
           </Link>
-          <Link href="/projects" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/projects" className={getLinkClasses("/projects")}>
             Projects
           </Link>
-          <Link href="/#about" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/#about" className={getLinkClasses("/#about")}>
             Tentang
           </Link>
-          <Link href="/#services" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/#services" className={getLinkClasses("/#services")}>
             Jasa
           </Link>
-          <Link href="/#portfolio" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/#portfolio" className={getLinkClasses("/#portfolio")}>
             Portfolio
           </Link>
-          <Link href="/#contact" className="nav-link text-slate-dark hover:text-white transition">
+          <Link href="/#contact" className={getLinkClasses("/#contact")}>
             Kontak
           </Link>
-          <Link href="/owner" className="nav-link text-slate-dark hover:text-white transition">
-            Owner
+          <Link href="/me" className={getLinkClasses("/me")}>
+            Me
           </Link>
         </div>
 
@@ -67,52 +90,52 @@ export default function Header() {
         <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
           <Link
             href="/blog"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/blog")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Blog
           </Link>
           <Link
             href="/projects"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/projects")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Projects
           </Link>
           <Link
             href="/#about"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/#about")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Tentang
           </Link>
           <Link
             href="/#services"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/#services")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Jasa
           </Link>
           <Link
             href="/#portfolio"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/#portfolio")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Portfolio
           </Link>
           <Link
             href="/#contact"
-            className="py-2 text-slate-dark hover:text-white transition"
+            className={getMobileLinkClasses("/#contact")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Kontak
           </Link>
           <Link
-            href="/owner"
-            className="py-2 text-slate-dark hover:text-white transition"
+            href="/me"
+            className={getMobileLinkClasses("/me")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Owner
+            Me
           </Link>
         </div>
       </div>
