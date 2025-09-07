@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   keywords:
     "Sukma Aji Digital, Muhammad Aji Sukma, jasa digital, pembuatan website, pengembangan sistem informasi, manajemen jaringan, server VPS, web developer, teknologi digital, solusi bisnis",
   authors: [{ name: "Sukma Aji Digital" }],
+  metadataBase: new URL("https://sukmaaji.my.id"),
   openGraph: {
     type: "website",
     siteName: "Sukma Aji Digital",
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
     apple: "/images/logo.webp",
     shortcut: "/images/logo.webp",
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#6366F1",
 };
 
