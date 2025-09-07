@@ -33,6 +33,9 @@ export default function Header() {
           <Link href="/blog" className="nav-link text-slate-dark hover:text-white transition">
             Blog
           </Link>
+          <Link href="/projects" className="nav-link text-slate-dark hover:text-white transition">
+            Projects
+          </Link>
           <Link href="/#about" className="nav-link text-slate-dark hover:text-white transition">
             Tentang
           </Link>
@@ -68,6 +71,13 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Blog
+          </Link>
+          <Link
+            href="/projects"
+            className="py-2 text-slate-dark hover:text-white transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Projects
           </Link>
           <Link
             href="/#about"

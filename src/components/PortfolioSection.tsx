@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PortfolioSection() {
   const projects = [
@@ -9,6 +10,7 @@ export default function PortfolioSection() {
       image: "/images/project/muria.jpg",
       technologies: ["Laravel", "MySQL", "Tailwind"],
       demoLink: "https://muriabatikkudus.com",
+      projectLink: "/projects/muria-batik-cms",
       githubLink: "https://github.com/sukmaajidigital",
     },
     {
@@ -18,6 +20,7 @@ export default function PortfolioSection() {
       image: "/images/project/dashboardmuria.jpg",
       technologies: ["Laravel", "MySQL", "Tailwind"],
       demoLink: "https://sukmaaji.my.id/mycode/dashboard_umkm/",
+      projectLink: "/projects/muria-dashboard",
       githubLink: "https://github.com/sukmaajidigital",
     },
   ];
@@ -57,22 +60,32 @@ export default function PortfolioSection() {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={project.projectLink}
                     className="text-accent hover:text-accent-light text-sm font-medium"
                   >
-                    <i className="fas fa-external-link-alt mr-1"></i> Lihat Detail
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-dark hover:text-white"
-                  >
-                    <i className="fab fa-github text-lg"></i>
-                  </a>
+                    <i className="fas fa-eye mr-1"></i> Lihat Detail
+                  </Link>
+                  <div className="flex gap-3">
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-dark hover:text-white"
+                      title="Live Demo"
+                    >
+                      <i className="fas fa-external-link-alt text-lg"></i>
+                    </a>
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-dark hover:text-white"
+                      title="GitHub"
+                    >
+                      <i className="fab fa-github text-lg"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,14 +93,12 @@ export default function PortfolioSection() {
         </div>
 
         <div className="text-center mt-12">
-          <a
-            href="https://sukmaaji.my.id/mycode"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/projects"
             className="inline-flex items-center border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
           >
-            <i className="fab fa-github mr-2"></i>show more projects
-          </a>
+            <i className="fas fa-folder-open mr-2"></i>Show All Projects
+          </Link>
         </div>
       </div>
     </section>
