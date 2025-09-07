@@ -1,4 +1,48 @@
-User-Agent: *
+# Robots.txt for Sukma Aji Digital Website
+# https://sukmaajidigital.github.io
+
+# Allow all robots access to all content
+User-agent: *
 Allow: /
 
-Sitemap: https://sukmaaji.my.id/sitemap.xml
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Disallow access to admin areas and private files
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /out/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.env$
+Disallow: /.*
+
+# Allow access to public assets
+Allow: /images/
+Allow: /icons/
+Allow: /favicon.ico
+Allow: /site.webmanifest
+Allow: /google*.html
+
+# Sitemap locations
+Sitemap: https://sukmaajidigital.github.io/sitemap.xml
+Sitemap: https://sukmaajidigital.github.io/sitemap-blog.xml
+Sitemap: https://sukmaajidigital.github.io/sitemap-projects.xml
+Sitemap: https://sukmaajidigital.github.io/sitemap-images.xml
+Sitemap: https://sukmaajidigital.github.io/sitemapindex.xml
+
+# Additional information
+# Contact: sukmaajidigital@gmail.com
+# Last updated: 2025-09-07
