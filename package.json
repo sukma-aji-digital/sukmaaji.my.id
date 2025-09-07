@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && copy .nojekyll out\\ && copy CNAME out\\ && copy robots.txt out\\ && copy sitemap.xml out\\ && copy site.webmanifest out\\",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "export": "npm run build"
