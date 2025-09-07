@@ -60,9 +60,7 @@ export default async function ProjectsPage() {
             {/* Stats */}
             <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center p-6 bg-dark-200 rounded-xl shadow-sm border border-dark-100">
-                <div className="text-3xl font-bold text-accent">
-                  {allProjects.length}
-                </div>
+                <div className="text-3xl font-bold text-accent">{allProjects.length}</div>
                 <div className="text-sm text-slate-dark mt-1">Total Projects</div>
               </div>
               <div className="text-center p-6 bg-dark-200 rounded-xl shadow-sm border border-dark-100">
@@ -72,9 +70,7 @@ export default async function ProjectsPage() {
                 <div className="text-sm text-slate-dark mt-1">Completed</div>
               </div>
               <div className="text-center p-6 bg-dark-200 rounded-xl shadow-sm border border-dark-100">
-                <div className="text-3xl font-bold text-blue-400">
-                  {categories.length}
-                </div>
+                <div className="text-3xl font-bold text-blue-400">{categories.length}</div>
                 <div className="text-sm text-slate-dark mt-1">Categories</div>
               </div>
               <div className="text-center p-6 bg-dark-200 rounded-xl shadow-sm border border-dark-100">
@@ -221,9 +217,7 @@ export default async function ProjectsPage() {
                           {project.category}
                         </span>
                         {project.year && (
-                          <span className="text-xs text-slate-dark">
-                            {project.year}
-                          </span>
+                          <span className="text-xs text-slate-dark">{project.year}</span>
                         )}
                       </div>
 
@@ -253,9 +247,7 @@ export default async function ProjectsPage() {
 
                       <div className="flex items-center justify-between">
                         {project.client && (
-                          <div className="text-xs text-slate-dark">
-                            {project.client}
-                          </div>
+                          <div className="text-xs text-slate-dark">{project.client}</div>
                         )}
                         <Link
                           href={`/projects/${project.slug}`}
@@ -288,11 +280,10 @@ export default async function ProjectsPage() {
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-accent to-accent-dark text-white py-16">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Your Project?
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
             <p className="text-xl text-indigo-100 mb-8">
-              Let's discuss how we can help bring your digital vision to life with our expertise and proven track record.
+              Let's discuss how we can help bring your digital vision to life with our expertise and
+              proven track record.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
