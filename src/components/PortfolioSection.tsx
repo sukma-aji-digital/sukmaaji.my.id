@@ -3,87 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { getSortedProjectsData, getFeaturedProjects, type Project } from "@/lib/projects";
 
-export default function PortfolioSection() {
+interface PortfolioSectionProps {
+  projects?: Project[];
+  featuredProjects?: Project[];
+}
+
+export default function PortfolioSection({
+  projects: initialProjects,
+  featuredProjects: initialFeaturedProjects,
+}: PortfolioSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
 
-  // Data projects dari projects-data (featured projects)
-  const projects = [
-    {
-      slug: "muria-batik-cms",
-      title: "Muria Batik Kudus - Content Management System",
-      description:
-        "Sistem manajemen konten untuk website Muria Batik Kudus yang memungkinkan pengelolaan produk batik, artikel, dan informasi perusahaan secara dinamis.",
-      image: "/images/project/muria.jpg",
-      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
-      demoLink: "https://muriabatikkudus.com",
-      category: "Web Development",
-      year: "2023",
-      client: "Muria Batik Kudus",
-      featured: true,
-      status: "completed",
-    },
-    {
-      slug: "umkm-management-system",
-      title: "UMKM Management System",
-      description:
-        "CMS untuk manajemen UMKM dengan fitur produk, kategori, dan laporan penjualan. Sistem ini mencakup semua kebutuhan UMKM serta kustomisasi dinamis sesuai kebutuhan bisnis.",
-      image: "/images/project/dashboardmuria.jpg",
-      technologies: ["Laravel", "MySQL", "Tailwind CSS", "Vue.js", "Chart.js"],
-      demoLink: "https://mycode-alpha.vercel.app/dashboard_umkm",
-      category: "Business Management",
-      year: "2023",
-      client: "Various UMKM Clients",
-      featured: true,
-      status: "completed",
-    },
-    {
-      slug: "marketplace-umkm-desa-bae",
-      title: "Marketplace Multi User UMKM Desa Bae",
-      description:
-        "Marketplace multi user untuk UMKM Desa Bae, mendukung fitur produk, kategori, transaksi, laporan penjualan, serta kustomisasi sesuai kebutuhan UMKM.",
-      image: "/images/project/lapakbae.png",
-      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
-      demoLink: "https://desa-bae.kuduskab.go.id/lapakbae/public",
-      category: "E-commerce",
-      year: "2023",
-      client: "Pemerintah Desa Bae, Kudus",
-      featured: true,
-      status: "completed",
-    },
-    {
-      slug: "blog-pribadi-nextjs",
-      title: "Blog Pribadi - Next.js",
-      description:
-        "Halaman blog pribadi yang dibangun menggunakan Next.js, menampilkan artikel, tutorial, dan dokumentasi seputar pengembangan web serta pengalaman di dunia teknologi.",
-      image: "/images/project/blogs.png",
-      technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Markdown"],
-      demoLink: "https://sukmaaji.my.id/blog",
-      category: "Web Development",
-      year: "2024",
-      client: "Personal Project",
-      featured: true,
-      status: "completed",
-    },
-    {
-      slug: "marketplace-bumdes-desa-bae",
-      title: "Marketplace Bumdes Desa Bae",
-      description:
-        "Marketplace untuk Bumdes Desa Bae yang mendukung fitur produk, kategori, transaksi, laporan penjualan, serta kustomisasi sesuai kebutuhan Bumdes.",
-      image: "/images/project/bumdesbae.png",
-      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
-      demoLink: "https://desa-bae.kuduskab.go.id/bumdes/public",
-      category: "E-commerce",
-      year: "2023",
-      client: "Bumdes Desa Bae, Kudus",
-      featured: false,
-      status: "completed",
-    },
-  ];
-
-  // Filter hanya featured projects untuk carousel
-  const featuredProjects = projects.filter((project) => project.featured);
+  // Use provided data or fallback to empty arrays
+  const projects = initialProjects || [];
+  const featuredProjects = initialFeaturedProjects || [];
 
   // Auto-play carousel
   useEffect(() => {
@@ -150,7 +86,11 @@ export default function PortfolioSection() {
                       {/* Project Status Badge */}
                       <div className="absolute top-4 left-4">
                         <span className="bg-green-500/20 text-green-300 border border-green-500/30 px-3 py-1 rounded-full text-xs font-medium">
-                          {project.status === "completed" ? "Completed" : "In Progress"}
+                          {project.status === "completed"
+                            ? "Completed"
+                            : project.status === "ongoing"
+                            ? "In Progress"
+                            : "Maintenance"}
                         </span>
                       </div>
 
@@ -166,7 +106,7 @@ export default function PortfolioSection() {
                     <div className="p-8 flex flex-col justify-center">
                       <div className="mb-4">
                         <span className="text-accent text-sm font-medium">
-                          {project.client} • {project.year}
+                          {project.client || "Personal"} • {project.year}
                         </span>
                       </div>
 
@@ -174,7 +114,9 @@ export default function PortfolioSection() {
                         {project.title}
                       </h3>
 
-                      <p className="text-slate-dark mb-6 leading-relaxed">{project.description}</p>
+                      <p className="text-slate-dark mb-6 leading-relaxed">
+                        {project.shortDescription || project.description}
+                      </p>
 
                       {/* Technologies */}
                       <div className="flex flex-wrap gap-2 mb-6">
@@ -204,26 +146,30 @@ export default function PortfolioSection() {
                         </Link>
 
                         <div className="flex gap-3">
-                          <a
-                            href={project.demoLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center border border-accent text-accent hover:bg-accent/10 px-6 py-3 rounded-lg font-medium transition-colors"
-                            title="Live Demo"
-                          >
-                            <i className="fas fa-external-link-alt mr-2"></i>
-                            Live Demo
-                          </a>
+                          {project.demoUrl && (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center border border-accent text-accent hover:bg-accent/10 px-6 py-3 rounded-lg font-medium transition-colors"
+                              title="Live Demo"
+                            >
+                              <i className="fas fa-external-link-alt mr-2"></i>
+                              Live Demo
+                            </a>
+                          )}
 
-                          <a
-                            href="https://github.com/sukmaajidigital"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center border border-slate-dark text-slate-dark hover:text-white hover:border-white px-4 py-3 rounded-lg transition-colors"
-                            title="GitHub"
-                          >
-                            <i className="fab fa-github text-lg"></i>
-                          </a>
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center border border-slate-dark text-slate-dark hover:text-white hover:border-white px-4 py-3 rounded-lg transition-colors"
+                              title="GitHub"
+                            >
+                              <i className="fab fa-github text-lg"></i>
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -292,9 +238,7 @@ export default function PortfolioSection() {
             <div className="text-sm text-slate-dark">Categories</div>
           </div>
           <div className="text-center p-4 bg-dark-200 rounded-xl border border-dark-100">
-            <div className="text-2xl font-bold text-purple-400 mb-1">
-              {projects.filter((p) => p.featured).length}
-            </div>
+            <div className="text-2xl font-bold text-purple-400 mb-1">{featuredProjects.length}</div>
             <div className="text-sm text-slate-dark">Featured</div>
           </div>
         </div>

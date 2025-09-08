@@ -5,14 +5,19 @@ import PortfolioSection from "@/components/PortfolioSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { getSortedProjectsData, getFeaturedProjects } from "@/lib/projects";
 
 export default function Home() {
+  // Get projects data at build time
+  const projects = getSortedProjectsData();
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <>
       <Header />
       <HeroSection />
       <ServicesSection />
-      <PortfolioSection />
+      <PortfolioSection projects={projects} featuredProjects={featuredProjects} />
       <AboutSection />
       <ContactSection />
       <Footer />
