@@ -2,7 +2,7 @@
 title: "Muria Batik Kudus - Content Management System"
 description: "Sistem manajemen konten untuk website Muria Batik Kudus yang memungkinkan pengelolaan produk batik, artikel, dan informasi perusahaan secara dinamis."
 shortDescription: "CMS untuk manajemen konten website dengan fitur user management, artikel, dan kategori."
-technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript", "Bootstrap"]
+technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"]
 category: "Web Development"
 status: "completed"
 featured: true
@@ -40,7 +40,6 @@ Muria Batik Kudus membutuhkan platform digital yang dapat:
 
 - **Tailwind CSS**: Utility-first CSS framework
 - **JavaScript (Vanilla)**: Interactive functionality
-- **Bootstrap Components**: UI components
 - **Responsive Design**: Mobile-first approach
 
 ### Features Implemented
