@@ -1,29 +1,118 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function PortfolioSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+
+  // Data projects dari projects-data (featured projects)
   const projects = [
     {
-      title: "Content Management System",
+      slug: "muria-batik-cms",
+      title: "Muria Batik Kudus - Content Management System",
       description:
-        "CMS untuk manajemen konten website dengan fitur user management, artikel, dan kategori.",
+        "Sistem manajemen konten untuk website Muria Batik Kudus yang memungkinkan pengelolaan produk batik, artikel, dan informasi perusahaan secara dinamis.",
       image: "/images/project/muria.jpg",
-      technologies: ["Laravel", "MySQL", "Tailwind"],
+      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
       demoLink: "https://muriabatikkudus.com",
-      projectLink: "/projects/muria-batik-cms",
-      githubLink: "https://github.com/sukmaajidigital",
+      category: "Web Development",
+      year: "2023",
+      client: "Muria Batik Kudus",
+      featured: true,
+      status: "completed",
     },
     {
+      slug: "umkm-management-system",
       title: "UMKM Management System",
       description:
-        "CMS untuk memnajement UMKM dengan fitur produk, kategori, dan laporan penjualan. dan semua kebutuhan umkm serta kustomisasi dinamiskan sesuai kebutuhan UMKM.",
+        "CMS untuk manajemen UMKM dengan fitur produk, kategori, dan laporan penjualan. Sistem ini mencakup semua kebutuhan UMKM serta kustomisasi dinamis sesuai kebutuhan bisnis.",
       image: "/images/project/dashboardmuria.jpg",
-      technologies: ["Laravel", "MySQL", "Tailwind"],
-      demoLink: "https://sukmaaji.my.id/mycode/dashboard_umkm/",
-      projectLink: "/projects/muria-dashboard",
-      githubLink: "https://github.com/sukmaajidigital",
+      technologies: ["Laravel", "MySQL", "Tailwind CSS", "Vue.js", "Chart.js"],
+      demoLink: "https://mycode-alpha.vercel.app/dashboard_umkm",
+      category: "Business Management",
+      year: "2023",
+      client: "Various UMKM Clients",
+      featured: true,
+      status: "completed",
+    },
+    {
+      slug: "marketplace-umkm-desa-bae",
+      title: "Marketplace Multi User UMKM Desa Bae",
+      description:
+        "Marketplace multi user untuk UMKM Desa Bae, mendukung fitur produk, kategori, transaksi, laporan penjualan, serta kustomisasi sesuai kebutuhan UMKM.",
+      image: "/images/project/lapakbae.png",
+      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
+      demoLink: "https://desa-bae.kuduskab.go.id/lapakbae/public",
+      category: "E-commerce",
+      year: "2023",
+      client: "Pemerintah Desa Bae, Kudus",
+      featured: true,
+      status: "completed",
+    },
+    {
+      slug: "blog-pribadi-nextjs",
+      title: "Blog Pribadi - Next.js",
+      description:
+        "Halaman blog pribadi yang dibangun menggunakan Next.js, menampilkan artikel, tutorial, dan dokumentasi seputar pengembangan web serta pengalaman di dunia teknologi.",
+      image: "/images/project/blogs.png",
+      technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Markdown"],
+      demoLink: "https://sukmaaji.my.id/blog",
+      category: "Web Development",
+      year: "2024",
+      client: "Personal Project",
+      featured: true,
+      status: "completed",
+    },
+    {
+      slug: "marketplace-bumdes-desa-bae",
+      title: "Marketplace Bumdes Desa Bae",
+      description:
+        "Marketplace untuk Bumdes Desa Bae yang mendukung fitur produk, kategori, transaksi, laporan penjualan, serta kustomisasi sesuai kebutuhan Bumdes.",
+      image: "/images/project/bumdesbae.png",
+      technologies: ["Laravel", "MySQL", "Tailwind CSS", "PHP", "JavaScript"],
+      demoLink: "https://desa-bae.kuduskab.go.id/bumdes/public",
+      category: "E-commerce",
+      year: "2023",
+      client: "Bumdes Desa Bae, Kudus",
+      featured: false,
+      status: "completed",
     },
   ];
+
+  // Filter hanya featured projects untuk carousel
+  const featuredProjects = projects.filter((project) => project.featured);
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!isAutoplay) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [featuredProjects.length, isAutoplay]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoplay(false);
+    setTimeout(() => setIsAutoplay(true), 10000); // Resume autoplay after 10s
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === featuredProjects.length - 1 ? 0 : prev + 1));
+    setIsAutoplay(false);
+    setTimeout(() => setIsAutoplay(true), 10000);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? featuredProjects.length - 1 : prev - 1));
+    setIsAutoplay(false);
+    setTimeout(() => setIsAutoplay(true), 10000);
+  };
 
   return (
     <section id="portfolio" className="py-20 bg-dark-300">
@@ -32,72 +121,193 @@ export default function PortfolioSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white section-title inline-block">
             Project Portfolio
           </h2>
-          <p className="text-slate-dark mt-4 max-w-2xl mx-auto">Beberapa projek saya</p>
+          <p className="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Showcase project terpilih yang telah saya kerjakan dengan berbagai teknologi modern
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        {/* Carousel Container */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Carousel Wrapper */}
+          <div className="relative overflow-hidden rounded-2xl bg-dark-200 border border-dark-100">
             <div
-              key={index}
-              className="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover"
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div className="h-48 relative overflow-hidden">
-                <Image src={project.image} alt={project.title} fill className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                <p className="text-slate-dark mb-4">{project.description}</p>
+              {featuredProjects.map((project, index) => (
+                <div key={project.slug} className="w-full flex-shrink-0">
+                  <div className="grid md:grid-cols-2 gap-0 min-h-[500px]">
+                    {/* Image Section */}
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-dark-400/50 md:to-transparent"></div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                      {/* Project Status Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-green-500/20 text-green-300 border border-green-500/30 px-3 py-1 rounded-full text-xs font-medium">
+                          {project.status === "completed" ? "Completed" : "In Progress"}
+                        </span>
+                      </div>
 
-                <div className="flex justify-between items-center">
-                  <Link
-                    href={project.projectLink}
-                    className="text-accent hover:text-accent-light text-sm font-medium"
-                  >
-                    <i className="fas fa-eye mr-1"></i> Lihat Detail
-                  </Link>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-dark hover:text-white"
-                      title="Live Demo"
-                    >
-                      <i className="fas fa-external-link-alt text-lg"></i>
-                    </a>
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-dark hover:text-white"
-                      title="GitHub"
-                    >
-                      <i className="fab fa-github text-lg"></i>
-                    </a>
+                      {/* Category Badge */}
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-accent/20 text-accent border border-accent/30 px-3 py-1 rounded-full text-xs font-medium">
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="p-8 flex flex-col justify-center">
+                      <div className="mb-4">
+                        <span className="text-accent text-sm font-medium">
+                          {project.client} • {project.year}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-slate-dark mb-6 leading-relaxed">{project.description}</p>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="text-xs bg-dark-100 text-slate-light border border-dark-100 px-3 py-1 rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <span className="text-xs bg-dark-100 text-slate-light border border-dark-100 px-3 py-1 rounded-full">
+                            +{project.technologies.length - 4} more
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                        >
+                          <i className="fas fa-eye mr-2"></i>
+                          Lihat Detail
+                        </Link>
+
+                        <div className="flex gap-3">
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center border border-accent text-accent hover:bg-accent/10 px-6 py-3 rounded-lg font-medium transition-colors"
+                            title="Live Demo"
+                          >
+                            <i className="fas fa-external-link-alt mr-2"></i>
+                            Live Demo
+                          </a>
+
+                          <a
+                            href="https://github.com/sukmaajidigital"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center border border-slate-dark text-slate-dark hover:text-white hover:border-white px-4 py-3 rounded-lg transition-colors"
+                            title="GitHub"
+                          >
+                            <i className="fab fa-github text-lg"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-dark-300/80 hover:bg-dark-200 text-white p-3 rounded-full transition-colors border border-dark-100"
+            aria-label="Previous project"
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-dark-300/80 hover:bg-dark-200 text-white p-3 rounded-full transition-colors border border-dark-100"
+            aria-label="Next project"
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 gap-2">
+            {featuredProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentSlide ? "bg-accent" : "bg-slate-dark hover:bg-slate-light"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Autoplay Indicator */}
+          <div className="flex justify-center items-center mt-4 gap-2 text-xs text-slate-dark">
+            <div
+              className={`w-2 h-2 rounded-full ${isAutoplay ? "bg-green-400" : "bg-slate-dark"}`}
+            ></div>
+            <span>{isAutoplay ? "Auto-playing" : "Paused"}</span>
+          </div>
         </div>
 
+        {/* Stats Section */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="text-center p-4 bg-dark-200 rounded-xl border border-dark-100">
+            <div className="text-2xl font-bold text-accent mb-1">{projects.length}</div>
+            <div className="text-sm text-slate-dark">Total Projects</div>
+          </div>
+          <div className="text-center p-4 bg-dark-200 rounded-xl border border-dark-100">
+            <div className="text-2xl font-bold text-green-400 mb-1">
+              {projects.filter((p) => p.status === "completed").length}
+            </div>
+            <div className="text-sm text-slate-dark">Completed</div>
+          </div>
+          <div className="text-center p-4 bg-dark-200 rounded-xl border border-dark-100">
+            <div className="text-2xl font-bold text-blue-400 mb-1">
+              {Array.from(new Set(projects.map((p) => p.category))).length}
+            </div>
+            <div className="text-sm text-slate-dark">Categories</div>
+          </div>
+          <div className="text-center p-4 bg-dark-200 rounded-xl border border-dark-100">
+            <div className="text-2xl font-bold text-purple-400 mb-1">
+              {projects.filter((p) => p.featured).length}
+            </div>
+            <div className="text-sm text-slate-dark">Featured</div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
         <div className="text-center mt-12">
           <Link
             href="/projects"
-            className="inline-flex items-center border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
+            className="inline-flex items-center border border-accent text-accent px-8 py-4 rounded-lg font-medium hover:bg-accent/10 transition-colors group"
           >
-            <i className="fas fa-folder-open mr-2"></i>Show All Projects
+            <i className="fas fa-folder-open mr-3 group-hover:scale-110 transition-transform"></i>
+            Show All Projects
+            <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
           </Link>
         </div>
       </div>
