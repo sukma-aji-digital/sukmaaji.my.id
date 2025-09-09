@@ -7,7 +7,7 @@ category: "Web Development"
 status: "completed"
 featured: true
 demoUrl: "https://sukmaaji.my.id/blog"
-githubUrl: "https://github.com/sukmaajidigital/sukmaajidigital.github.io"
+githubUrl: "https://github.com/sukma-aji-digital/sukmaaji.my.id"
 image: "/images/project/blogs.png"
 year: "2024"
 client: "Personal Project"
@@ -249,7 +249,7 @@ export async function getPostData(slug: string) {
 ## 🔗 Project Links
 
 - **Live Website**: [sukmaaji.my.id/blog](https://sukmaaji.my.id/blog)
-- **GitHub Repository**: [sukmaajidigital.github.io](https://github.com/sukmaajidigital/sukmaajidigital.github.io)
+- **GitHub Repository**: [sukmaajidigital.github.io](https://github.com/sukma-aji-digital/sukmaaji.my.id)
 - **Design System**: Available in repository documentation
 
 ---
