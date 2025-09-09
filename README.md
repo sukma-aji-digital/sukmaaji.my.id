@@ -85,12 +85,9 @@ sukmaaji.my.id/
 │       ├── blog.ts               # Blog content parser
 │       └── projects.ts           # Projects content parser
 ├── 📂 posts/                     # Blog content (Markdown)
-│   ├── hello-world.md
-│   └── laravel-umkm-tutorial.md
+│   └── copy-and-type-here.md
 ├── 📂 projects-data/             # Portfolio content (Markdown)
-│   ├── blog-pribadi-nextjs.md
-│   ├── marketplace-umkm-desa-bae.md
-│   └── umkm-management-system.md
+│   └── copy-and-type-here.md
 ├── 📂 public/                    # Static assets
 │   ├── 📂 images/               # Optimized images
 │   ├── site.webmanifest         # PWA manifest
