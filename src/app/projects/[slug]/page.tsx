@@ -28,20 +28,68 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sukmaaji.my.id";
+  const projectUrl = `${siteUrl}/projects/${project.slug}`;
+
   return {
     title: `${project.title} - Projects | Sukma Aji Digital`,
     description: project.description,
+    keywords: project.technologies.join(", "),
+    authors: [{ name: "Sukma Aji Digital" }],
     openGraph: {
-      title: `${project.title} - Sukma Aji Digital`,
+      title: `${project.title} - Projects | Sukma Aji Digital`,
       description: project.description,
       type: "article",
-      images: project.image ? [{ url: project.image }] : [],
+      url: projectUrl,
+      siteName: "Sukma Aji Digital",
+      locale: "id_ID",
+      images: project.image 
+        ? [
+            {
+              url: project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`,
+              width: 1200,
+              height: 630,
+              alt: project.title,
+              type: "image/jpeg",
+            }
+          ] 
+        : [
+            {
+              url: `${siteUrl}/images/ajipro.jpg`,
+              width: 1200,
+              height: 630,
+              alt: "Sukma Aji Digital - Projects",
+              type: "image/jpeg",
+            }
+          ],
+      publishedTime: project.createdAt,
+      modifiedTime: project.createdAt,
+      section: project.category,
+      tags: project.technologies,
     },
     twitter: {
       card: "summary_large_image",
+      site: "@sukmaaji",
+      creator: "@sukmaaji",
       title: `${project.title} - Sukma Aji Digital`,
       description: project.description,
-      images: project.image ? [project.image] : [],
+      images: project.image 
+        ? [project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`] 
+        : [`${siteUrl}/images/ajipro.jpg`],
+    },
+    alternates: {
+      canonical: projectUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -53,14 +101,68 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sukmaaji.my.id";
+  const projectUrl = `${siteUrl}/projects/${project.slug}`;
+
   // Get related projects (same category, excluding current)
   const allProjects = await getSortedProjectsData();
   const relatedProjects = allProjects
     .filter((p) => p.category === project.category && p.slug !== project.slug)
     .slice(0, 3);
 
+  // Structured data for better SEO and social media sharing
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": projectUrl,
+    "url": projectUrl,
+    "name": project.title,
+    "headline": project.title,
+    "description": project.description,
+    "image": project.image 
+      ? (project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`)
+      : `${siteUrl}/images/ajipro.jpg`,
+    "dateCreated": project.createdAt,
+    "datePublished": project.createdAt,
+    "dateModified": project.createdAt,
+    "author": {
+      "@type": "Person",
+      "name": "Muhammad Aji Sukma",
+      "url": siteUrl
+    },
+    "creator": {
+      "@type": "Person", 
+      "name": "Muhammad Aji Sukma",
+      "url": siteUrl
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sukma Aji Digital",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/logo.png`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": projectUrl
+    },
+    "genre": project.category,
+    "keywords": project.technologies.join(", "),
+    "programmingLanguage": project.technologies,
+    "about": {
+      "@type": "Thing",
+      "name": project.category
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Header />
       <article className="min-h-screen bg-dark-400">
         {/* Hero Section */}
