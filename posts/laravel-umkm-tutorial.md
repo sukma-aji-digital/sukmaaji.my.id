@@ -4,10 +4,10 @@ date: "2025-01-15"
 excerpt: "Tutorial lengkap membangun website untuk UMKM menggunakan Laravel sebagai backend dan Tailwind CSS untuk styling yang modern dan responsive."
 author: "Muhammad Aji Sukma"
 tags: ["laravel", "tailwind", "umkm", "tutorial", "web-development"]
-image: "/images/blog/laravel-umkm.jpg"
+image: "/images/banner.png"
 ---
 
-# Membangun Website UMKM Modern dengan Laravel dan Tailwind CSS
+### Artikel ini sepenuhnya ditulis oleh teknologi AI ( Claude Sonnet 4 ) dan direview Oleh Muhammad Aji Sukma
 
 Sebagai developer yang sering bekerja dengan klien UMKM, saya sering diminta untuk membangun website yang tidak hanya menarik secara visual, tetapi juga fungsional dan mudah dikelola. Dalam artikel ini, saya akan berbagi pengalaman dan tutorial lengkap untuk membangun website UMKM modern.
 

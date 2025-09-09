@@ -4,7 +4,7 @@ date: "2025-01-01"
 excerpt: "Artikel pertama di blog Sukma Aji Digital. Mari berkenalan dan mengetahui apa yang akan saya bagikan di blog ini."
 author: "Muhammad Aji Sukma"
 tags: ["introduction", "blog", "welcome"]
-image: "/images/blog/hello-world.jpg"
+image: "/images/banner.png"
 ---
 
 # Selamat Datang di Blog Sukma Aji Digital!
