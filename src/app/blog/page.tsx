@@ -40,11 +40,20 @@ export default function BlogPage() {
                   key={post.slug}
                   className="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover"
                 >
-                  {post.image && (
-                    <div className="h-48 bg-dark-100 flex items-center justify-center">
-                      <i className="fas fa-image text-slate-dark text-3xl"></i>
-                    </div>
-                  )}
+                  <div className="h-48 bg-dark-100 overflow-hidden">
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <i className="fas fa-file-alt text-slate-dark text-3xl"></i>
+                      </div>
+                    )}
+                  </div>
                   <div className="p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {post.tags.map((tag, index) => (

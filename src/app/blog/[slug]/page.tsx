@@ -38,6 +38,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
+      images: post.image
+        ? [
+            {
+              url: `https://sukmaaji.my.id${post.image}`,
+              width: 1200,
+              height: 630,
+              alt: post.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: post.image ? [`https://sukmaaji.my.id${post.image}`] : undefined,
     },
   };
 }
@@ -74,6 +90,17 @@ export default async function BlogPost({ params }: Props) {
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-3">
+              {/* Featured Image */}
+              {post.image && (
+                <div className="mb-8 rounded-2xl overflow-hidden border border-dark-100">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-64 md:h-80 object-cover"
+                  />
+                </div>
+              )}
+
               <article className="bg-dark-300 rounded-2xl p-6 md:p-8 border border-dark-100 max-w-none overflow-hidden">
                 {/* Article header */}
                 <header className="mb-8">
