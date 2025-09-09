@@ -25,6 +25,40 @@ User-agent: Slurp
 Allow: /
 Crawl-delay: 1
 
+# AI and Content Crawlers
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 2
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 2
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 2
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
 # Disallow access to admin areas and private files
 Disallow: /admin/
 Disallow: /api/
@@ -35,6 +69,9 @@ Disallow: /node_modules/
 Disallow: /*.json$
 Disallow: /*.env$
 Disallow: /.*
+Disallow: /*.map$
+Disallow: /sw.js
+Disallow: /workbox-*
 
 # Allow access to public assets
 Allow: /images/
@@ -43,12 +80,15 @@ Allow: /favicon.ico
 Allow: /site.webmanifest
 Allow: /google*.html
 
-# Sitemap locations
+# Sitemap locations (Main sitemap index contains all others)
 Sitemap: ${baseUrl}/sitemap.xml
-Sitemap: ${baseUrl}/sitemap-blog.xml
-Sitemap: ${baseUrl}/sitemap-projects.xml
-Sitemap: ${baseUrl}/sitemap-images.xml
-Sitemap: ${baseUrl}/sitemapindex.xml
+
+# Individual sitemaps (automatically referenced by main sitemap)
+# ${baseUrl}/sitemap-pages.xml
+# ${baseUrl}/sitemap-blog.xml
+# ${baseUrl}/sitemap-projects.xml
+# ${baseUrl}/sitemap-images.xml
+# ${baseUrl}/sitemap-news.xml
 
 # Additional information
 # Website: ${baseUrl}

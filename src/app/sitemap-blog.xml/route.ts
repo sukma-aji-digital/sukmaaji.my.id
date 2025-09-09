@@ -1,28 +1,12 @@
 import { NextResponse } from "next/server";
+import { getSortedPostsData } from "@/lib/blog";
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sukmaaji.my.id";
 
   try {
-    // Blog posts data (make this dynamic later)
-    const blogPosts = [
-      {
-        slug: "hello-world",
-        title: "Hello World - Selamat Datang di Blog Sukma Aji Digital",
-        date: "2025-01-01",
-        author: "Muhammad Aji Sukma",
-        tags: ["introduction", "blog", "welcome"],
-        image: "/images/blog/hello-world.jpg",
-      },
-      {
-        slug: "laravel-umkm-tutorial",
-        title: "Tutorial Laravel untuk UMKM - Membangun Aplikasi Web Sederhana",
-        date: "2025-01-15",
-        author: "Muhammad Aji Sukma",
-        tags: ["laravel", "tutorial", "umkm"],
-        image: "/images/blog/laravel-tutorial.jpg",
-      },
-    ];
+    // Get dynamic blog posts
+    const blogPosts = await getSortedPostsData();
 
     // Generate blog/news sitemap XML
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -47,7 +31,7 @@ ${blogPosts
       <news:title>${post.title}</news:title>
     </news:news>
     <image:image>
-      <image:loc>${baseUrl}${post.image}</image:loc>
+      <image:loc>${baseUrl}${post.image || "/images/ajipro.jpg"}</image:loc>
       <image:title>${post.title}</image:title>
       <image:caption>${post.title}</image:caption>
     </image:image>
