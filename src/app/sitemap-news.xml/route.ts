@@ -6,12 +6,12 @@ export async function GET() {
 
   try {
     const posts = await getSortedPostsData();
-    
+
     // Only include posts from the last 2 days for Google News
     const twoDaysAgo = new Date();
     twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-    
-    const recentPosts = posts.filter(post => {
+
+    const recentPosts = posts.filter((post) => {
       const postDate = new Date(post.date);
       return postDate >= twoDaysAgo;
     });
@@ -30,7 +30,9 @@ ${recentPosts
       </news:publication>
       <news:publication_date>${new Date(post.date).toISOString()}</news:publication_date>
       <news:title><![CDATA[${post.title}]]></news:title>
-      <news:keywords><![CDATA[${post.tags ? post.tags.join(', ') : 'technology, programming, web development'}]]></news:keywords>
+      <news:keywords><![CDATA[${
+        post.tags ? post.tags.join(", ") : "technology, programming, web development"
+      }]]></news:keywords>
     </news:news>
     <lastmod>${new Date(post.date).toISOString()}</lastmod>
     <changefreq>monthly</changefreq>

@@ -20,12 +20,14 @@ export async function GET() {
           {
             loc: `${baseUrl}/images/ajipro.jpg`,
             title: "Muhammad Aji Sukma - Backend Developer",
-            caption: "Profile picture of Muhammad Aji Sukma, Laravel & Backend Developer specializing in scalable web applications",
+            caption:
+              "Profile picture of Muhammad Aji Sukma, Laravel & Backend Developer specializing in scalable web applications",
           },
           {
             loc: `${baseUrl}/images/logo.png`,
             title: "Sukma Aji Digital Logo",
-            caption: "Official logo of Sukma Aji Digital - Professional Backend Development Services",
+            caption:
+              "Official logo of Sukma Aji Digital - Professional Backend Development Services",
           },
           {
             loc: `${baseUrl}/images/banner.png`,
@@ -42,23 +44,24 @@ export async function GET() {
           {
             loc: `${baseUrl}/images/ajipro.jpg`,
             title: "Muhammad Aji Sukma - Professional Photo",
-            caption: "Professional headshot of Muhammad Aji Sukma, experienced in Laravel, PHP, and backend development",
+            caption:
+              "Professional headshot of Muhammad Aji Sukma, experienced in Laravel, PHP, and backend development",
           },
         ],
       },
     ];
 
     // Add project images dynamically
-    projects.forEach(project => {
+    projects.forEach((project) => {
       if (project.image) {
         imagePages.push({
           url: `${baseUrl}/projects/${project.slug}`,
           lastmod: new Date(project.createdAt).toISOString(),
           images: [
             {
-              loc: project.image.startsWith('http') ? project.image : `${baseUrl}${project.image}`,
+              loc: project.image.startsWith("http") ? project.image : `${baseUrl}${project.image}`,
               title: `${project.title} - Project Screenshot`,
-              caption: `${project.description} | Technologies: ${project.technologies.join(', ')}`,
+              caption: `${project.description} | Technologies: ${project.technologies.join(", ")}`,
             },
           ],
         });
@@ -66,16 +69,18 @@ export async function GET() {
     });
 
     // Add blog post images dynamically
-    blogPosts.forEach(post => {
+    blogPosts.forEach((post) => {
       if (post.image) {
         imagePages.push({
           url: `${baseUrl}/blog/${post.slug}`,
           lastmod: new Date(post.date).toISOString(),
           images: [
             {
-              loc: post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`,
+              loc: post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`,
               title: `${post.title} - Blog Post Featured Image`,
-              caption: `Featured image for blog post: ${post.title}. Tags: ${(post.tags || []).join(', ')}`,
+              caption: `Featured image for blog post: ${post.title}. Tags: ${(post.tags || []).join(
+                ", "
+              )}`,
             },
           ],
         });

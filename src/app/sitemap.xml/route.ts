@@ -11,13 +11,19 @@ export async function GET() {
     const projects = await getSortedProjectsData();
 
     // Get last modified dates
-    const lastBlogUpdate = blogPosts.length > 0 
-      ? new Date(Math.max(...blogPosts.map(post => new Date(post.date).getTime()))).toISOString()
-      : new Date().toISOString();
-    
-    const lastProjectUpdate = projects.length > 0
-      ? new Date(Math.max(...projects.map(project => new Date(project.createdAt).getTime()))).toISOString()
-      : new Date().toISOString();
+    const lastBlogUpdate =
+      blogPosts.length > 0
+        ? new Date(
+            Math.max(...blogPosts.map((post) => new Date(post.date).getTime()))
+          ).toISOString()
+        : new Date().toISOString();
+
+    const lastProjectUpdate =
+      projects.length > 0
+        ? new Date(
+            Math.max(...projects.map((project) => new Date(project.createdAt).getTime()))
+          ).toISOString()
+        : new Date().toISOString();
 
     // Generate sitemap index XML
     const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
