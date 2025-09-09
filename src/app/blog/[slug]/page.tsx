@@ -61,7 +61,7 @@ export default async function BlogPost({ params }: Props) {
     <>
       <Header />
       <main className="min-h-screen pt-20 bg-dark-400">
-        <div className="container mx-auto px-6 py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-7xl">
           {/* Back to blog */}
           <Link
             href="/blog"
@@ -71,10 +71,10 @@ export default async function BlogPost({ params }: Props) {
             Kembali ke Blog
           </Link>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {/* Main Content */}
-            <div className="lg:col-span-2">
-              <article className="bg-dark-300 rounded-2xl p-8 border border-dark-100">
+            <div className="lg:col-span-3">
+              <article className="bg-dark-300 rounded-2xl p-6 md:p-8 border border-dark-100 max-w-none overflow-hidden">
                 {/* Article header */}
                 <header className="mb-8">
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -111,7 +111,7 @@ export default async function BlogPost({ params }: Props) {
 
                 {/* Article content */}
                 <div
-                  className="blog-content prose prose-invert max-w-none"
+                  className="blog-content max-w-none prose-invert break-words"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
@@ -163,9 +163,9 @@ export default async function BlogPost({ params }: Props) {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-6 max-w-full overflow-hidden">
               {/* Share Card */}
-              <div className="bg-dark-300 rounded-2xl p-6 border border-dark-100 top-24">
+              <div className="bg-dark-300 rounded-2xl p-6 border border-dark-100 lg:sticky lg:top-24">
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center">
                   <i className="fas fa-share-alt mr-2 text-accent"></i>
                   Bagikan Artikel

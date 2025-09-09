@@ -283,19 +283,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Project Details */}
         <section className="py-16 bg-dark-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-12">
+            <div className="grid lg:grid-cols-4 gap-8">
               {/* Main Content - Dynamic from Markdown */}
-              <div className="lg:col-span-2">
-                {project.contentHtml && (
-                  <div
-                    dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-                    className="project-content space-y-8"
-                  />
-                )}
+              <div className="lg:col-span-3">
+                <div className="bg-dark-200 rounded-2xl p-6 md:p-8 border border-dark-100 max-w-none overflow-hidden">
+                  {project.contentHtml && (
+                    <div
+                      dangerouslySetInnerHTML={{ __html: project.contentHtml }}
+                      className="project-content max-w-none break-words"
+                    />
+                  )}
+                </div>
               </div>
 
               {/* Sidebar */}
-              <div className="space-y-8">
+              <div className="lg:col-span-1 space-y-6 max-w-full overflow-hidden">
                 {/* Project Info Card */}
                 <div className="bg-dark-200 rounded-xl p-6 shadow-sm border border-dark-100">
                   <h3 className="text-xl font-bold text-white mb-4 section-title">
