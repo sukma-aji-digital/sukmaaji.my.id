@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       url: projectUrl,
       siteName: "Sukma Aji Digital",
       locale: "id_ID",
-      images: project.image 
+      images: project.image
         ? [
             {
               url: project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`,
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
               height: 630,
               alt: project.title,
               type: "image/jpeg",
-            }
-          ] 
+            },
+          ]
         : [
             {
               url: `${siteUrl}/images/ajipro.jpg`,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
               height: 630,
               alt: "Sukma Aji Digital - Projects",
               type: "image/jpeg",
-            }
+            },
           ],
       publishedTime: project.createdAt,
       modifiedTime: project.createdAt,
@@ -73,8 +73,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       creator: "@sukmaaji",
       title: `${project.title} - Sukma Aji Digital`,
       description: project.description,
-      images: project.image 
-        ? [project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`] 
+      images: project.image
+        ? [project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`]
         : [`${siteUrl}/images/ajipro.jpg`],
     },
     alternates: {
@@ -115,46 +115,48 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "@id": projectUrl,
-    "url": projectUrl,
-    "name": project.title,
-    "headline": project.title,
-    "description": project.description,
-    "image": project.image 
-      ? (project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`)
+    url: projectUrl,
+    name: project.title,
+    headline: project.title,
+    description: project.description,
+    image: project.image
+      ? project.image.startsWith("http")
+        ? project.image
+        : `${siteUrl}${project.image}`
       : `${siteUrl}/images/ajipro.jpg`,
-    "dateCreated": project.createdAt,
-    "datePublished": project.createdAt,
-    "dateModified": project.createdAt,
-    "author": {
+    dateCreated: project.createdAt,
+    datePublished: project.createdAt,
+    dateModified: project.createdAt,
+    author: {
       "@type": "Person",
-      "name": "Muhammad Aji Sukma",
-      "url": siteUrl
+      name: "Muhammad Aji Sukma",
+      url: siteUrl,
     },
-    "creator": {
-      "@type": "Person", 
-      "name": "Muhammad Aji Sukma",
-      "url": siteUrl
+    creator: {
+      "@type": "Person",
+      name: "Muhammad Aji Sukma",
+      url: siteUrl,
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Sukma Aji Digital",
-      "url": siteUrl,
-      "logo": {
+      name: "Sukma Aji Digital",
+      url: siteUrl,
+      logo: {
         "@type": "ImageObject",
-        "url": `${siteUrl}/images/logo.png`
-      }
+        url: `${siteUrl}/images/logo.png`,
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": projectUrl
+      "@id": projectUrl,
     },
-    "genre": project.category,
-    "keywords": project.technologies.join(", "),
-    "programmingLanguage": project.technologies,
-    "about": {
+    genre: project.category,
+    keywords: project.technologies.join(", "),
+    programmingLanguage: project.technologies,
+    about: {
       "@type": "Thing",
-      "name": project.category
-    }
+      name: project.category,
+    },
   };
 
   return (

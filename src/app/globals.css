@@ -159,7 +159,7 @@ body {
 
 .project-content blockquote {
   @apply border-l-4 border-accent bg-dark-200/30 p-6 rounded-r-lg mb-6 italic text-slate-light relative;
-  quotes: """ """ "'" "'";
+  quotes: "" " " "" "'" "'";
 }
 
 .project-content blockquote::before {
@@ -174,7 +174,7 @@ body {
 
 .project-content pre {
   @apply bg-dark-200 p-6 rounded-lg overflow-x-auto mb-6 border border-dark-100 shadow-inner;
-  font-family: 'Fira Code', 'Courier New', monospace;
+  font-family: "Fira Code", "Courier New", monospace;
 }
 
 .project-content pre code {
@@ -295,7 +295,7 @@ body {
 
 .blog-content blockquote {
   @apply border-l-4 border-accent bg-dark-200/30 p-6 rounded-r-lg mb-6 italic text-slate-light relative;
-  quotes: """ """ "'" "'";
+  quotes: "" " " "" "'" "'";
 }
 
 .blog-content blockquote::before {
@@ -310,7 +310,7 @@ body {
 
 .blog-content pre {
   @apply bg-dark-200 p-6 rounded-lg overflow-x-auto mb-6 border border-dark-100 shadow-inner;
-  font-family: 'Fira Code', 'Courier New', monospace;
+  font-family: "Fira Code", "Courier New", monospace;
 }
 
 .blog-content pre code {
