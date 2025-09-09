@@ -90,12 +90,10 @@ export default async function BlogPost({ params }: Props) {
           </header>
 
           {/* Article content */}
-          <div className="bg-dark-200 rounded-2xl p-8 border border-dark-100">
-            <div
-              className="prose prose-invert prose-accent max-w-none prose-headings:text-white prose-p:text-slate-300 prose-a:text-accent prose-strong:text-white prose-code:text-accent prose-pre:bg-dark-300 prose-pre:border prose-pre:border-dark-100"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-          </div>
+          <div
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
           {/* Article footer */}
           <footer className="mt-12 pt-8 border-t border-dark-100">
