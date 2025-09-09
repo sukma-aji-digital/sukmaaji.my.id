@@ -10,13 +10,7 @@
   "scope": "/",
   "lang": "id-ID",
   "dir": "ltr",
-  "categories": [
-    "business",
-    "productivity",
-    "technology",
-    "developer",
-    "portfolio"
-  ],
+  "categories": ["business", "productivity", "technology", "developer", "portfolio"],
   "icons": [
     {
       "src": "/images/logo.png",
@@ -129,12 +123,7 @@
   "edge_side_panel": {
     "preferred_width": 320
   },
-  "display_override": [
-    "window-controls-overlay",
-    "standalone",
-    "minimal-ui",
-    "browser"
-  ],
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
   "launch_handler": {
     "client_mode": ["navigate-existing", "auto"]
   }

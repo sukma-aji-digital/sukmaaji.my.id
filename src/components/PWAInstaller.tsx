@@ -1,33 +1,33 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export default function PWAInstaller() {
   useEffect(() => {
     // Register service worker
-    if ('serviceWorker' in navigator) {
+    if ("serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register('/sw.js')
+        .register("/sw.js")
         .then((registration) => {
-          console.log('SW registered: ', registration);
+          console.log("SW registered: ", registration);
         })
         .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
+          console.log("SW registration failed: ", registrationError);
         });
     }
 
     // Handle install prompt
     let deferredPrompt: any;
-    
-    window.addEventListener('beforeinstallprompt', (e) => {
+
+    window.addEventListener("beforeinstallprompt", (e) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
       // Stash the event so it can be triggered later
       deferredPrompt = e;
-      
+
       // Show install button or banner
-      const installBanner = document.createElement('div');
-      installBanner.id = 'install-banner';
+      const installBanner = document.createElement("div");
+      installBanner.id = "install-banner";
       installBanner.innerHTML = `
         <div style="
           position: fixed; 
@@ -79,55 +79,54 @@ export default function PWAInstaller() {
           </div>
         </div>
       `;
-      
+
       document.body.appendChild(installBanner);
 
       // Handle install button click
-      document.getElementById('install-btn')?.addEventListener('click', () => {
+      document.getElementById("install-btn")?.addEventListener("click", () => {
         // Hide the banner
         installBanner.remove();
         // Show the prompt
         deferredPrompt.prompt();
         // Wait for the user to respond to the prompt
         deferredPrompt.userChoice.then((choiceResult: any) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the install prompt');
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the install prompt");
           } else {
-            console.log('User dismissed the install prompt');
+            console.log("User dismissed the install prompt");
           }
           deferredPrompt = null;
         });
       });
 
       // Handle close button click
-      document.getElementById('close-banner')?.addEventListener('click', () => {
+      document.getElementById("close-banner")?.addEventListener("click", () => {
         installBanner.remove();
       });
 
       // Auto hide after 10 seconds
       setTimeout(() => {
-        if (document.getElementById('install-banner')) {
+        if (document.getElementById("install-banner")) {
           installBanner.remove();
         }
       }, 10000);
     });
 
     // Track app install
-    window.addEventListener('appinstalled', (evt) => {
-      console.log('PWA was installed');
+    window.addEventListener("appinstalled", (evt) => {
+      console.log("PWA was installed");
       // Track this event with your analytics
     });
 
     // Handle app shortcuts
-    if ('navigator' in window && 'getInstalledRelatedApps' in navigator) {
+    if ("navigator" in window && "getInstalledRelatedApps" in navigator) {
       // Check if the app is already installed
       (navigator as any).getInstalledRelatedApps().then((relatedApps: any) => {
         if (relatedApps.length > 0) {
-          console.log('App is already installed');
+          console.log("App is already installed");
         }
       });
     }
-
   }, []);
 
   return null;
