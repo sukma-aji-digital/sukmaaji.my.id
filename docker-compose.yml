@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  sukmaaji-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sukmaaji-digital-website
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SITE_URL=https://sukmaaji.my.id
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sukmaaji.rule=Host(`sukmaaji.my.id`)"
+      - "traefik.http.routers.sukmaaji.tls=true"
+      - "traefik.http.routers.sukmaaji.tls.certresolver=letsencrypt"
+      - "traefik.http.services.sukmaaji.loadbalancer.server.port=3000"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

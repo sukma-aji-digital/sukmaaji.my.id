@@ -7,15 +7,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build"
+    "export": "npm run build",
+    "docker:build": "docker build -t sukmaaji-digital-website .",
+    "docker:run": "docker run -p 3000:3000 sukmaaji-digital-website",
+    "docker:compose": "docker-compose -f docker-compose.simple.yml up --build",
+    "docker:stop": "docker-compose -f docker-compose.simple.yml down",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@types/node": "^20.14.11",
