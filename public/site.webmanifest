@@ -1,43 +1,141 @@
 {
-  "name": "Sukma Aji Digital",
-  "short_name": "SukmaAjiDigital",
-  "description": "Specialized in building scalable web applications with clean code and optimal performance.",
+  "name": "Sukma Aji Digital - Solusi Digital untuk Bisnis Anda",
+  "short_name": "Sukma Aji Digital",
+  "description": "Perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#6366f1",
   "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "id",
-  "categories": ["business", "productivity", "developer"],
+  "lang": "id-ID",
+  "dir": "ltr",
+  "categories": [
+    "business",
+    "productivity",
+    "technology",
+    "developer",
+    "portfolio"
+  ],
   "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/images/logo.webp",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "type": "image/webp",
+      "purpose": "any maskable"
     },
     {
       "src": "/images/logo.webp",
       "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/ajipro.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot.png",
+      "sizes": "1280x720",
       "type": "image/png",
-      "purpose": "maskable any"
+      "form_factor": "wide",
+      "label": "Homepage Screenshot"
     }
   ],
   "shortcuts": [
     {
-      "name": "Blog",
-      "short_name": "Blog",
-      "description": "Read latest articles and tutorials",
-      "url": "/blog",
-      "icons": [{ "src": "/images/logo.webp", "sizes": "96x96" }]
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "Lihat portfolio project terbaru",
+      "url": "/projects",
+      "icons": [
+        {
+          "src": "/images/logo.webp",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
-      "name": "Projects",
-      "short_name": "Projects",
-      "description": "View portfolio projects",
-      "url": "/projects",
-      "icons": [{ "src": "/images/logo.webp", "sizes": "96x96" }]
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Baca artikel dan tutorial terbaru",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/images/logo.webp",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Kontak",
+      "description": "Hubungi kami untuk konsultasi",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/images/logo.webp",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "short_name": "Tentang",
+      "description": "Pelajari lebih lanjut tentang kami",
+      "url": "/me",
+      "icons": [
+        {
+          "src": "/images/logo.webp",
+          "sizes": "192x192"
+        }
+      ]
     }
-  ]
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://sukmaaji.my.id",
+      "id": "sukma-aji-digital-web"
+    }
+  ],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/#contact"
+    },
+    {
+      "protocol": "tel",
+      "url": "/#contact"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 320
+  },
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  }
 }
