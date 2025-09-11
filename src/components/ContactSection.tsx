@@ -11,7 +11,7 @@ export default function ContactSection() {
       icon: "fab fa-linkedin",
       title: "LinkedIn",
       info: "MUHAMMAD AJI SUKMA",
-      link: "https://www.linkedin.com/in/sukma-aji-08b470286/",
+      link: "https://www.linkedin.com/in/sukmaaji/",
       linkText: "Terhubung",
     },
     {

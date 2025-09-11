@@ -8,7 +8,7 @@ export default function Footer() {
       icon: "fab fa-github",
     },
     {
-      href: "https://www.linkedin.com/in/sukma-aji-08b470286/",
+      href: "https://www.linkedin.com/in/sukmaaji/",
       icon: "fab fa-linkedin",
     },
     {
@@ -16,8 +16,8 @@ export default function Footer() {
       icon: "fab fa-instagram",
     },
     {
-      href: "https://twitter.com/sukmaaji",
-      icon: "fab fa-twitter",
+      href: "https://x.com/sukmaajidigital",
+      icon: "fab fa-x-twitter",
     },
   ];
 

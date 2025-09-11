@@ -28,7 +28,7 @@ Software: Git, Node.js, npm
 Website: ${baseUrl}
 Email: sukmaajidigital@gmail.com
 Location: Kudus, Central Java, Indonesia
-LinkedIn: linkedin.com/in/sukma-aji-08b470286
+LinkedIn: linkedin.com/in/sukmaaji
 GitHub: github.com/sukmaajidigital
 
 /* SPECIALTIES */
