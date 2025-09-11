@@ -33,11 +33,6 @@ export default function SystemDevelopmentPage() {
         "LMS, sistem nilai, absensi digital, dan manajemen akademik untuk institusi pendidikan",
     },
     {
-      icon: "fas fa-hospital",
-      title: "Sistem Kesehatan",
-      description: "Rekam medis elektronik, appointment system, dan manajemen rumah sakit/klinik",
-    },
-    {
       icon: "fas fa-warehouse",
       title: "Sistem Inventory",
       description: "Manajemen stok, gudang, purchase order, dan supply chain management",

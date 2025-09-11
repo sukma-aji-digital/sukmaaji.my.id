@@ -14,11 +14,6 @@ export const metadata: Metadata = {
 export default function VPSHostingPage() {
   const features = [
     {
-      icon: "fas fa-clock",
-      title: "99.9% Uptime Guarantee",
-      description: "Server yang selalu online untuk menjamin ketersediaan layanan Anda",
-    },
-    {
       icon: "fas fa-hdd",
       title: "SSD Storage",
       description: "Penyimpanan SSD untuk performa loading yang super cepat",
@@ -34,11 +29,6 @@ export default function VPSHostingPage() {
       description: "Tim technical support siap membantu kapan saja",
     },
     {
-      icon: "fas fa-lock",
-      title: "Free SSL Certificate",
-      description: "SSL certificate gratis untuk keamanan website",
-    },
-    {
       icon: "fas fa-chart-line",
       title: "Real-time Monitoring",
       description: "Monitoring server real-time untuk performa optimal",
@@ -48,7 +38,7 @@ export default function VPSHostingPage() {
   const packages = [
     {
       name: "VPS Starter",
-      price: "Rp 150.000",
+      price: "Rp 200.000",
       period: "/bulan",
       specs: {
         cpu: "1 vCPU",
@@ -61,14 +51,13 @@ export default function VPSHostingPage() {
         "Full Root Access",
         "24/7 Monitoring",
         "Daily Backup",
-        "Free SSL",
         "99.9% Uptime",
         "Email Support",
       ],
     },
     {
       name: "VPS Professional",
-      price: "Rp 300.000",
+      price: "Rp 350.000",
       period: "/bulan",
       specs: {
         cpu: "2 vCPU",
@@ -81,10 +70,8 @@ export default function VPSHostingPage() {
         "Full Root Access",
         "24/7 Monitoring",
         "Daily Backup",
-        "Free SSL",
         "99.9% Uptime",
         "Priority Support",
-        "Free Migration",
         "Control Panel",
       ],
       popular: true,
@@ -104,10 +91,8 @@ export default function VPSHostingPage() {
         "Full Root Access",
         "24/7 Monitoring",
         "Daily Backup",
-        "Free SSL",
         "99.9% Uptime",
         "Priority Support",
-        "Free Migration",
         "Advanced Control Panel",
         "Load Balancer",
         "DDoS Protection",
@@ -211,7 +196,7 @@ export default function VPSHostingPage() {
             <h2 className="text-3xl font-bold text-white text-center mb-12">
               Mengapa Pilih VPS Kami?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="bg-dark-300 p-6 rounded-xl border border-dark-100">
                   <i className={`${feature.icon} text-accent text-3xl mb-4`}></i>

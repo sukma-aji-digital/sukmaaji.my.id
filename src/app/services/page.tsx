@@ -11,13 +11,7 @@ export default function ServicesPage() {
       title: "Pembuatan Website",
       description:
         "Membuat website profesional sesuai kebutuhan bisnis Anda dengan teknologi terkini.",
-      features: [
-        "Website Responsif",
-        "SEO Optimized",
-        "Fast Loading",
-        "Modern Design",
-        "Mobile Friendly",
-      ],
+      features: ["Website Responsif", "SEO Optimized", "Modern Design", "Mobile Friendly"],
     },
     {
       slug: "system-development",
@@ -53,7 +47,7 @@ export default function ServicesPage() {
       title: "Penyewaan Server VPS",
       description:
         "Menyediakan server VPS handal dengan uptime tinggi untuk kebutuhan hosting aplikasi bisnis Anda.",
-      features: ["99.9% Uptime", "SSD Storage", "Free SSL", "Daily Backup", "24/7 Monitoring"],
+      features: ["SSD Storage", "Daily Backup", "24/7 Monitoring"],
     },
   ];
 
