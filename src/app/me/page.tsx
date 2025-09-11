@@ -163,7 +163,7 @@ export default function MePage() {
       icon: "fab fa-linkedin",
       title: "LinkedIn",
       info: "Muhammad Aji Sukma",
-      link: "https://www.linkedin.com/in/sukma-aji-08b470286/",
+      link: "https://www.linkedin.com/in/sukmaaji/",
       linkText: "Connect",
     },
     {
@@ -196,7 +196,7 @@ export default function MePage() {
               caption: "Muhammad Aji Sukma - Backend Developer & Tech Enthusiast",
             },
             sameAs: [
-              "https://www.linkedin.com/in/sukma-aji-08b470286/",
+              "https://www.linkedin.com/in/sukmaaji/",
               "https://github.com/sukmaajidigital",
               "https://wa.me/6285179742322",
             ],

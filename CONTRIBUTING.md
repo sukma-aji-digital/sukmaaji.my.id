@@ -361,8 +361,8 @@ export function formatDate(date: string, locale: string = "id-ID"): string {
 ### Communication Channels
 
 - 📧 **Email**: hello@sukmaaji.my.id
-- 💼 **LinkedIn**: [Muhammad Aji Sukma](https://linkedin.com/in/muhammad-aji-sukma)
-- 🐦 **Twitter**: [@sukma_aji_dev](https://twitter.com/sukma_aji_dev)
+- 💼 **LinkedIn**: [Muhammad Aji Sukma](https://linkedin.com/in/sukmaaji)
+- 🐦 **Twitter**: [@sukma_aji_dev](https://x.com/sukmaajidigital)
 
 ### Getting Help
 

@@ -43,7 +43,7 @@ Saya akan berusaha untuk:
 Jangan ragu untuk menghubungi saya jika ada pertanyaan, saran, atau hanya ingin berdiskusi tentang teknologi:
 
 - **Email**: sukmaajidigital@gmail.com
-- **LinkedIn**: [Muhammad Aji Sukma](https://www.linkedin.com/in/sukma-aji-08b470286/)
+- **LinkedIn**: [Muhammad Aji Sukma](https://www.linkedin.com/in/sukmaaji/)
 - **GitHub**: [sukmaajidigital](https://github.com/sukmaajidigital)
 
 Terima kasih sudah berkunjung, dan sampai jumpa di artikel selanjutnya!

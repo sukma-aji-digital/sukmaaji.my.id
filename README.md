@@ -402,8 +402,8 @@ Project ini menggunakan **MIT License** - lihat file [LICENSE](./LICENSE) untuk 
 Butuh bantuan? Punya pertanyaan? Hubungi kami:
 
 - 📧 **Email**: hello@sukmaaji.my.id
-- 💼 **LinkedIn**: [Muhammad Aji Sukma](https://linkedin.com/in/muhammad-aji-sukma)
-- 🐦 **Twitter**: [@sukma_aji_dev](https://twitter.com/sukma_aji_dev)
+- 💼 **LinkedIn**: [Muhammad Aji Sukma](https://linkedin.com/in/sukmaaji)
+- 🐦 **Twitter**: [@sukma_aji_dev](https://x.com/sukmaajidigital)
 - 💬 **WhatsApp**: [+62 851-5648-8212](https://wa.me/6285156488212)
 - 🌐 **Website**: [sukmaaji.my.id](https://sukmaaji.my.id)
 
