@@ -4,10 +4,39 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import DropdownMenu from "./DropdownMenu";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
+
+  const serviceItems = [
+    {
+      title: "Pembuatan Website",
+      href: "/services/website-development",
+      description: "Website profesional dengan teknologi terkini",
+      icon: "fas fa-globe",
+    },
+    {
+      title: "Pengembangan Sistem Informasi",
+      href: "/services/system-development",
+      description: "Sistem informasi custom untuk perusahaan",
+      icon: "fas fa-network-wired",
+    },
+    {
+      title: "Manajemen Jaringan Perusahaan",
+      href: "/services/network-management",
+      description: "Setup dan maintenance jaringan enterprise",
+      icon: "fas fa-server",
+    },
+    {
+      title: "Penyewaan Server VPS",
+      href: "/services/vps-hosting",
+      description: "VPS hosting dengan uptime tinggi",
+      icon: "fas fa-cloud",
+    },
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -15,6 +44,7 @@ export default function Header() {
 
   const isActive = (path: string) => {
     if (path === "/") return pathname === "/";
+    if (path === "/services") return pathname.startsWith("/services");
     return pathname.startsWith(path);
   };
 
@@ -62,9 +92,7 @@ export default function Header() {
           <Link href="/#about" className={getLinkClasses("/#about")}>
             Tentang
           </Link>
-          <Link href="/#services" className={getLinkClasses("/#services")}>
-            Jasa
-          </Link>
+          <DropdownMenu title="Jasa" items={serviceItems} isActive={isActive("/services")} />
           <Link href="/#portfolio" className={getLinkClasses("/#portfolio")}>
             Portfolio
           </Link>
@@ -109,13 +137,55 @@ export default function Header() {
           >
             Tentang
           </Link>
-          <Link
-            href="/#services"
-            className={getMobileLinkClasses("/#services")}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Jasa
-          </Link>
+
+          {/* Mobile Services Dropdown */}
+          <div>
+            <button
+              onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+              className={`py-2 transition-colors duration-200 flex items-center justify-between w-full ${
+                isActive("/services")
+                  ? "text-white font-semibold border-l-4 border-accent pl-4"
+                  : "text-slate-dark hover:text-white"
+              }`}
+            >
+              Jasa
+              <i
+                className={`fas fa-chevron-down transition-transform duration-200 ${
+                  isMobileServicesOpen ? "rotate-180" : ""
+                }`}
+              ></i>
+            </button>
+            {isMobileServicesOpen && (
+              <div className="pl-4 mt-2 space-y-2">
+                {serviceItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="block py-2 text-slate-dark hover:text-white text-sm"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsMobileServicesOpen(false);
+                    }}
+                  >
+                    <i className={`${item.icon} mr-2 text-accent`}></i>
+                    {item.title}
+                  </Link>
+                ))}
+                <Link
+                  href="/services"
+                  className="block py-2 text-accent hover:text-white text-sm font-medium"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsMobileServicesOpen(false);
+                  }}
+                >
+                  <i className="fas fa-arrow-right mr-2"></i>
+                  Lihat Semua Layanan
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link
             href="/#portfolio"
             className={getMobileLinkClasses("/#portfolio")}
