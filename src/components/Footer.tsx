@@ -17,7 +17,7 @@ export default function Footer() {
     },
     {
       href: "https://x.com/sukmaajidigital",
-      icon: "fab fa-twitter",
+      icon: "fab fa-x-twitter",
     },
   ];
 
