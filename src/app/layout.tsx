@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sukma Aji Digital - Solusi Digital untuk Bisnis Anda",
+  title: "Sukma Aji Digital - Solusi untuk Bisnis Anda",
   description:
     "Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda.",
   keywords:
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Sukma Aji Digital",
     locale: "id_ID",
     url: "https://sukmaaji.my.id",
-    title: "Sukma Aji Digital - Solusi Digital untuk Bisnis Anda",
+    title: "Sukma Aji Digital - Solusi untuk Bisnis Anda",
     description:
       "Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda.",
     images: ["/images/logo.webp"],
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sukmaajidigital",
-    title: "Sukma Aji Digital - Solusi Digital untuk Bisnis Anda",
+    title: "Sukma Aji Digital - Solusi untuk Bisnis Anda",
     description:
       "Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda.",
     images: ["/images/logo.webp"],
