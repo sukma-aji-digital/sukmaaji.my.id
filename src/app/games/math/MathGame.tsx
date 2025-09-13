@@ -224,15 +224,18 @@ const MathGame = () => {
     const gameDuration = Math.round((gameEndTime - gameStartTime) / 1000);
 
     return (
-      <GameOver
-        score={score}
-        correctAnswers={correctAnswers}
-        totalQuestions={totalQuestions}
-        level={level}
-        accuracy={accuracy}
-        onRestartGame={startGame}
-        timeTaken={gameDuration}
-      />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        <GameHeader title="🧮 Math Challenge" backLink="/games" backLabel="Back to Games" />
+        <GameOver
+          score={score}
+          correctAnswers={correctAnswers}
+          totalQuestions={totalQuestions}
+          level={level}
+          accuracy={accuracy}
+          onRestartGame={startGame}
+          timeTaken={gameDuration}
+        />
+      </div>
     );
   }
 

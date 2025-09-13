@@ -84,7 +84,7 @@ const GameOver: React.FC<GameOverProps> = ({
   const rating = getRatingMessage(accuracy);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4">
       <div className="max-w-4xl w-full text-center bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
