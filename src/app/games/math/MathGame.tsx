@@ -22,7 +22,7 @@ const MathGame = () => {
   const [level, setLevel] = useState(1);
   const [feedback, setFeedback] = useState("");
   const [feedbackType, setFeedbackType] = useState<"correct" | "wrong" | "levelup" | "">("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
 
@@ -152,7 +152,7 @@ const MathGame = () => {
         const newLevel = level + 1;
         setLevel(newLevel);
         // Add 100 seconds bonus time when leveling up
-        setTimeLeft(prevTime => prevTime + 100);
+        setTimeLeft((prevTime) => prevTime + 100);
         setFeedback(`🚀 Level Up! Level ${newLevel} + 100s Bonus!`);
         setFeedbackType("levelup");
       }
@@ -204,6 +204,7 @@ const MathGame = () => {
         level={level}
         accuracy={accuracy}
         onRestartGame={startGame}
+        timeTaken={60 - timeLeft} // Calculate actual time taken
       />
     );
   }
@@ -231,9 +232,11 @@ const MathGame = () => {
             <div className="flex space-x-4">
               <span className="font-semibold">Level {level}</span>
               <span className="text-blue-600">{score} pts</span>
-              <span className="text-green-600">{correctAnswers}/{totalQuestions}</span>
+              <span className="text-green-600">
+                {correctAnswers}/{totalQuestions}
+              </span>
             </div>
-            <div className={`font-bold ${timeLeft <= 10 ? 'text-red-600' : 'text-orange-600'}`}>
+            <div className={`font-bold ${timeLeft <= 10 ? "text-red-600" : "text-orange-600"}`}>
               {timeLeft}s
             </div>
           </div>

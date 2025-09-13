@@ -1,13 +1,50 @@
 import React from "react";
+import { useSession } from "next-auth/react";
+import AuthButtons from "@/components/AuthButtons";
 
 interface GameWelcomeProps {
   onStartGame: () => void;
 }
 
 const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
+  const { data: session, status } = useSession();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full text-center bg-white rounded-xl shadow-2xl p-8">
+        {/* Authentication Section */}
+        <div className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">🏆 Join the Leaderboard!</h3>
+          {session?.user ? (
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center gap-3">
+                {session.user.image && (
+                  <img
+                    src={session.user.image}
+                    alt="Profile"
+                    className="w-12 h-12 rounded-full border-2 border-indigo-200"
+                  />
+                )}
+                <div>
+                  <p className="font-medium text-gray-800">Welcome, {session.user.name}!</p>
+                  <p className="text-sm text-gray-600">Your scores will be saved to leaderboard</p>
+                </div>
+              </div>
+              <AuthButtons />
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <p className="text-gray-600">
+                Sign in to save your high scores and compete with other players!
+              </p>
+              <AuthButtons />
+              <p className="text-xs text-gray-500">
+                You can still play without signing in, but scores won't be saved.
+              </p>
+            </div>
+          )}
+        </div>
+
         <div className="mb-8">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
             🚀 Siap untuk Tantangan Math Game?
@@ -97,12 +134,24 @@ const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
         </div>
 
         {/* Start Button */}
-        <button
-          onClick={onStartGame}
-          className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-12 py-4 rounded-xl text-2xl font-bold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          🚀 Mulai Permainan
-        </button>
+        <div className="space-y-4">
+          <button
+            onClick={onStartGame}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-12 py-4 rounded-xl text-2xl font-bold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            🚀 Mulai Permainan
+          </button>
+
+          {/* Leaderboard Link */}
+          <div className="flex justify-center">
+            <a
+              href="/games/math/leaderboard"
+              className="text-indigo-600 hover:text-indigo-800 font-medium underline"
+            >
+              📊 Lihat Leaderboard
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
