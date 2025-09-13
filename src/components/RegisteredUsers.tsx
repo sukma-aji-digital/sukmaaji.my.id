@@ -28,7 +28,15 @@ const RegisteredUsers: React.FC<RegisteredUsersProps> = ({ limit = 20, showStats
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/users/registered?limit=${limit}`);
+        // Add cache-busting timestamp
+        const timestamp = Date.now();
+        const response = await fetch(`/api/users/registered?limit=${limit}&_t=${timestamp}`, {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch users");

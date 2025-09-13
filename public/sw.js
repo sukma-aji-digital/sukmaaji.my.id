@@ -1,73 +1,63 @@
-// Service Worker for Sukma Aji Digital PWA
-const CACHE_NAME = 'sukma-aji-digital-v1';
-const STATIC_CACHE_URLS = [
-    '/',
-    '/projects',
-    '/blog',
-    '/me',
-    '/images/logo.webp',
-    '/images/logo.png',
-    '/images/ajipro.jpg',
-    '/site.webmanifest'
-];
+// Service Worker for Sukma Aji Digital PWA - NO CACHE VERSION
+// This service worker is configured to NOT cache content to ensure fresh updates
 
-// Install event - cache static resources
+const CACHE_NAME = 'sukma-aji-digital-no-cache-v' + Date.now();
+
+// Install event - skip caching for fresh content
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                console.log('Opened cache');
-                return cache.addAll(STATIC_CACHE_URLS);
-            })
-    );
+    console.log('Service Worker installing - NO CACHE mode');
+    // Skip waiting to activate immediately
+    self.skipWaiting();
 });
 
-// Activate event - clean up old caches
+// Activate event - clear all caches to ensure fresh content
 self.addEventListener('activate', (event) => {
+    console.log('Service Worker activating - clearing all caches');
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
+                    console.log('Deleting cache:', cacheName);
+                    return caches.delete(cacheName);
                 })
             );
+        }).then(() => {
+            // Take control of all clients immediately
+            return self.clients.claim();
         })
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - always fetch from network, no caching
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                // Cache hit - return response
-                if (response) {
-                    return response;
-                }
+        fetch(event.request.clone()).then((response) => {
+            // Always return fresh response from network
+            const responseClone = response.clone();
 
-                // Clone the request
-                const fetchRequest = event.request.clone();
+            // Add no-cache headers to the response
+            const headers = new Headers(responseClone.headers);
+            headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+            headers.set('Pragma', 'no-cache');
+            headers.set('Expires', '0');
 
-                return fetch(fetchRequest).then((response) => {
-                    // Check if we received a valid response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
-
-                    // Clone the response
-                    const responseToCache = response.clone();
-
-                    caches.open(CACHE_NAME)
-                        .then((cache) => {
-                            cache.put(event.request, responseToCache);
-                        });
-
-                    return response;
-                });
-            })
+            return new Response(responseClone.body, {
+                status: responseClone.status,
+                statusText: responseClone.statusText,
+                headers: headers
+            });
+        }).catch((error) => {
+            console.log('Fetch failed, network unavailable:', error);
+            // Return a basic offline response
+            return new Response('Network unavailable. Please check your connection.', {
+                status: 503,
+                statusText: 'Service Unavailable',
+                headers: new Headers({
+                    'Content-Type': 'text/plain',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0'
+                })
+            });
+        })
     );
 });
 
@@ -124,6 +114,26 @@ self.addEventListener('notificationclick', (event) => {
         // Default action - open the app
         event.waitUntil(
             clients.openWindow('/')
+        );
+    }
+});
+
+// Message handler for manual cache clearing
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+
+    if (event.data && event.data.type === 'CLEAR_CACHE') {
+        event.waitUntil(
+            caches.keys().then((cacheNames) => {
+                return Promise.all(
+                    cacheNames.map((cacheName) => {
+                        console.log('Manually clearing cache:', cacheName);
+                        return caches.delete(cacheName);
+                    })
+                );
+            })
         );
     }
 });

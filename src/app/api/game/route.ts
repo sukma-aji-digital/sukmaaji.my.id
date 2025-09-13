@@ -8,7 +8,12 @@ export async function POST(req: NextRequest) {
     // Check if user is authenticated
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      const response = NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      return response;
     }
 
     // Parse request body
@@ -24,7 +29,12 @@ export async function POST(req: NextRequest) {
       typeof totalQuestions !== "number" ||
       typeof timePlayed !== "number"
     ) {
-      return NextResponse.json({ error: "Invalid input data" }, { status: 400 });
+      const response = NextResponse.json({ error: "Invalid input data" }, { status: 400 });
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      return response;
     }
 
     // Get user from database
@@ -35,7 +45,12 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (userError || !userData) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      const response = NextResponse.json({ error: "User not found" }, { status: 404 });
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      return response;
     }
 
     // Calculate accuracy percentage
@@ -60,17 +75,38 @@ export async function POST(req: NextRequest) {
 
     if (insertError) {
       console.error("Error saving game session:", insertError);
-      return NextResponse.json({ error: "Failed to save game session" }, { status: 500 });
+      const response = NextResponse.json({ error: "Failed to save game session" }, { status: 500 });
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      return response;
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       gameSession,
       message: "Game session saved successfully",
     });
+
+    // Add comprehensive no-cache headers
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+    );
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+    response.headers.set("Last-Modified", new Date().toUTCString());
+
+    return response;
   } catch (error) {
     console.error("API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    const response = NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    );
+    return response;
   }
 }
 
@@ -137,10 +173,18 @@ export async function GET(req: NextRequest) {
         const { data: leaderboard, error } = await query;
 
         if (error) {
-          return NextResponse.json({ error: "Failed to fetch leaderboard" }, { status: 500 });
+          const response = NextResponse.json(
+            { error: "Failed to fetch leaderboard" },
+            { status: 500 }
+          );
+          response.headers.set(
+            "Cache-Control",
+            "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+          );
+          return response;
         }
 
-        return NextResponse.json({
+        const response = NextResponse.json({
           leaderboard,
           userStats: {
             rank: userRank,
@@ -149,6 +193,17 @@ export async function GET(req: NextRequest) {
             avgAccuracy: Math.round(avgAccuracy * 100) / 100,
           },
         });
+
+        // Add no-cache headers
+        response.headers.set(
+          "Cache-Control",
+          "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+        );
+        response.headers.set("Pragma", "no-cache");
+        response.headers.set("Expires", "0");
+        response.headers.set("Last-Modified", new Date().toUTCString());
+
+        return response;
       }
     }
 
@@ -156,12 +211,33 @@ export async function GET(req: NextRequest) {
 
     if (error) {
       console.error("Leaderboard error:", error);
-      return NextResponse.json({ error: "Failed to fetch leaderboard" }, { status: 500 });
+      const response = NextResponse.json({ error: "Failed to fetch leaderboard" }, { status: 500 });
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      return response;
     }
 
-    return NextResponse.json({ leaderboard });
+    const response = NextResponse.json({ leaderboard });
+
+    // Add no-cache headers
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+    );
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+    response.headers.set("Last-Modified", new Date().toUTCString());
+
+    return response;
   } catch (error) {
     console.error("API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    const response = NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    );
+    return response;
   }
 }

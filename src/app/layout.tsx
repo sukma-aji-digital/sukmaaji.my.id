@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import PWAInstaller from "@/components/PWAInstaller";
+import CacheBuster from "@/components/CacheBuster";
 import AuthProvider from "@/components/AuthProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className={`${inter.className} antialiased text-slate-light`}>
+        <CacheBuster />
         <AuthProvider>
           {/* <PWAInstaller /> */}
           {children}
