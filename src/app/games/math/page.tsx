@@ -1,7 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import MathGame from "./MathGame";
 
 export const metadata: Metadata = {
@@ -145,8 +142,6 @@ export default function GamesPage() {
       />
 
       <MathGame />
-
-      {/* <Footer /> */}
     </>
   );
 }
