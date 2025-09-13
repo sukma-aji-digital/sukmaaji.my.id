@@ -27,6 +27,19 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.production
+.env.development
+
+# Security files
+*.pem
+*.key
+*secret*
+*SECRET*
+*config*.json
+database_validation.sql
+update_game_type.sql
+setup-production.sh
+*PRODUCTION-FIX*
 
 # vercel
 .vercel

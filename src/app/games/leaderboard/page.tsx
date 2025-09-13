@@ -20,50 +20,52 @@ interface GlobalLeaderboardEntry {
 }
 
 interface GameStats {
-  [gameType: string]: number;
+  [key: string]: number;
 }
 
-const GAME_NAMES: Record<string, string> = {
-  math: "Math Challenge",
-  memory: "Memory Game",
-  word: "Word Puzzle",
+const GAME_NAMES: { [key: string]: string } = {
+  math: "🧮 Math Challenge",
+  memory: "🧩 Memory Game",
+  word: "📝 Word Puzzle",
 };
 
-const GAME_ICONS: Record<string, string> = {
-  math: "🧮",
-  memory: "🧠",
-  word: "📝",
+const GAME_COLORS: { [key: string]: string } = {
+  math: "bg-blue-100 text-blue-800 border-blue-200",
+  memory: "bg-purple-100 text-purple-800 border-purple-200",
+  word: "bg-green-100 text-green-800 border-green-200",
 };
 
 export default function GlobalLeaderboardPage() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [leaderboard, setLeaderboard] = useState<GlobalLeaderboardEntry[]>([]);
-  const [gameStats, setGameStats] = useState<GameStats>({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedGame, setSelectedGame] = useState<string>("all");
+  const [selectedGame, setSelectedGame] = useState("all");
+  const [gameStats, setGameStats] = useState<GameStats>({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 50;
 
   useEffect(() => {
     fetchLeaderboard();
-  }, [selectedGame]);
+  }, [selectedGame, currentPage]);
 
   const fetchLeaderboard = async () => {
     try {
       setLoading(true);
-      setError(null);
-
       const gameFilter = selectedGame === "all" ? "" : `&gameType=${selectedGame}`;
-      const response = await fetch(`/api/leaderboard/global?limit=50${gameFilter}`);
+      const offset = (currentPage - 1) * itemsPerPage;
+      const response = await fetch(
+        `/api/leaderboard/global?limit=${itemsPerPage}&offset=${offset}${gameFilter}`
+      );
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch leaderboard");
+      if (response.ok) {
+        const data = await response.json();
+        setLeaderboard(data.leaderboard || []);
+        setGameStats(data.gameStats || {});
+        setTotalPages(Math.ceil((data.total || 0) / itemsPerPage));
       }
-
-      const data = await response.json();
-      setLeaderboard(data.leaderboard || []);
-      setGameStats(data.gameStats || {});
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (error) {
+      console.error("Error fetching leaderboard:", error);
     } finally {
       setLoading(false);
     }
@@ -79,68 +81,47 @@ export default function GlobalLeaderboardPage() {
     });
   };
 
-  const getRankBadge = (position: number) => {
-    if (position === 1) return "🥇";
-    if (position === 2) return "🥈";
-    if (position === 3) return "🥉";
-    return `#${position}`;
+  const getRankIcon = (rank: number) => {
+    if (rank === 1) return "🥇";
+    if (rank === 2) return "🥈";
+    if (rank === 3) return "🥉";
+    return `#${rank}`;
   };
 
-  const getGameName = (gameType: string) => {
-    return GAME_NAMES[gameType] || gameType;
+  const getRankBadgeColor = (rank: number) => {
+    if (rank === 1) return "bg-yellow-100 text-yellow-800 border-yellow-300";
+    if (rank === 2) return "bg-gray-100 text-gray-800 border-gray-300";
+    if (rank === 3) return "bg-orange-100 text-orange-800 border-orange-300";
+    return "bg-blue-100 text-blue-800 border-blue-300";
   };
-
-  const getGameIcon = (gameType: string) => {
-    return GAME_ICONS[gameType] || "🎮";
-  };
-
-  if (status === "loading" || loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading leaderboard...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center bg-white p-8 rounded-lg shadow-lg">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Oops!</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <button
-            onClick={fetchLeaderboard}
-            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <div className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <Link href="/games" className="text-blue-500 hover:text-blue-600 transition-colors">
-                ← Back to Games
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
+      {/* Header Section */}
+      <div className="bg-white shadow-lg border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center space-x-4">
+              <Link
+                href="/"
+                className="text-green-600 hover:text-green-800 transition-colors"
+                aria-label="Home"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
               </Link>
-              <div className="text-2xl font-bold text-gray-800">🏆 Global Leaderboard</div>
+              <span className="text-gray-400">/</span>
+              <Link
+                href="/games"
+                className="text-green-600 hover:text-green-800 transition-colors font-medium"
+              >
+                Games
+              </Link>
+              <span className="text-gray-400">/</span>
+              <h1 className="text-3xl font-bold text-gray-800">🏆 Global Leaderboard</h1>
             </div>
-            <div className="flex items-center gap-4">
-              {session?.user && (
-                <div className="text-sm text-gray-600">
-                  Welcome, <span className="font-medium">{session.user.name}</span>
-                </div>
-              )}
+            <div className="flex items-center space-x-4">
               <AuthButtons />
             </div>
           </div>
@@ -148,207 +129,237 @@ export default function GlobalLeaderboardPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar - Game Stats */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Game Filter */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Filter Games</h3>
+        {/* Stats Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600">
+                {Object.values(gameStats)
+                  .reduce((a, b) => a + b, 0)
+                  .toLocaleString()}
+              </div>
+              <div className="text-sm text-gray-600 mt-1">Total Games Played</div>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">
+                {gameStats.math?.toLocaleString() || "0"}
+              </div>
+              <div className="text-sm text-gray-600 mt-1">Math Games</div>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600">
+                {gameStats.memory?.toLocaleString() || "0"}
+              </div>
+              <div className="text-sm text-gray-600 mt-1">Memory Games</div>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-indigo-600">
+                {leaderboard.length > 0 ? leaderboard.length.toLocaleString() : "0"}
+              </div>
+              <div className="text-sm text-gray-600 mt-1">Active Players</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Filter and Controls */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="flex items-center space-x-4">
+              <label className="text-sm font-medium text-gray-700">Filter by Game:</label>
               <select
                 value={selectedGame}
-                onChange={(e) => setSelectedGame(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => {
+                  setSelectedGame(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
               >
                 <option value="all">All Games</option>
-                {Object.entries(gameStats).map(([gameType, count]) => (
-                  <option key={gameType} value={gameType}>
-                    {getGameIcon(gameType)} {getGameName(gameType)} ({count})
-                  </option>
-                ))}
+                <option value="math">🧮 Math Challenge</option>
+                <option value="memory">🧩 Memory Game</option>
+                <option value="word">📝 Word Puzzle</option>
               </select>
             </div>
-
-            {/* Game Stats */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Game Statistics</h3>
-              <div className="space-y-3">
-                {Object.entries(gameStats).map(([gameType, count]) => (
-                  <div
-                    key={gameType}
-                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl">{getGameIcon(gameType)}</span>
-                      <span className="text-sm font-medium text-gray-700">
-                        {getGameName(gameType)}
-                      </span>
-                    </div>
-                    <span className="text-lg font-bold text-blue-600">{count}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-800">
-                    {Object.values(gameStats).reduce((sum, count) => sum + count, 0)}
-                  </div>
-                  <div className="text-sm text-gray-600">Total Games Played</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Actions</h3>
-              <div className="space-y-3">
-                <Link
-                  href="/games/math"
-                  className="block w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-center text-sm font-medium transition-colors"
-                >
-                  🧮 Play Math Challenge
-                </Link>
-                <button
-                  onClick={fetchLeaderboard}
-                  className="w-full py-2 px-4 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-sm font-medium transition-colors"
-                >
-                  🔄 Refresh Data
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={fetchLeaderboard}
+              className="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              <span>🔄</span>
+              <span>Refresh</span>
+            </button>
           </div>
+        </div>
 
-          {/* Main Content - Leaderboard */}
-          <div className="lg:col-span-3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="p-6 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
-                <h2 className="text-3xl font-bold mb-2">
-                  {selectedGame === "all"
-                    ? "🌟 All Games"
-                    : `${getGameIcon(selectedGame)} ${getGameName(selectedGame)}`}
-                </h2>
-                <p className="opacity-90">
-                  {selectedGame === "all"
-                    ? `Showing top ${leaderboard.length} players across all games`
-                    : `Top ${leaderboard.length} players in ${getGameName(selectedGame)}`}
-                </p>
+        {/* Leaderboard Table */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+            </div>
+          ) : (
+            <>
+              {/* Table Header */}
+              <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                <div className="grid grid-cols-5 md:grid-cols-7 gap-4 text-sm font-medium text-gray-700">
+                  <div>Rank</div>
+                  <div className="col-span-2">Player</div>
+                  <div className="hidden md:block">Game</div>
+                  <div>Score</div>
+                  <div className="hidden md:block">Level</div>
+                  <div className="hidden md:block">Date</div>
+                </div>
               </div>
 
-              {leaderboard.length === 0 ? (
-                <div className="p-12 text-center text-gray-500">
-                  <div className="text-6xl mb-4">🎮</div>
-                  <h3 className="text-xl font-bold text-gray-700 mb-2">No scores yet!</h3>
-                  <p className="text-gray-500 mb-6">
-                    Be the first to set a high score in this category.
-                  </p>
-                  <Link
-                    href="/games"
-                    className="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
-                  >
-                    🚀 Start Playing
-                  </Link>
-                </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Rank
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Player
-                        </th>
-                        {selectedGame === "all" && (
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Game
-                          </th>
-                        )}
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Score
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Level
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Accuracy
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Date
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {leaderboard.map((entry, index) => {
-                        const isCurrentUser =
-                          session?.user?.email === entry.users?.name ||
-                          (session?.user as any)?.id === entry.users?.id;
+              {/* Table Body */}
+              <div className="divide-y divide-gray-200">
+                {leaderboard.map((entry, index) => {
+                  const rank = (currentPage - 1) * itemsPerPage + index + 1;
+                  const isCurrentUser = session?.user?.email === entry.users.name;
 
-                        return (
-                          <tr
-                            key={entry.id}
-                            className={`hover:bg-gray-50 ${
-                              isCurrentUser ? "bg-blue-50 border-l-4 border-blue-500" : ""
+                  return (
+                    <div
+                      key={entry.id}
+                      className={`px-6 py-4 hover:bg-gray-50 transition-colors ${
+                        isCurrentUser ? "bg-green-50" : ""
+                      }`}
+                    >
+                      <div className="grid grid-cols-5 md:grid-cols-7 gap-4 items-center">
+                        {/* Rank */}
+                        <div>
+                          <span
+                            className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold border ${getRankBadgeColor(
+                              rank
+                            )}`}
+                          >
+                            {getRankIcon(rank)}
+                          </span>
+                        </div>
+
+                        {/* Player */}
+                        <div className="col-span-2">
+                          <div className="flex items-center space-x-3">
+                            {entry.users.avatar_url && (
+                              <img
+                                src={entry.users.avatar_url}
+                                alt={entry.users.name}
+                                className="w-8 h-8 rounded-full"
+                              />
+                            )}
+                            <div>
+                              <div className="font-medium text-gray-800">
+                                {entry.users.name}
+                                {isCurrentUser && (
+                                  <span className="ml-2 text-green-600 text-xs font-bold">
+                                    (You)
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {entry.accuracy_percentage}% accuracy
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Game */}
+                        <div className="hidden md:block">
+                          <span
+                            className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ${
+                              GAME_COLORS[entry.game_type] ||
+                              "bg-gray-100 text-gray-800 border-gray-200"
                             }`}
                           >
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="text-lg font-bold">{getRankBadge(index + 1)}</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="flex items-center">
-                                {entry.users?.avatar_url && (
-                                  <img
-                                    src={entry.users.avatar_url}
-                                    alt="Avatar"
-                                    className="w-8 h-8 rounded-full mr-3 border-2 border-gray-200"
-                                  />
-                                )}
-                                <div>
-                                  <div className="text-sm font-medium text-gray-900 flex items-center gap-2">
-                                    {entry.users?.name || "Anonymous"}
-                                    {isCurrentUser && (
-                                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-                                        You
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            {selectedGame === "all" && (
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                  {getGameIcon(entry.game_type)} {getGameName(entry.game_type)}
-                                </span>
-                              </td>
-                            )}
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="text-lg font-bold text-gray-900">
-                                {entry.score.toLocaleString()}
-                              </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Level {entry.level_reached}
-                              </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900">
-                                {entry.accuracy_percentage.toFixed(1)}%
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              {formatDate(entry.created_at)}
-                            </td>
-                          </tr>
+                            {GAME_NAMES[entry.game_type] || entry.game_type}
+                          </span>
+                        </div>
+
+                        {/* Score */}
+                        <div>
+                          <div className="font-bold text-gray-800">
+                            {entry.score.toLocaleString()}
+                          </div>
+                        </div>
+
+                        {/* Level */}
+                        <div className="hidden md:block">
+                          <div className="text-sm text-gray-600">Level {entry.level_reached}</div>
+                        </div>
+
+                        {/* Date */}
+                        <div className="hidden md:block">
+                          <div className="text-xs text-gray-500">
+                            {formatDate(entry.created_at)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+                  <div className="flex justify-between items-center">
+                    <div className="text-sm text-gray-600">
+                      Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
+                      {Math.min(currentPage * itemsPerPage, leaderboard.length)} of{" "}
+                      {leaderboard.length} results
+                    </div>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="px-3 py-1 bg-white border border-gray-300 rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                      >
+                        Previous
+                      </button>
+                      {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                        const page = i + 1;
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`px-3 py-1 border rounded text-sm ${
+                              currentPage === page
+                                ? "bg-green-500 text-white border-green-500"
+                                : "bg-white border-gray-300 hover:bg-gray-50"
+                            }`}
+                          >
+                            {page}
+                          </button>
                         );
                       })}
-                    </tbody>
-                  </table>
+                      <button
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="px-3 py-1 bg-white border border-gray-300 rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
-            </div>
-          </div>
+            </>
+          )}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-8">
+          <Link
+            href="/games"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105"
+          >
+            <span>🎮</span>
+            <span>Play Games to Climb the Leaderboard!</span>
+          </Link>
         </div>
       </div>
     </div>
