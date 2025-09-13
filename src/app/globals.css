@@ -1,0 +1,395 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+  background: linear-gradient(to bottom, #0f172a, #0a0f1c);
+  scroll-behavior: smooth;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+}
+
+.skill-bar {
+  transition: width 1.5s ease-in-out;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6366f1;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #6366f1;
+  margin-top: 12px;
+  border-radius: 3px;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Project Content Styling - Natural Article Style */
+.project-content {
+  @apply text-base leading-7 text-slate-light;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.project-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.project-content h1 {
+  @apply text-3xl md:text-4xl font-bold text-white mb-8 mt-8 leading-tight;
+  line-height: 1.2;
+}
+
+.project-content h2 {
+  @apply text-2xl md:text-3xl font-bold text-white mb-6 mt-12 leading-tight;
+  line-height: 1.3;
+}
+
+.project-content h3 {
+  @apply text-xl md:text-2xl font-bold text-white mb-4 mt-8 leading-tight;
+  line-height: 1.3;
+}
+
+.project-content h4 {
+  @apply text-lg md:text-xl font-semibold text-white mb-3 mt-6 leading-tight;
+  line-height: 1.4;
+}
+
+.project-content h5 {
+  @apply text-base md:text-lg font-semibold text-white mb-3 mt-4 leading-tight;
+  line-height: 1.4;
+}
+
+.project-content h6 {
+  @apply text-base font-medium text-white mb-2 mt-4 leading-tight;
+  line-height: 1.4;
+}
+
+.project-content p {
+  @apply text-slate-light leading-7 mb-6 text-justify;
+  hyphens: auto;
+}
+
+.project-content strong {
+  @apply font-semibold text-white;
+}
+
+.project-content em {
+  @apply italic text-slate-light;
+}
+
+.project-content ul {
+  @apply mb-6 pl-6 space-y-2;
+}
+
+.project-content ol {
+  @apply mb-6 pl-6 space-y-2 list-decimal;
+}
+
+.project-content li {
+  @apply text-slate-light leading-7 relative;
+}
+
+.project-content ul li {
+  @apply list-none relative pl-4;
+}
+
+.project-content ul li::before {
+  content: "•";
+  @apply text-accent absolute left-0 font-bold;
+}
+
+.project-content ol li {
+  @apply text-slate-light leading-7;
+}
+
+.project-content li strong {
+  @apply font-semibold text-white;
+}
+
+.project-content blockquote {
+  @apply border-l-4 border-accent bg-dark-200/30 p-6 rounded-r-lg mb-6 italic text-slate-light relative;
+  quotes: "" " " "" "'" "'";
+}
+
+.project-content blockquote::before {
+  content: open-quote;
+  @apply text-4xl text-accent absolute -top-2 left-2 font-bold;
+}
+
+.project-content code {
+  @apply bg-dark-200 px-2 py-1 rounded text-accent-light font-mono text-sm border border-dark-100;
+  word-break: break-word;
+}
+
+.project-content pre {
+  @apply bg-dark-200 p-6 rounded-lg overflow-x-auto mb-6 border border-dark-100 shadow-inner;
+  font-family: "Fira Code", "Courier New", monospace;
+}
+
+.project-content pre code {
+  @apply bg-transparent p-0 text-slate-light text-sm leading-6 border-0;
+  word-break: normal;
+  white-space: pre;
+}
+
+.project-content a {
+  @apply text-accent hover:text-accent-light transition-colors underline decoration-accent/30 hover:decoration-accent underline-offset-2;
+}
+
+.project-content img {
+  @apply rounded-lg shadow-lg border border-dark-100 mb-6 max-w-full h-auto;
+}
+
+.project-content table {
+  @apply w-full bg-dark-200 rounded-lg border border-dark-100 mb-6 shadow-lg overflow-hidden;
+}
+
+.project-content th {
+  @apply bg-dark-300 text-white font-bold p-4 border-b border-dark-100 text-left;
+}
+
+.project-content td {
+  @apply text-slate-light p-4 border-b border-dark-100 last:border-b-0;
+}
+
+.project-content hr {
+  @apply border-dark-100 my-8;
+}
+
+/* Blog Content Styling - Natural Article Style */
+.blog-content {
+  @apply text-base leading-7 text-slate-light;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.blog-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.blog-content h1 {
+  @apply text-3xl md:text-4xl font-bold text-white mb-8 mt-8 leading-tight;
+  line-height: 1.2;
+}
+
+.blog-content h2 {
+  @apply text-2xl md:text-3xl font-bold text-white mb-6 mt-12 leading-tight;
+  line-height: 1.3;
+}
+
+.blog-content h3 {
+  @apply text-xl md:text-2xl font-bold text-white mb-4 mt-8 leading-tight;
+  line-height: 1.3;
+}
+
+.blog-content h4 {
+  @apply text-lg md:text-xl font-semibold text-white mb-3 mt-6 leading-tight;
+  line-height: 1.4;
+}
+
+.blog-content h5 {
+  @apply text-base md:text-lg font-semibold text-white mb-3 mt-4 leading-tight;
+  line-height: 1.4;
+}
+
+.blog-content h6 {
+  @apply text-base font-medium text-white mb-2 mt-4 leading-tight;
+  line-height: 1.4;
+}
+
+.blog-content p {
+  @apply text-slate-light leading-7 mb-6 text-justify;
+  hyphens: auto;
+}
+
+.blog-content strong {
+  @apply font-semibold text-white;
+}
+
+.blog-content em {
+  @apply italic text-slate-light;
+}
+
+.blog-content ul {
+  @apply mb-6 pl-6 space-y-2;
+}
+
+.blog-content ol {
+  @apply mb-6 pl-6 space-y-2 list-decimal;
+}
+
+.blog-content li {
+  @apply text-slate-light leading-7 relative;
+}
+
+.blog-content ul li {
+  @apply list-none relative pl-4;
+}
+
+.blog-content ul li::before {
+  content: "•";
+  @apply text-accent absolute left-0 font-bold;
+}
+
+.blog-content ol li {
+  @apply text-slate-light leading-7;
+}
+
+.blog-content li strong {
+  @apply font-semibold text-white;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-accent bg-dark-200/30 p-6 rounded-r-lg mb-6 italic text-slate-light relative;
+  quotes: "" " " "" "'" "'";
+}
+
+.blog-content blockquote::before {
+  content: open-quote;
+  @apply text-4xl text-accent absolute -top-2 left-2 font-bold;
+}
+
+.blog-content code {
+  @apply bg-dark-200 px-2 py-1 rounded text-accent-light font-mono text-sm border border-dark-100;
+  word-break: break-word;
+}
+
+.blog-content pre {
+  @apply bg-dark-200 p-6 rounded-lg overflow-x-auto mb-6 border border-dark-100 shadow-inner;
+  font-family: "Fira Code", "Courier New", monospace;
+}
+
+.blog-content pre code {
+  @apply bg-transparent p-0 text-slate-light text-sm leading-6 border-0;
+  word-break: normal;
+  white-space: pre;
+}
+
+.blog-content a {
+  @apply text-accent hover:text-accent-light transition-colors underline decoration-accent/30 hover:decoration-accent underline-offset-2;
+}
+
+.blog-content img {
+  @apply rounded-lg shadow-lg border border-dark-100 mb-6 max-w-full h-auto;
+}
+
+.blog-content table {
+  @apply w-full bg-dark-200 rounded-lg border border-dark-100 mb-6 shadow-lg overflow-hidden;
+}
+
+.blog-content th {
+  @apply bg-dark-300 text-white font-bold p-4 border-b border-dark-100 text-left;
+}
+
+.blog-content td {
+  @apply text-slate-light p-4 border-b border-dark-100 last:border-b-0;
+}
+
+.blog-content hr {
+  @apply border-dark-100 my-8;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-accent bg-dark-200 p-6 rounded-r-lg mb-6 italic shadow-lg;
+}
+
+.blog-content code {
+  @apply bg-dark-300 px-2 py-1 rounded text-accent-light font-mono text-sm;
+}
+
+.blog-content pre {
+  @apply bg-dark-200 p-6 rounded-lg overflow-x-auto mb-6 border border-dark-100 shadow-lg;
+}
+
+.blog-content pre code {
+  @apply bg-transparent p-0 text-slate-light;
+}
+
+.blog-content a {
+  @apply text-accent hover:text-accent-light transition-colors;
+}
+
+.blog-content img {
+  @apply rounded-lg shadow-lg border border-dark-100 mb-6;
+}
+
+.blog-content table {
+  @apply w-full bg-dark-200 rounded-lg border border-dark-100 mb-6 shadow-lg;
+}
+
+.blog-content th {
+  @apply bg-dark-300 text-white font-bold p-4 border-b border-dark-100;
+}
+
+.blog-content td {
+  @apply text-slate-light p-4 border-b border-dark-100;
+}
+
+/* Utility Classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

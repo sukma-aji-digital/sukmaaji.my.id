@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sukma Aji Digital - Solusi Digital untuk Bisnis Anda</title>
+    <meta
+      name="description"
+      content="Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda."
+    />
+    <meta
+      name="keywords"
+      content="Sukma Aji Digital, Muhammad Aji Sukma,jasa digital, pembuatan website, pengembangan sistem informasi, manajemen jaringan, server VPS, web developer, teknologi digital, solusi bisnis"
+    />
+    <meta name="author" content="Sukma Aji Digital" />
+    <link rel="canonical" href="https://sukmaaji.my.id" />
+
+    <!-- Open Graph Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sukma Aji Digital" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:url" content="https://sukmaaji.my.id" />
+    <meta property="og:title" content="Sukma Aji Digital - Solusi Digital untuk Bisnis Anda" />
+    <meta
+      property="og:description"
+      content="Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda."
+    />
+    <meta property="og:image" content="images/logo.webp" />
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sukmaajidigital" />
+    <meta name="twitter:title" content="Sukma Aji Digital - Solusi Digital untuk Bisnis Anda" />
+    <meta
+      name="twitter:description"
+      content="Sukma Aji Digital adalah perusahaan jasa digital yang menyediakan layanan pembuatan website, pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS untuk mendukung pertumbuhan bisnis Anda."
+    />
+    <meta name="twitter:image" content="images/logo.webp" />
+
+    <meta name="robots" content="index, follow" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.webp" />
+    <link rel="icon" type="image/png" href="images/logo.webp" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#6366F1" />
+    <meta name="theme-color" content="#6366F1" />
+    <link rel="shortcut icon" type="image/png" href="images/logo.webp" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                100: "#1E293B",
+                200: "#172033",
+                300: "#0F172A",
+                400: "#0A0F1C",
+              },
+              accent: {
+                DEFAULT: "#6366F1",
+                light: "#818CF8",
+                dark: "#4F46E5",
+              },
+              slate: {
+                light: "#F1F5F9",
+                dark: "#94A3B8",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="antialiased text-slate-light font-sans">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-dark-300/90 backdrop-blur-md border-b border-dark-100">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#home" class="text-xl font-bold gradient-text flex items-center">
+          <div class="p-2 mr-2">
+            <img
+              src="images/logo.webp"
+              alt="Logo Sukma Aji Digital"
+              class="w-10 h-10 object-contain"
+            />
+          </div>
+          <span class="text-accent">Sukma</span>
+          <span class="text-white">Aji</span>
+          <span class="text-accent">Digital</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/blogs" class="nav-link text-slate-dark hover:text-white transition">Blog</a>
+          <a href="#about" class="nav-link text-slate-dark hover:text-white transition">Tentang</a>
+          <a href="#services" class="nav-link text-slate-dark hover:text-white transition">Jasa</a>
+          <a href="#portfolio" class="nav-link text-slate-dark hover:text-white transition"
+            >Portfolio</a
+          >
+          <a href="#contact" class="nav-link text-slate-dark hover:text-white transition">Kontak</a>
+          <a href="/owner" class="nav-link text-slate-dark hover:text-white transition">Owner</a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-xl bg-dark-200 p-2 rounded-lg">
+          <i class="fas fa-bars text-slate-light"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-dark-200 border-t border-dark-100">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <a href="blogs" class="py-2 text-slate-dark hover:text-white transition">Blog</a>
+          <a href="#about" class="py-2 text-slate-dark hover:text-white transition">Tentang</a>
+          <a href="#services" class="py-2 text-slate-dark hover:text-white transition">Jasa</a>
+          <a href="#portfolio" class="py-2 text-slate-dark hover:text-white transition"
+            >Portfolio</a
+          >
+          <a href="#contact" class="py-2 text-slate-dark hover:text-white transition">Kontak</a>
+          <a href="/owner" class="py-2 text-slate-dark hover:text-white transition">Owner</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text Section -->
+          <div class="text-center md:text-left animate-fade-in">
+            <p class="text-accent font-medium mb-4">
+              <span class="w-8 h-px bg-accent inline-block mr-3 align-middle"></span>
+              Selamat Datang di Sukma Aji Digital
+            </p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Solusi Digital untuk Bisnis Anda
+            </h1>
+            <p class="text-slate-dark text-lg mb-8 max-w-xl">
+              Sukma Aji Digital adalah perusahaan yang bergerak di bidang jasa digital website,
+              pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS. Kami
+              berkomitmen memberikan layanan terbaik untuk mendukung pertumbuhan bisnis Anda di era
+              digital.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href="#services"
+                class="bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-dark transition shadow-lg shadow-accent/20"
+              >
+                <i class="fas fa-briefcase mr-2"></i>Lihat Jasa Kami
+              </a>
+            </div>
+            <div class="flex gap-6 mt-12 justify-center md:justify-start">
+              <a
+                href="https://github.com/sukmaajidigital"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sukmaaji/"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://instagram.com/sukmaaji.digital"
+                class="text-slate-dark hover:text-accent text-xl transition-all"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Image Section -->
+          <div class="animate-fade-in delay-300 flex justify-center">
+            <img
+              src="images/banner.png"
+              alt="Digital Picture - Sukma Aji Digital"
+              class="w-full h-full object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Jasa Kami
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Layanan digital yang kami tawarkan untuk mendukung bisnis Anda
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover text-center">
+            <i class="fas fa-globe text-accent text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-white mb-2">Pembuatan Website</h3>
+            <p class="text-slate-dark">Membuat website profesional sesuai kebutuhan bisnis Anda.</p>
+          </div>
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover text-center">
+            <i class="fas fa-network-wired text-accent text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-white mb-2">Pengembangan Sistem Informasi</h3>
+            <p class="text-slate-dark">
+              Membangun sistem informasi perusahaan yang efisien dan terintegrasi.
+            </p>
+          </div>
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover text-center">
+            <i class="fas fa-server text-accent text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-white mb-2">Manajemen Jaringan Perusahaan</h3>
+            <p class="text-slate-dark">Mengelola dan mengoptimalkan jaringan perusahaan Anda.</p>
+          </div>
+          <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover text-center">
+            <i class="fas fa-cloud text-accent text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-white mb-2">Penyewaan Server VPS</h3>
+            <p class="text-slate-dark">
+              Menyediakan server VPS handal untuk kebutuhan bisnis Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Project Portfolio
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">Beberapa projek saya</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- START CARD CARD PORTO -->
+          <div class="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover">
+            <div
+              class="h-48 relative overflow-hidden"
+              style="
+                background-image: url('images/project/muria.jpg');
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              <!-- <div class="absolute inset-0 bg-dark-400/50 flex items-center justify-center">
+                <span class="bg-white text-dark-300 px-4 py-2 rounded-lg font-semibold"></span>
+              </div> -->
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">Content Management System</h3>
+              <p class="text-slate-dark mb-4">
+                CMS untuk manajemen konten website dengan fitur user management, artikel, dan
+                kategori.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">Laravel</span>
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">MySQL</span>
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Tailwind</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
+                <a
+                  href="https://muriabatikkudus.com"
+                  target="_blank"
+                  class="text-accent hover:text-accent-light text-sm font-medium"
+                >
+                  <i class="fas fa-external-link-alt mr-1"></i> Lihat Detail
+                </a>
+                <a
+                  href="https://github.com/sukmaajidigital"
+                  class="text-slate-dark hover:text-white"
+                >
+                  <i class="fab fa-github text-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- END CARD CARD PORTO -->
+          <!-- ============== -->
+          <!-- START CARD CARD PORTO -->
+          <div class="bg-dark-200 rounded-2xl overflow-hidden border border-dark-100 card-hover">
+            <div
+              class="h-48 relative overflow-hidden"
+              style="
+                background-image: url('images/project/dashboardmuria.jpg');
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              <!-- <div class="absolute inset-0 bg-dark-400/50 flex items-center justify-center">
+                <span class="bg-white text-dark-300 px-4 py-2 rounded-lg font-semibold"></span>
+              </div> -->
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">UMKM Management System</h3>
+              <p class="text-slate-dark mb-4">
+                CMS untuk memnajement UMKM dengan fitur produk, kategori, dan laporan penjualan. dan
+                semua kebutuhan umkm serta kustomisasi dinamiskan sesuai kebutuhan UMKM.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">Laravel</span>
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">MySQL</span>
+                <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full"
+                  >Tailwind</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
+                <a
+                  href="https://sukmaaji.my.id/mycode/dashboard_umkm/"
+                  target="_blank"
+                  class="text-accent hover:text-accent-light text-sm font-medium"
+                >
+                  <i class="fas fa-external-link-alt mr-1"></i> Lihat Detail
+                </a>
+                <a
+                  href="https://github.com/sukmaajidigital"
+                  class="text-slate-dark hover:text-white"
+                >
+                  <i class="fab fa-github text-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- END CARD CARD PORTO -->
+          <!-- ============== -->
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="https://sukmaaji.my.id/mycode"
+            class="inline-flex items-center border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition"
+          >
+            <i class="fab fa-github mr-2"></i>show more projects
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-300">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Tentang Kami
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Mengenal lebih dekat Sukma Aji Digital dan komitmen kami dalam dunia digital
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
+              <h3 class="text-xl font-semibold text-white mb-4">Profil Perusahaan</h3>
+              <p class="text-slate-dark mb-6">
+                Sukma Aji Digital didirikan untuk membantu bisnis dan organisasi bertransformasi
+                secara digital. Kami menawarkan layanan pembuatan website, pengembangan sistem
+                informasi, manajemen jaringan, dan penyewaan server VPS dengan standar profesional
+                dan teknologi terkini.
+              </p>
+              <p class="text-slate-dark mb-6">
+                Kami percaya bahwa solusi digital yang tepat dapat meningkatkan efisiensi,
+                produktivitas, dan daya saing bisnis Anda. Tim kami berpengalaman dan selalu
+                berinovasi untuk memberikan hasil terbaik.
+              </p>
+              <p class="text-slate-dark">
+                Bersama Sukma Aji Digital, wujudkan visi digital Anda dengan layanan yang terpercaya
+                dan berkualitas.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-code text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Inovasi Digital</h3>
+                <p class="text-slate-dark text-sm">
+                  Selalu berinovasi dalam solusi digital untuk bisnis Anda
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-layer-group text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Teknologi Terkini</h3>
+                <p class="text-slate-dark text-sm">
+                  Menggunakan teknologi terbaru untuk hasil optimal
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Efisiensi & Performa</h3>
+                <p class="text-slate-dark text-sm">
+                  Solusi yang efisien dan performa tinggi untuk bisnis Anda
+                </p>
+              </div>
+              <div
+                class="bg-dark-200 rounded-2xl p-6 border border-dark-100 text-center card-hover"
+              >
+                <div
+                  class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fas fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Keamanan</h3>
+                <p class="text-slate-dark text-sm">
+                  Keamanan data dan sistem adalah prioritas utama kami
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white section-title inline-block">
+            Hubungi Saya
+          </h2>
+          <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+            Tertarik untuk berkolaborasi? Mari berbicara tentang proyek Anda
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-envelope text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Email</h3>
+            <p class="text-slate-dark mb-3">sukmaajidigital@gmail.com</p>
+            <a
+              href="mailto:sukmaajidigital@gmail.com"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Kirim Pesan <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-linkedin text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">LinkedIn</h3>
+            <p class="text-slate-dark mb-3">MUHAMMAD AJI SUKMA</p>
+            <a
+              href="https://www.linkedin.com/in/sukmaaji/"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Terhubung <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="bg-dark-200 rounded-2xl p-6 text-center card-hover">
+            <div
+              class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fab fa-whatsapp text-white text-2xl"></i>
+            </div>
+            <h3 class="text-white font-semibold mb-2">WhatsApp</h3>
+            <p class="text-slate-dark mb-3">+62 851-7974-2322</p>
+            <a
+              href="https://wa.me/6285179742322"
+              target="_blank"
+              class="text-accent text-sm hover:text-accent-light"
+            >
+              Chat Sekarang <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark-400 border-t border-dark-300">
+      <div class="container mx-auto px-6 text-center">
+        <a href="#home" class="text-xl font-bold gradient-text flex items-center justify-center">
+          <div class="p-2 mr-2">
+            <img
+              src="images/logo.webp"
+              alt="Logo Sukma Aji Digital"
+              class="w-10 h-10 object-contain"
+            />
+          </div>
+          <span class="text-accent">Sukma</span
+          ><span class="text-white">Aji<span class="text-accent">Digital</span></span>
+        </a>
+
+        <p class="text-slate-dark mt-4 max-w-2xl mx-auto">
+          Seorang penggiat teknologi informasi yang suka belajar hal baru dan berbagi ilmu.
+        </p>
+
+        <div class="flex justify-center space-x-6 my-6">
+          <a
+            href="https://github.com/sukmaajidigital"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sukmaaji/"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://instagram.com/sukmaaji.digital"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://x.com/sukmaajidigital"
+            target="_blank"
+            class="text-slate-dark hover:text-accent text-xl transition-all"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+
+        <p class="text-sm text-slate-dark">&copy; 2025 Sukma Aji Digital. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
