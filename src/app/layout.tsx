@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.className} antialiased text-slate-light`}>
         <AuthProvider>
-          <PWAInstaller />
+          {/* <PWAInstaller /> */}
           {children}
           <Analytics />
           <SpeedInsights />

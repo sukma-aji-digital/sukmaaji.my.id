@@ -232,34 +232,41 @@ const MathGame = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
       <div className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-3 sm:py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <Link href="/games" className="text-blue-500 hover:text-blue-600 transition-colors">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/games"
+                className="text-blue-500 hover:text-blue-600 transition-colors text-sm sm:text-base"
+              >
                 ← Back to Games
               </Link>
-              <div className="text-2xl font-bold text-gray-800">🧮 Math Challenge</div>
+              <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">
+                🧮 Math Challenge
+              </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               {session?.user && (
-                <div className="text-sm text-gray-600">
+                <div className="hidden sm:block text-xs sm:text-sm text-gray-600">
                   Playing as: <span className="font-medium">{session.user.name}</span>
                 </div>
               )}
               <button
                 onClick={handleEndGame}
-                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors"
+                className="px-2 sm:px-4 py-1 sm:py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
               >
                 End Game
               </button>
-              <AuthButtons />
+              <div className="hidden sm:block">
+                <AuthButtons />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Game Content */}
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         {/* Left sidebar with stats */}
         <div className="hidden lg:block lg:w-80 p-6 space-y-6">
           <GameStats
@@ -273,11 +280,11 @@ const MathGame = () => {
         </div>
 
         {/* Main game area */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-h-0">
           {/* Mobile stats header */}
-          <div className="lg:hidden bg-white shadow-lg p-4 border-b">
-            <div className="flex justify-between items-center text-sm mb-3">
-              <div className="flex space-x-4">
+          <div className="lg:hidden bg-white shadow-lg p-3 sm:p-4 border-b">
+            <div className="flex justify-between items-center text-xs sm:text-sm mb-3">
+              <div className="flex space-x-2 sm:space-x-4">
                 <span className="font-semibold">Level {level}</span>
                 <span className="text-blue-600">{score} pts</span>
                 <span className="text-green-600">
@@ -285,7 +292,11 @@ const MathGame = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className={`font-bold ${timeLeft <= 10 ? "text-red-600" : "text-orange-600"}`}>
+                <div
+                  className={`font-bold text-sm sm:text-base ${
+                    timeLeft <= 10 ? "text-red-600" : "text-orange-600"
+                  }`}
+                >
                   {timeLeft}s
                 </div>
                 <button
@@ -297,8 +308,9 @@ const MathGame = () => {
               </div>
             </div>
 
-            {/* Mobile leaderboard preview */}
+            {/* Mobile leaderboard preview - simplified for mobile */}
             <div className="xl:hidden">
+              <div className="text-xs text-center text-gray-500 mb-2">Live Leaderboard</div>
               <LiveLeaderboard gameType="math" />
             </div>
           </div>

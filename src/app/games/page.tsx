@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import AuthButtons from "@/components/AuthButtons";
+import RegisteredUsers from "@/components/RegisteredUsers";
 import Link from "next/link";
 import FooterGame from "@/components/FooterGame";
 
@@ -306,10 +307,16 @@ export default function GamesPage() {
                 )}
               </div>
             )}
+
+            {/* Registered Users Section - Mobile */}
+            <div className="lg:hidden">
+              <RegisteredUsers limit={10} showStats={true} />
+            </div>
           </div>
 
-          {/* Sidebar - Global Leaderboard */}
-          <div className="lg:col-span-1">
+          {/* Sidebar - Global Leaderboard and Registered Users */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Global Leaderboard */}
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
@@ -403,6 +410,11 @@ export default function GamesPage() {
                   </Link>
                 </div>
               )}
+            </div>
+
+            {/* Registered Users - Desktop only */}
+            <div className="hidden lg:block">
+              <RegisteredUsers limit={15} showStats={true} />
             </div>
           </div>
         </div>
