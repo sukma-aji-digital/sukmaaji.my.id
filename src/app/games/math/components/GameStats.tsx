@@ -55,7 +55,7 @@ const GameStats: React.FC<GameStatsProps> = ({
           <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border-2 border-red-200">
             <span className="text-gray-700 font-medium">Waktu:</span>
             <span
-              className={`text-2xl font-bold ${
+              className={`text-2xl font-bold flex items-center gap-1 ${
                 timeLeft <= 10
                   ? "text-red-600 animate-pulse"
                   : timeLeft <= 30
@@ -63,7 +63,7 @@ const GameStats: React.FC<GameStatsProps> = ({
                   : "text-green-600"
               }`}
             >
-              {timeLeft}s
+              ⏰ {timeLeft}s
             </span>
           </div>
         </div>
@@ -91,9 +91,14 @@ const GameStats: React.FC<GameStatsProps> = ({
           jawaban benar lagi untuk naik level
         </p>
         <div className="mt-3 text-center">
-          <span className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">
-            🎁 Bonus +100s di level berikutnya
-          </span>
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            <span className="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">
+              ✅ +10s
+            </span>
+            <span className="inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full font-semibold">
+              ❌ -4s
+            </span>
+          </div>
         </div>
       </div>
 

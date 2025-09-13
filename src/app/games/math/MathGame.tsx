@@ -32,6 +32,7 @@ const MathGame = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [showEndGameConfirm, setShowEndGameConfirm] = useState(false);
+  const [gameStartTime, setGameStartTime] = useState<number>(0);
 
   // Generate random math question based on level
   const generateQuestion = (): Question => {
@@ -131,6 +132,7 @@ const MathGame = () => {
     setTotalQuestions(0);
     setLevel(1);
     setTimeLeft(60);
+    setGameStartTime(Date.now());
     setCurrentQuestion(generateQuestion());
     setUserAnswer("");
     setFeedback("");
@@ -151,20 +153,23 @@ const MathGame = () => {
       setCorrectAnswers(newCorrectAnswers);
       const newScore = score + level * 10;
       setScore(newScore);
-      setFeedback("🎉 Benar!");
+
+      // Add 10 seconds for correct answer
+      setTimeLeft((prevTime) => prevTime + 10);
+      setFeedback("🎉 Benar! +10 detik");
       setFeedbackType("correct");
 
-      // Level up every 10 correct answers with bonus time
+      // Level up every 10 correct answers
       if (newCorrectAnswers % 10 === 0) {
         const newLevel = level + 1;
         setLevel(newLevel);
-        // Add 100 seconds bonus time when leveling up
-        setTimeLeft((prevTime) => prevTime + 100);
-        setFeedback(`🚀 Level Up! Level ${newLevel} + 100s Bonus!`);
+        setFeedback(`🚀 Level Up! Level ${newLevel}!`);
         setFeedbackType("levelup");
       }
     } else {
-      setFeedback(`❌ Salah! Jawaban: ${currentQuestion.answer}`);
+      // Subtract 4 seconds for wrong answer
+      setTimeLeft((prevTime) => Math.max(0, prevTime - 4));
+      setFeedback(`❌ Salah! Jawaban: ${currentQuestion.answer} (-4 detik)`);
       setFeedbackType("wrong");
     }
 
@@ -215,6 +220,9 @@ const MathGame = () => {
   }
 
   if (gameOver) {
+    const gameEndTime = Date.now();
+    const gameDuration = Math.round((gameEndTime - gameStartTime) / 1000);
+
     return (
       <GameOver
         score={score}
@@ -223,7 +231,7 @@ const MathGame = () => {
         level={level}
         accuracy={accuracy}
         onRestartGame={startGame}
-        timeTaken={60 - timeLeft} // Calculate actual time taken
+        timeTaken={gameDuration}
       />
     );
   }
@@ -273,11 +281,15 @@ const MathGame = () => {
               </div>
               <div className="flex items-center gap-2">
                 <div
-                  className={`font-bold text-sm sm:text-base ${
-                    timeLeft <= 10 ? "text-red-600" : "text-orange-600"
+                  className={`font-bold text-sm sm:text-base transition-colors duration-500 ${
+                    timeLeft <= 10
+                      ? "text-red-600 animate-pulse"
+                      : timeLeft <= 30
+                      ? "text-orange-600"
+                      : "text-green-600"
                   }`}
                 >
-                  {timeLeft}s
+                  ⏰ {timeLeft}s
                 </div>
               </div>
             </div>

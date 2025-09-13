@@ -49,10 +49,19 @@ const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
             🚀 Siap untuk Tantangan Math Game?
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-gray-600 mb-4">
             Tingkatkan kemampuan matematika Anda dengan permainan yang menantang! Kecepatan dan
             akurasi adalah kunci kesuksesan.
           </p>
+          <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg border-2 border-blue-300">
+            <p className="text-md font-semibold text-blue-800">
+              ⚡ <span className="text-green-600">Jawaban Benar +10 detik</span> |{" "}
+              <span className="text-red-600">Jawaban Salah -4 detik</span> ⚡
+            </p>
+            <p className="text-sm text-blue-700 mt-1">
+              Sistem waktu dinamis yang membuat game lebih seru dan menantang!
+            </p>
+          </div>
         </div>
 
         {/* Game Rules Section */}
@@ -85,7 +94,10 @@ const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
               <ul className="text-sm text-gray-700 space-y-2">
                 <li>• Setiap jawaban benar = Level × 10 poin</li>
                 <li>• Level naik setiap 10 jawaban benar</li>
-                <li>• Bonus waktu +100 detik setiap naik level</li>
+                <li>
+                  •{" "}
+                  <span className="font-semibold text-blue-600">Bonus waktu per jawaban benar</span>
+                </li>
                 <li>• Akurasi mempengaruhi rating final</li>
               </ul>
             </div>
@@ -93,10 +105,16 @@ const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
             <div className="bg-gray-50 p-4 rounded-lg border">
               <h4 className="font-bold text-gray-800 mb-3">⏱️ Sistem Waktu</h4>
               <ul className="text-sm text-gray-700 space-y-2">
-                <li>• Waktu awal: 60 detik</li>
-                <li>• Bonus +100 detik setiap level up</li>
+                <li>
+                  • <span className="font-semibold text-green-600">Waktu awal: 60 detik</span>
+                </li>
+                <li>
+                  • <span className="font-semibold text-green-600">Jawaban benar: +10 detik</span>
+                </li>
+                <li>
+                  • <span className="font-semibold text-red-600">Jawaban salah: -4 detik</span>
+                </li>
                 <li>• Game berakhir saat waktu habis</li>
-                <li>• Kecepatan jawab tidak mempengaruhi skor</li>
               </ul>
             </div>
 
@@ -126,10 +144,28 @@ const GameWelcome: React.FC<GameWelcomeProps> = ({ onStartGame }) => {
         <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-8">
           <h4 className="font-bold text-yellow-800 mb-2">💡 Tips Sukses</h4>
           <div className="text-sm text-yellow-700 grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div>• Fokus pada akurasi daripada kecepatan</div>
-            <div>• Gunakan teknik perhitungan mental</div>
-            <div>• Manfaatkan bonus waktu dengan bijak</div>
-            <div>• Tetap tenang saat level meningkat</div>
+            <div>
+              • <span className="font-semibold">Fokus pada akurasi</span> - jawaban salah mengurangi
+              waktu
+            </div>
+            <div>• Manfaatkan bonus +10 detik dari jawaban benar</div>
+            <div>• Hindari terburu-buru agar tidak salah</div>
+            <div>• Tetap tenang saat waktu menipis</div>
+          </div>
+        </div>
+
+        {/* New Game Strategy Section */}
+        <div className="bg-red-50 p-4 rounded-lg border border-red-200 mb-8">
+          <h4 className="font-bold text-red-800 mb-2">⚡ Strategi Waktu</h4>
+          <div className="text-sm text-red-700">
+            <p className="mb-2">
+              <span className="font-semibold">Game ini menggunakan sistem waktu dinamis!</span>
+              Setiap jawaban benar menambah 10 detik, sedangkan jawaban salah mengurangi 4 detik.
+            </p>
+            <p>
+              Ini berarti dengan akurasi tinggi, Anda bisa bermain lebih lama dan mencapai skor yang
+              lebih tinggi. Hindari jawaban yang salah karena akan mengurangi waktu bermain Anda!
+            </p>
           </div>
         </div>
 
