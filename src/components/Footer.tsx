@@ -57,6 +57,28 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Legal Links */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 my-6">
+          <Link
+            href="/privacy-policy"
+            className="text-slate-dark hover:text-accent text-sm transition-colors underline"
+          >
+            Kebijakan Privasi
+          </Link>
+          <Link
+            href="/terms-of-service"
+            className="text-slate-dark hover:text-accent text-sm transition-colors underline"
+          >
+            Syarat & Ketentuan
+          </Link>
+          <Link
+            href="/games"
+            className="text-slate-dark hover:text-accent text-sm transition-colors underline"
+          >
+            Game Center
+          </Link>
+        </div>
+
         <p className="text-sm text-slate-dark">
           &copy; 2025 Sukma Aji Digital. All rights reserved.
         </p>
