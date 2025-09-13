@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://sukmaaji.my.id/images/games-portal-og.png",
+        url: "https://sukmaaji.my.id/images/game.png",
         width: 1200,
         height: 630,
         alt: "Sukmaaji Digital Games Portal - Educational Games",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Bermain game edukatif yang menyenangkan! Latih kemampuan matematika, memori, dan logika.",
     creator: "@sukmaaji",
-    images: ["https://sukmaaji.my.id/images/games-portal-og.png"],
+    images: ["https://sukmaaji.my.id/images/game.png"],
   },
   category: "games",
 };
