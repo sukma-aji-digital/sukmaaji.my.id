@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import AuthButtons from "@/components/AuthButtons";
 import Link from "next/link";
+import FooterGame from "@/components/FooterGame";
 
 interface GameItem {
   id: string;
@@ -59,15 +60,64 @@ const GAMES: GameItem[] = [
   },
 ];
 
+interface UserStats {
+  totalGames: number;
+  bestScore: number;
+  globalRank: number;
+  totalTimePlayed: number;
+}
+
 export default function GamesPage() {
   const { data: session, status } = useSession();
   const [globalLeaderboard, setGlobalLeaderboard] = useState<GlobalLeaderboardEntry[]>([]);
+  const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedGame, setSelectedGame] = useState<string>("all");
 
   useEffect(() => {
     fetchGlobalLeaderboard();
-  }, [selectedGame]);
+    if (session?.user) {
+      fetchUserStats();
+    }
+  }, [selectedGame, session]);
+
+  const fetchUserStats = async () => {
+    if (!session?.user) return;
+
+    try {
+      const userId = (session.user as any)?.id;
+      if (!userId) return;
+
+      const response = await fetch(`/api/game?userId=${userId}&limit=1`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.userStats) {
+          // Fetch additional stats for total time played and total games across all game types
+          const allGamesResponse = await fetch(`/api/leaderboard/global?limit=1000`);
+          if (allGamesResponse.ok) {
+            const allGamesData = await allGamesResponse.json();
+            const userGames = allGamesData.leaderboard.filter(
+              (entry: any) => entry.users.id === userId
+            );
+
+            const totalTimePlayed = userGames.reduce(
+              (sum: number, game: any) => sum + (game.time_played || 0),
+              0
+            );
+
+            setUserStats({
+              totalGames: data.userStats.totalGames,
+              bestScore: data.userStats.bestScore,
+              globalRank: data.userStats.rank,
+              totalTimePlayed: Math.floor(totalTimePlayed / 3600), // Convert to hours
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching user stats:", error);
+    }
+  };
 
   const fetchGlobalLeaderboard = async () => {
     try {
@@ -126,7 +176,7 @@ export default function GamesPage() {
                 href="/"
                 className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors"
               >
-                🎮 Games Portal
+                🎮 SukmaAji Games
               </Link>
             </div>
             <div className="flex items-center gap-4">
@@ -224,22 +274,36 @@ export default function GamesPage() {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">0</div>
+                    <div className="text-2xl font-bold text-blue-600">
+                      {userStats?.totalGames || 0}
+                    </div>
                     <div className="text-sm text-gray-600">Games Played</div>
                   </div>
                   <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">0</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      {userStats?.bestScore?.toLocaleString() || 0}
+                    </div>
                     <div className="text-sm text-gray-600">Best Score</div>
                   </div>
                   <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600">-</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                      {userStats?.globalRank ? `#${userStats.globalRank}` : "-"}
+                    </div>
                     <div className="text-sm text-gray-600">Global Rank</div>
                   </div>
                   <div className="text-center p-4 bg-orange-50 rounded-lg">
-                    <div className="text-2xl font-bold text-orange-600">0h</div>
+                    <div className="text-2xl font-bold text-orange-600">
+                      {userStats?.totalTimePlayed || 0}h
+                    </div>
                     <div className="text-sm text-gray-600">Time Played</div>
                   </div>
                 </div>
+
+                {!userStats && (
+                  <div className="text-center text-gray-500 text-sm mt-4">
+                    Play some games to see your stats!
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -343,6 +407,7 @@ export default function GamesPage() {
           </div>
         </div>
       </div>
+      <FooterGame />
     </div>
   );
 }

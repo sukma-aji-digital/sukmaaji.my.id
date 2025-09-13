@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import GameWelcome from "./components/GameWelcome";
 import GameStats from "./components/GameStats";
 import GameArea from "./components/GameArea";
 import GameOver from "./components/GameOver";
 import LiveLeaderboard from "@/components/LiveLeaderboard";
+import AuthButtons from "@/components/AuthButtons";
 
 interface Question {
   num1: number;
@@ -15,6 +18,7 @@ interface Question {
 }
 
 const MathGame = () => {
+  const { data: session, status } = useSession();
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [userAnswer, setUserAnswer] = useState("");
   const [score, setScore] = useState(0);
@@ -26,6 +30,7 @@ const MathGame = () => {
   const [timeLeft, setTimeLeft] = useState(10);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [showEndGameConfirm, setShowEndGameConfirm] = useState(false);
 
   // Generate random math question based on level
   const generateQuestion = (): Question => {
@@ -191,6 +196,18 @@ const MathGame = () => {
 
   const accuracy = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
 
+  // Function to end game manually
+  const endGameManually = () => {
+    setShowEndGameConfirm(false);
+    setGameOver(true);
+    setGameStarted(false);
+  };
+
+  // Function to show end game confirmation
+  const handleEndGame = () => {
+    setShowEndGameConfirm(true);
+  };
+
   // Render different screens based on game state
   if (!gameStarted && !gameOver) {
     return <GameWelcome onStartGame={startGame} />;
@@ -212,60 +229,125 @@ const MathGame = () => {
 
   // Main game screen with full screen layout
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex">
-      {/* Left sidebar with stats */}
-      <div className="hidden lg:block lg:w-80 p-6 space-y-6">
-        <GameStats
-          score={score}
-          level={level}
-          correctAnswers={correctAnswers}
-          totalQuestions={totalQuestions}
-          accuracy={accuracy}
-          timeLeft={timeLeft}
-        />
-      </div>
-
-      {/* Main game area */}
-      <div className="flex-1 flex flex-col">
-        {/* Mobile stats header */}
-        <div className="lg:hidden bg-white shadow-lg p-4 border-b">
-          <div className="flex justify-between items-center text-sm mb-3">
-            <div className="flex space-x-4">
-              <span className="font-semibold">Level {level}</span>
-              <span className="text-blue-600">{score} pts</span>
-              <span className="text-green-600">
-                {correctAnswers}/{totalQuestions}
-              </span>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Header */}
+      <div className="bg-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <Link href="/games" className="text-blue-500 hover:text-blue-600 transition-colors">
+                ← Back to Games
+              </Link>
+              <div className="text-2xl font-bold text-gray-800">🧮 Math Challenge</div>
             </div>
-            <div className={`font-bold ${timeLeft <= 10 ? "text-red-600" : "text-orange-600"}`}>
-              {timeLeft}s
+            <div className="flex items-center gap-4">
+              {session?.user && (
+                <div className="text-sm text-gray-600">
+                  Playing as: <span className="font-medium">{session.user.name}</span>
+                </div>
+              )}
+              <button
+                onClick={handleEndGame}
+                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors"
+              >
+                End Game
+              </button>
+              <AuthButtons />
             </div>
-          </div>
-
-          {/* Mobile leaderboard preview */}
-          <div className="xl:hidden">
-            <LiveLeaderboard gameType="math" />
           </div>
         </div>
+      </div>
 
-        {/* Game area */}
-        {currentQuestion && (
-          <GameArea
-            currentQuestion={currentQuestion}
-            userAnswer={userAnswer}
-            setUserAnswer={setUserAnswer}
-            onSubmitAnswer={submitAnswer}
-            feedback={feedback}
-            feedbackType={feedbackType}
+      {/* Game Content */}
+      <div className="flex">
+        {/* Left sidebar with stats */}
+        <div className="hidden lg:block lg:w-80 p-6 space-y-6">
+          <GameStats
+            score={score}
             level={level}
+            correctAnswers={correctAnswers}
+            totalQuestions={totalQuestions}
+            accuracy={accuracy}
+            timeLeft={timeLeft}
           />
-        )}
+        </div>
+
+        {/* Main game area */}
+        <div className="flex-1 flex flex-col">
+          {/* Mobile stats header */}
+          <div className="lg:hidden bg-white shadow-lg p-4 border-b">
+            <div className="flex justify-between items-center text-sm mb-3">
+              <div className="flex space-x-4">
+                <span className="font-semibold">Level {level}</span>
+                <span className="text-blue-600">{score} pts</span>
+                <span className="text-green-600">
+                  {correctAnswers}/{totalQuestions}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className={`font-bold ${timeLeft <= 10 ? "text-red-600" : "text-orange-600"}`}>
+                  {timeLeft}s
+                </div>
+                <button
+                  onClick={handleEndGame}
+                  className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs"
+                >
+                  End
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile leaderboard preview */}
+            <div className="xl:hidden">
+              <LiveLeaderboard gameType="math" />
+            </div>
+          </div>
+
+          {/* Game area */}
+          {currentQuestion && (
+            <GameArea
+              currentQuestion={currentQuestion}
+              userAnswer={userAnswer}
+              setUserAnswer={setUserAnswer}
+              onSubmitAnswer={submitAnswer}
+              feedback={feedback}
+              feedbackType={feedbackType}
+              level={level}
+            />
+          )}
+        </div>
+
+        {/* Right sidebar with live leaderboard */}
+        <div className="hidden xl:block xl:w-80 p-6">
+          <LiveLeaderboard gameType="math" />
+        </div>
       </div>
 
-      {/* Right sidebar with live leaderboard */}
-      <div className="hidden xl:block xl:w-80 p-6">
-        <LiveLeaderboard gameType="math" />
-      </div>
+      {/* End Game Confirmation Modal */}
+      {showEndGameConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md mx-4">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">End Game?</h3>
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to end the game? Your current score will be saved.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowEndGameConfirm(false)}
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={endGameManually}
+                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
+              >
+                End Game
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

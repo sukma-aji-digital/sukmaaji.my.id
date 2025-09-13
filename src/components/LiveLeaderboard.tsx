@@ -7,12 +7,17 @@ interface LeaderboardEntry {
   id: string;
   score: number;
   level_reached: number;
+  correct_answers: number;
+  total_questions: number;
+  time_played: number;
+  accuracy_percentage: number;
+  game_type: string;
+  created_at: string;
   users: {
     id: string;
     name: string;
     avatar_url?: string;
   };
-  created_at: string;
 }
 
 interface LiveLeaderboardProps {
@@ -120,7 +125,8 @@ export default function LiveLeaderboard({
           {leaderboard.map((entry, index) => {
             const isCurrentUser =
               session?.user?.email === entry.users.name ||
-              (session?.user as any)?.id === entry.users.id;
+              (session?.user as any)?.id === entry.users.id ||
+              session?.user?.email === entry.users.name; // Check email match
 
             return (
               <div
@@ -145,7 +151,7 @@ export default function LiveLeaderboard({
                       />
                     )}
                     <span className="text-xs font-medium text-gray-800 truncate">
-                      {entry.users.name}
+                      {entry.users?.name || "Anonymous Player"}
                       {isCurrentUser && <span className="ml-1 text-blue-600">•</span>}
                     </span>
                   </div>
