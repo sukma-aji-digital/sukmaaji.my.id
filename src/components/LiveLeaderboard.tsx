@@ -180,7 +180,7 @@ export default function LiveLeaderboard({
 
       <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-200">
         <a
-          href="/games/leaderboard"
+          href="/games/math/leaderboard"
           className="block w-full text-center py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs font-medium transition-colors"
         >
           View Full Board

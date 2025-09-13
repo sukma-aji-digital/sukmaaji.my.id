@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import GameHeader from "@/components/GameHeader";
 import GameWelcome from "./components/GameWelcome";
 import GameStats from "./components/GameStats";
 import GameArea from "./components/GameArea";
@@ -230,40 +231,19 @@ const MathGame = () => {
   // Main game screen with full screen layout
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Header */}
-      <div className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-3 sm:py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Link
-                href="/games"
-                className="text-blue-500 hover:text-blue-600 transition-colors text-sm sm:text-base"
-              >
-                ← Back to Games
-              </Link>
-              <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">
-                🧮 Math Challenge
-              </div>
+      {/* Game Header */}
+      <GameHeader
+        title="🧮 Math Challenge"
+        showEndGameButton={true}
+        onEndGame={handleEndGame}
+        extraInfo={
+          session?.user ? (
+            <div className="text-xs text-gray-600">
+              Playing as: <span className="font-medium">{session.user.name}</span>
             </div>
-            <div className="flex items-center gap-2 sm:gap-4">
-              {session?.user && (
-                <div className="hidden sm:block text-xs sm:text-sm text-gray-600">
-                  Playing as: <span className="font-medium">{session.user.name}</span>
-                </div>
-              )}
-              <button
-                onClick={handleEndGame}
-                className="px-2 sm:px-4 py-1 sm:py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
-              >
-                End Game
-              </button>
-              <div className="hidden sm:block">
-                <AuthButtons />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          ) : null
+        }
+      />
 
       {/* Game Content */}
       <div className="flex flex-col lg:flex-row">
@@ -299,19 +279,17 @@ const MathGame = () => {
                 >
                   {timeLeft}s
                 </div>
-                <button
-                  onClick={handleEndGame}
-                  className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs"
-                >
-                  End
-                </button>
               </div>
             </div>
 
-            {/* Mobile leaderboard preview - simplified for mobile */}
+            {/* Quick leaderboard link for mobile */}
             <div className="xl:hidden">
-              <div className="text-xs text-center text-gray-500 mb-2">Live Leaderboard</div>
-              <LiveLeaderboard gameType="math" />
+              <Link
+                href="/games/math/leaderboard"
+                className="block w-full text-center py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs font-medium transition-colors"
+              >
+                🏆 View Leaderboard
+              </Link>
             </div>
           </div>
 
@@ -332,6 +310,16 @@ const MathGame = () => {
         {/* Right sidebar with live leaderboard */}
         <div className="hidden xl:block xl:w-80 p-6">
           <LiveLeaderboard gameType="math" />
+
+          {/* Additional Leaderboard Link */}
+          <div className="mt-4">
+            <Link
+              href="/games/math/leaderboard"
+              className="block w-full text-center py-3 px-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              📊 Full Leaderboard
+            </Link>
+          </div>
         </div>
       </div>
 

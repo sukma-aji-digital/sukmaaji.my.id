@@ -1,5 +1,9 @@
 import MathGame from "./MathGame";
 
 export default function MathGamePage() {
-  return <MathGame />;
+  return (
+    <div className="min-h-screen">
+      <MathGame />
+    </div>
+  );
 }
