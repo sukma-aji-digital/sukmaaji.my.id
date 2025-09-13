@@ -23,7 +23,15 @@ export async function GET(req: NextRequest) {
 
     if (error) {
       console.error("Error fetching users:", error);
-      return NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
+      const response = NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
+      // Add no-cache headers
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      );
+      response.headers.set("Pragma", "no-cache");
+      response.headers.set("Expires", "0");
+      return response;
     }
 
     // Process user data to include stats
@@ -51,12 +59,32 @@ export async function GET(req: NextRequest) {
       .filter((user, index, array) => array.findIndex((u) => u.id === user.id) === index)
       .sort((a, b) => b.stats.bestScore - a.stats.bestScore);
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       users: uniqueUsers,
       total: uniqueUsers.length,
     });
+
+    // Add comprehensive no-cache headers
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+    );
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+    response.headers.set("Last-Modified", new Date().toUTCString());
+    response.headers.set("ETag", '"' + Date.now() + '"');
+
+    return response;
   } catch (error) {
     console.error("API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    const response = NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    // Add no-cache headers for errors too
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    );
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+    return response;
   }
 }

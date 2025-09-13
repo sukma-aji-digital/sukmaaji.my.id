@@ -89,12 +89,29 @@ export default function GamesPage() {
       const userId = (session.user as any)?.id;
       if (!userId) return;
 
-      const response = await fetch(`/api/game?userId=${userId}&limit=1`);
+      // Add cache-busting timestamp
+      const timestamp = Date.now();
+      const response = await fetch(`/api/game?userId=${userId}&limit=1&_t=${timestamp}`, {
+        cache: "no-store",
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         if (data.userStats) {
           // Fetch additional stats for total time played and total games across all game types
-          const allGamesResponse = await fetch(`/api/leaderboard/global?limit=1000`);
+          const allGamesResponse = await fetch(
+            `/api/leaderboard/global?limit=1000&_t=${timestamp}`,
+            {
+              cache: "no-store",
+              headers: {
+                "Cache-Control": "no-cache",
+                Pragma: "no-cache",
+              },
+            }
+          );
           if (allGamesResponse.ok) {
             const allGamesData = await allGamesResponse.json();
             const userGames = allGamesData.leaderboard.filter(
@@ -124,7 +141,17 @@ export default function GamesPage() {
     try {
       setLoading(true);
       const gameFilter = selectedGame === "all" ? "" : `&gameType=${selectedGame}`;
-      const response = await fetch(`/api/leaderboard/global?limit=10${gameFilter}`);
+      const timestamp = Date.now();
+      const response = await fetch(
+        `/api/leaderboard/global?limit=10${gameFilter}&_t=${timestamp}`,
+        {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

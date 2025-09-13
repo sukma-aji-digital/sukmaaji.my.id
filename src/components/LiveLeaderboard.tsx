@@ -49,7 +49,18 @@ export default function LiveLeaderboard({
     try {
       if (showLoading) setLoading(true);
 
-      const response = await fetch(`/api/leaderboard/global?limit=8&gameType=${gameType}`);
+      // Add cache-busting timestamp
+      const timestamp = Date.now();
+      const response = await fetch(
+        `/api/leaderboard/global?limit=8&gameType=${gameType}&_t=${timestamp}`,
+        {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

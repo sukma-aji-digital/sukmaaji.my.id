@@ -11,6 +11,14 @@ const nextConfig = {
     poweredByHeader: false,
     compress: true,
 
+    // Disable caching for always fresh content
+    experimental: {
+        staleTimes: {
+            dynamic: 0,  // Disable dynamic page cache
+            static: 0,   // Disable static page cache
+        },
+    },
+
     images: {
         // For VPS deployment, we can use optimized images
         // unoptimized: true    // Commented out for VPS deployment
@@ -19,7 +27,7 @@ const nextConfig = {
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     },
 
-    // Security headers
+    // Security headers and cache control
     async headers() {
         return [
             {
@@ -40,6 +48,37 @@ const nextConfig = {
                     {
                         key: 'Permissions-Policy',
                         value: 'camera=(), microphone=(), geolocation=()'
+                    },
+                    // Disable caching for all pages
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0'
+                    },
+                    {
+                        key: 'Pragma',
+                        value: 'no-cache'
+                    },
+                    {
+                        key: 'Expires',
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                source: '/api/(.*)',
+                headers: [
+                    // Extra strong no-cache headers for API routes
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0'
+                    },
+                    {
+                        key: 'Pragma',
+                        value: 'no-cache'
+                    },
+                    {
+                        key: 'Expires',
+                        value: '0'
                     }
                 ]
             }
