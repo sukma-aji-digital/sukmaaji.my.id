@@ -122,7 +122,9 @@ export default async function BlogPost({ params }: Props) {
                       <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center mr-3">
                         <i className="fas fa-user text-white text-xs"></i>
                       </div>
-                      <span>{post.author}</span>
+                      <Link href="/me" className="hover:text-accent transition">
+                        <span>{post.author}</span>
+                      </Link>
                     </div>
                     <span className="mx-3">•</span>
                     <time dateTime={post.date} className="flex items-center">
@@ -294,13 +296,18 @@ export default async function BlogPost({ params }: Props) {
                     <i className="fas fa-user text-white text-xl"></i>
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">{post.author}</h4>
-                    <p className="text-slate-dark text-sm">Full Stack Developer</p>
+                    <Link
+                      href="/me"
+                      className="text-white font-medium hover:text-accent transition"
+                    >
+                      <h4>{post.author}</h4>
+                    </Link>
+                    <p className="text-slate-dark text-sm">IT enthusiast</p>
                   </div>
                 </div>
                 <p className="text-slate-dark text-sm mb-4">
-                  Passionate full-stack developer dengan pengalaman dalam mengembangkan aplikasi web
-                  modern menggunakan Laravel, Next.js, dan teknologi terkini lainnya.
+                  Seorang IT enthusiast yang suka membagikan pengetahuan seputar teknologi,
+                  pemrograman, dan pengembangan web. Selalu antusias belajar hal baru .
                 </p>
                 <div className="flex space-x-3">
                   <a
@@ -329,7 +336,7 @@ export default async function BlogPost({ params }: Props) {
               </div>
 
               {/* Newsletter Subscription */}
-              <NewsletterSubscription />
+              {/* <NewsletterSubscription /> */}
 
               {/* Tags */}
               <div className="bg-dark-300 rounded-2xl p-6 border border-dark-100">
