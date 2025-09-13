@@ -29,6 +29,7 @@ export interface User {
 export interface GameSession {
   id: string;
   user_id: string;
+  game_type: string;
   score: number;
   level_reached: number;
   correct_answers: number;
@@ -42,6 +43,7 @@ export interface GameSession {
 
 export interface LeaderboardEntry {
   id: string;
+  game_type: string;
   score: number;
   level_reached: number;
   correct_answers: number;

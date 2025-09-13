@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
     // Parse request body
     const body = await req.json();
-    const { score, level, correctAnswers, totalQuestions, timePlayed, gameDuration, gameMode } =
+    const { score, level, correctAnswers, totalQuestions, timePlayed, gameDuration, gameType } =
       body;
 
     // Validate required fields
@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
       .from("game_sessions")
       .insert({
         user_id: userData.id,
+        game_type: gameType || "math", // Default to math
         score,
         level_reached: level,
         correct_answers: correctAnswers,
@@ -91,6 +92,7 @@ export async function GET(req: NextRequest) {
         total_questions,
         time_played,
         accuracy_percentage,
+        game_type,
         created_at,
         users (
           id,
@@ -99,6 +101,7 @@ export async function GET(req: NextRequest) {
         )
       `
       )
+      .eq("game_type", "math") // Only math games for this endpoint
       .order("score", { ascending: false })
       .limit(Math.min(limit, 100)); // Max 100 results
 
@@ -108,6 +111,7 @@ export async function GET(req: NextRequest) {
         .from("game_sessions")
         .select("score, level_reached, accuracy_percentage")
         .eq("user_id", userId)
+        .eq("game_type", "math") // Only math games
         .order("score", { ascending: false });
 
       if (!userError && userStats) {
@@ -118,6 +122,7 @@ export async function GET(req: NextRequest) {
         const { data: betterScores, error: rankError } = await supabaseAdmin
           .from("game_sessions")
           .select("score")
+          .eq("game_type", "math") // Only math games
           .gt("score", bestScore);
 
         const userRank = betterScores ? betterScores.length + 1 : 1;

@@ -51,6 +51,7 @@ const GameOver: React.FC<GameOverProps> = ({
           totalQuestions,
           timePlayed: timeTaken,
           gameDuration: timeTaken,
+          gameType: "math",
         }),
       });
 

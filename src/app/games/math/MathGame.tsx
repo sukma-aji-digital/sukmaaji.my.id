@@ -5,6 +5,7 @@ import GameWelcome from "./components/GameWelcome";
 import GameStats from "./components/GameStats";
 import GameArea from "./components/GameArea";
 import GameOver from "./components/GameOver";
+import LiveLeaderboard from "@/components/LiveLeaderboard";
 
 interface Question {
   num1: number;
@@ -213,7 +214,7 @@ const MathGame = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex">
       {/* Left sidebar with stats */}
-      <div className="hidden lg:block lg:w-80 p-6">
+      <div className="hidden lg:block lg:w-80 p-6 space-y-6">
         <GameStats
           score={score}
           level={level}
@@ -228,7 +229,7 @@ const MathGame = () => {
       <div className="flex-1 flex flex-col">
         {/* Mobile stats header */}
         <div className="lg:hidden bg-white shadow-lg p-4 border-b">
-          <div className="flex justify-between items-center text-sm">
+          <div className="flex justify-between items-center text-sm mb-3">
             <div className="flex space-x-4">
               <span className="font-semibold">Level {level}</span>
               <span className="text-blue-600">{score} pts</span>
@@ -239,6 +240,11 @@ const MathGame = () => {
             <div className={`font-bold ${timeLeft <= 10 ? "text-red-600" : "text-orange-600"}`}>
               {timeLeft}s
             </div>
+          </div>
+
+          {/* Mobile leaderboard preview */}
+          <div className="xl:hidden">
+            <LiveLeaderboard gameType="math" />
           </div>
         </div>
 
@@ -254,6 +260,11 @@ const MathGame = () => {
             level={level}
           />
         )}
+      </div>
+
+      {/* Right sidebar with live leaderboard */}
+      <div className="hidden xl:block xl:w-80 p-6">
+        <LiveLeaderboard gameType="math" />
       </div>
     </div>
   );
