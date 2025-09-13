@@ -15,15 +15,19 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "@types/uuid": "^10.0.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "gray-matter": "^4.0.3",
     "next": "^14.2.5",
+    "next-auth": "^4.24.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.11",

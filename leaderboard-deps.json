@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "install-leaderboard-deps": "npm install @supabase/supabase-js next-auth @next-auth/supabase-adapter @types/uuid uuid"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "next-auth": "^4.24.0",
+    "@next-auth/supabase-adapter": "^0.1.0",
+    "uuid": "^9.0.0"
+  }
+}

@@ -38,3 +38,5 @@ next-env.d.ts
 # Old HTML files (backup)
 /old-html-files/
 
+/database
+.env.production

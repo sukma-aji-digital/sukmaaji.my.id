@@ -44,8 +44,8 @@ export default function Header() {
 
   const isActive = (path: string) => {
     if (path === "/") return pathname === "/";
-    if (path === "/services") return pathname.startsWith("/services");
-    return pathname.startsWith(path);
+    if (path === "/services") return pathname ? pathname.startsWith("/services") : false;
+    return pathname ? pathname.startsWith(path) : false;
   };
 
   const getLinkClasses = (path: string) => {
@@ -86,6 +86,9 @@ export default function Header() {
           <Link href="/blog" className={getLinkClasses("/blog")}>
             Blog
           </Link>
+          <Link href="/games" className={getLinkClasses("/games")}>
+            Games
+          </Link>
           <Link href="/projects" className={getLinkClasses("/projects")}>
             Projects
           </Link>
@@ -122,6 +125,13 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Blog
+          </Link>
+          <Link
+            href="/games"
+            className={getMobileLinkClasses("/games")}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Games
           </Link>
           <Link
             href="/projects"
