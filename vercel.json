@@ -4,6 +4,11 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
+  "env": {
+    "NEXTAUTH_URL": "https://sukmaaji.my.id",
+    "NEXT_PUBLIC_SITE_URL": "https://sukmaaji.my.id",
+    "NODE_ENV": "production"
+  },
   "headers": [
     {
       "source": "/(.*)",

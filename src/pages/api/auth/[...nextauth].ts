@@ -130,6 +130,9 @@ export const authOptions: AuthOptions = {
       return token;
     },
   },
+  // Configure domain settings
+  useSecureCookies: process.env.NODE_ENV === "production",
+  secret: process.env.NEXTAUTH_SECRET,
   // Remove custom pages to use NextAuth default pages
   // pages: {
   //   signIn: "/auth/signin",
