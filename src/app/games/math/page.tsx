@@ -144,6 +144,7 @@ export default function GamesPage() {
         }}
       />
 
+      <MathGame />
 
       {/* <Footer /> */}
     </>
