@@ -92,7 +92,7 @@ export default function DropdownMenu({ title, items, isActive }: DropdownMenuPro
             </Link>
           ))}
         </div>
-        <div className="border-t border-dark-100 p-3">
+        {/* <div className="border-t border-dark-100 p-3">
           <Link
             href="/services"
             className="flex items-center text-accent text-sm font-medium hover:text-white transition-colors"
@@ -101,7 +101,7 @@ export default function DropdownMenu({ title, items, isActive }: DropdownMenuPro
             Lihat Semua Layanan
             <i className="fas fa-arrow-right ml-2 text-xs"></i>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -9,8 +9,17 @@ import DropdownMenu from "./DropdownMenu";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileGamesOpen, setIsMobileGamesOpen] = useState(false);
   const pathname = usePathname();
 
+  const gamesItems = [
+    {
+      title: "Math",
+      href: "/games/math",
+      description: "Game edukasi matematika yang menyenangkan",
+      icon: "fas fa-calculator",
+    },
+  ];
   const serviceItems = [
     {
       title: "Pembuatan Website",
@@ -86,6 +95,7 @@ export default function Header() {
           <Link href="/blog" className={getLinkClasses("/blog")}>
             Blog
           </Link>
+          <DropdownMenu title="Game" items={gamesItems} isActive={isActive("/games")} />
           <Link href="/projects" className={getLinkClasses("/projects")}>
             Projects
           </Link>
@@ -123,6 +133,41 @@ export default function Header() {
           >
             Blog
           </Link>
+          <div>
+            <button
+              onClick={() => setIsMobileGamesOpen(!isMobileGamesOpen)}
+              className={`py-2 transition-colors duration-200 flex items-center justify-between w-full ${
+                isActive("/games")
+                  ? "text-white font-semibold border-l-4 border-accent pl-4"
+                  : "text-slate-dark hover:text-white"
+              }`}
+            >
+              Game
+              <i
+                className={`fas fa-chevron-down transition-transform duration-200 ${
+                  isMobileGamesOpen ? "rotate-180" : ""
+                }`}
+              ></i>
+            </button>
+            {isMobileGamesOpen && (
+              <div className="pl-4 mt-2 space-y-2">
+                {gamesItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="block py-2 text-slate-dark hover:text-white text-sm"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsMobileGamesOpen(false);
+                    }}
+                  >
+                    <i className={`${item.icon} mr-2 text-accent`}></i>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <Link
             href="/projects"
             className={getMobileLinkClasses("/projects")}
