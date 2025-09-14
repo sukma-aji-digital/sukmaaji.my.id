@@ -379,18 +379,6 @@ Documented improvements dalam:
 - **Confidence**: 90% of users report increased math confidence
 - **Engagement**: 300% increase in voluntary math practice time
 
-### Teacher Feedback
-
-> _"This game has transformed how my students approach math practice. The dynamic time system creates just the right amount of challenge without overwhelming them."_ - Ms. Sarah, 5th Grade Teacher
-
-> _"Finally, a math game that actually teaches proper strategies while being genuinely fun to play."_ - Mr. Rodriguez, Math Specialist
-
-### Parent Reviews
-
-> _"My daughter went from dreading math homework to asking for extra practice time. This game is a game-changer!"_ - Jennifer M., Parent
-
-> _"The leaderboard feature motivates my son to practice daily. He's competing with kids globally and loving every minute of it."_ - David L., Parent
-
 ## 🔗 Project Links
 
 - **Live Game**: [sukmaaji.my.id/games/math](https://sukmaaji.my.id/games/math)

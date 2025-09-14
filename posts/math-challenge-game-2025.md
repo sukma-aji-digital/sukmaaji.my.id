@@ -121,11 +121,7 @@ Sejak peluncuran, Math Challenge Game telah mencatat:
 
 ### User Feedback Highlights:
 
-> _"Game ini membuat anak saya lebih antusias belajar matematika. Sistem waktu dinamis benar-benar genius!"_ - Sarah, Orang Tua
-
-> _"Sebagai guru, saya melihat peningkatan signifikan dalam kemampuan hitung cepat siswa setelah bermain game ini."_ - Pak Budi, Guru Matematika
-
-> _"Addictive tapi edukatif. Perfect combination!"_ - Andi, Student
+> _"Game ini asik !"_ - Aji, Penulis/Developer
 
 ## 🔧 Fitur Advanced
 
