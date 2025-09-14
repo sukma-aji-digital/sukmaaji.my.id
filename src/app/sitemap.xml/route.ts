@@ -97,7 +97,7 @@ ${projects
     <image:image>
       <image:loc>${baseUrl}${project.image || "/images/ajipro.jpg"}</image:loc>
       <image:title><![CDATA[${project.title}]]></image:title>
-      <image:caption><![CDATA[${project.shortDescription || project.description}]]></image:caption>
+      <image:caption><![CDATA[${project.shortDescription || project.description || project.title || ""}]]></image:caption>
     </image:image>
   </url>`
   )
