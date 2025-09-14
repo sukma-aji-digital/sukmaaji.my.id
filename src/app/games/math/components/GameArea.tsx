@@ -93,7 +93,7 @@ const GameArea: React.FC<GameAreaProps> = ({
               onChange={(e) => setUserAnswer(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ketik jawaban..."
-              className="w-full max-w-xs sm:max-w-md lg:max-w-lg mx-auto text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-center border-3 sm:border-4 border-green-500 rounded-xl sm:rounded-2xl py-3 sm:py-4 lg:py-6 px-4 sm:px-6 lg:px-8 focus:border-green-700 focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-green-200 transition-all duration-200 shadow-inner bg-green-50 font-bold placeholder-green-700"
+              className="w-full max-w-xs sm:max-w-md lg:max-w-lg mx-auto text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-center border-3 sm:border-4 border-green-500 rounded-xl sm:rounded-2xl py-3 sm:py-4 lg:py-6 px-4 sm:px-6 lg:px-8 focus:border-green-700 focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-green-200 transition-all duration-200 shadow-inner bg-green-50 font-extrabold text-green-900 placeholder-green-700"
               autoComplete="off"
             />
           </div>
