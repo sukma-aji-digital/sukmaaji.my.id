@@ -95,7 +95,7 @@ ${projects
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>${baseUrl}${project.image || "/images/project-placeholder.svg"}</image:loc>
+      <image:loc>${baseUrl}${project.image || "/images/ajipro.jpg"}</image:loc>
       <image:title><![CDATA[${project.title}]]></image:title>
       <image:caption><![CDATA[${project.shortDescription || project.description}]]></image:caption>
     </image:image>
