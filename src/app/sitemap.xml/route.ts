@@ -80,7 +80,7 @@ ${blogPosts
     <image:image>
       <image:loc>${baseUrl}${post.image || "/images/ajipro.jpg"}</image:loc>
       <image:title><![CDATA[${post.title}]]></image:title>
-      <image:caption><![CDATA[${post.excerpt || post.title}]]></image:caption>
+      <image:caption><![CDATA[${post.title}]]></image:caption>
     </image:image>
   </url>`
   )
