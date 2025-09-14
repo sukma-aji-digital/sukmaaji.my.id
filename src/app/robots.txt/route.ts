@@ -80,17 +80,10 @@ Allow: /favicon.ico
 Allow: /site.webmanifest
 Allow: /google*.html
 
-# Sitemap locations (Main sitemap index contains all others)
+# Sitemap locations
 Sitemap: ${baseUrl}/sitemap.xml
+Sitemap: ${baseUrl}/sitemap.txt
 
-# Individual sitemaps (automatically referenced by main sitemap)
-# ${baseUrl}/sitemap-pages.xml
-# ${baseUrl}/sitemap-blog.xml
-# ${baseUrl}/sitemap-projects.xml
-# ${baseUrl}/sitemap-images.xml
-# ${baseUrl}/sitemap-news.xml
-
-# Additional information
 # Website: ${baseUrl}
 # Contact: sukmaajidigital@gmail.com
 # Last updated: ${new Date().toISOString().split("T")[0]}`;
