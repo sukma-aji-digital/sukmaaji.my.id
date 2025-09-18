@@ -28,20 +28,25 @@ export async function GET() {
 
     // Define all static pages with their priorities and change frequencies
     const staticPages = [
-      { url: '', priority: '1.0', changefreq: 'daily', lastmod: now },
-      { url: '/me', priority: '0.8', changefreq: 'monthly', lastmod: now },
-      { url: '/blog', priority: '0.9', changefreq: 'daily', lastmod: lastBlogUpdate },
-      { url: '/projects', priority: '0.9', changefreq: 'weekly', lastmod: lastProjectUpdate },
-      { url: '/games', priority: '0.8', changefreq: 'weekly', lastmod: now },
-      { url: '/games/math', priority: '0.8', changefreq: 'weekly', lastmod: now },
-      { url: '/games/math/leaderboard', priority: '0.7', changefreq: 'daily', lastmod: now },
-      { url: '/services', priority: '0.8', changefreq: 'weekly', lastmod: now },
-      { url: '/services/website-development', priority: '0.7', changefreq: 'monthly', lastmod: now },
-      { url: '/services/system-development', priority: '0.7', changefreq: 'monthly', lastmod: now },
-      { url: '/services/network-management', priority: '0.7', changefreq: 'monthly', lastmod: now },
-      { url: '/services/vps-hosting', priority: '0.7', changefreq: 'monthly', lastmod: now },
-      { url: '/privacy-policy', priority: '0.5', changefreq: 'yearly', lastmod: now },
-      { url: '/terms-of-service', priority: '0.5', changefreq: 'yearly', lastmod: now },
+      { url: "", priority: "1.0", changefreq: "daily", lastmod: now },
+      { url: "/me", priority: "0.8", changefreq: "monthly", lastmod: now },
+      { url: "/blog", priority: "0.9", changefreq: "daily", lastmod: lastBlogUpdate },
+      { url: "/projects", priority: "0.9", changefreq: "weekly", lastmod: lastProjectUpdate },
+      { url: "/games", priority: "0.8", changefreq: "weekly", lastmod: now },
+      { url: "/games/math", priority: "0.8", changefreq: "weekly", lastmod: now },
+      { url: "/games/math/leaderboard", priority: "0.7", changefreq: "daily", lastmod: now },
+      { url: "/services", priority: "0.8", changefreq: "weekly", lastmod: now },
+      {
+        url: "/services/website-development",
+        priority: "0.7",
+        changefreq: "monthly",
+        lastmod: now,
+      },
+      { url: "/services/system-development", priority: "0.7", changefreq: "monthly", lastmod: now },
+      { url: "/services/network-management", priority: "0.7", changefreq: "monthly", lastmod: now },
+      { url: "/services/vps-hosting", priority: "0.7", changefreq: "monthly", lastmod: now },
+      { url: "/privacy-policy", priority: "0.5", changefreq: "yearly", lastmod: now },
+      { url: "/terms-of-service", priority: "0.5", changefreq: "yearly", lastmod: now },
     ];
 
     // Generate complete sitemap XML
@@ -74,11 +79,13 @@ ${blogPosts
         <news:name>Sukma Aji Digital Blog</news:name>
         <news:language>id</news:language>
       </news:publication>
-      <news:publication_date>${new Date(post.date).toISOString().split("T")[0]}</news:publication_date>
+      <news:publication_date>${
+        new Date(post.date).toISOString().split("T")[0]
+      }</news:publication_date>
       <news:title><![CDATA[${post.title}]]></news:title>
     </news:news>
     <image:image>
-      <image:loc>${baseUrl}${post.image || "/images/ajipro.jpg"}</image:loc>
+      <image:loc>${baseUrl}${post.image || "/images/newpp2.png"}</image:loc>
       <image:title><![CDATA[${post.title}]]></image:title>
       <image:caption><![CDATA[${post.title}]]></image:caption>
     </image:image>
@@ -95,9 +102,11 @@ ${projects
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>${baseUrl}${project.image || "/images/ajipro.jpg"}</image:loc>
+      <image:loc>${baseUrl}${project.image || "/images/newpp2.png"}</image:loc>
       <image:title><![CDATA[${project.title}]]></image:title>
-      <image:caption><![CDATA[${project.shortDescription || project.description || project.title || ""}]]></image:caption>
+      <image:caption><![CDATA[${
+        project.shortDescription || project.description || project.title || ""
+      }]]></image:caption>
     </image:image>
   </url>`
   )

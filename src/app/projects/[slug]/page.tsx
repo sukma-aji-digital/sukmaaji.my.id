@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
           ]
         : [
             {
-              url: `${siteUrl}/images/ajipro.jpg`,
+              url: `${siteUrl}/images/newpp2.png`,
               width: 1200,
               height: 630,
               alt: "Sukma Aji Digital - Projects",
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       description: project.description,
       images: project.image
         ? [project.image.startsWith("http") ? project.image : `${siteUrl}${project.image}`]
-        : [`${siteUrl}/images/ajipro.jpg`],
+        : [`${siteUrl}/images/newpp2.png`],
     },
     alternates: {
       canonical: projectUrl,
@@ -123,7 +123,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ? project.image.startsWith("http")
         ? project.image
         : `${siteUrl}${project.image}`
-      : `${siteUrl}/images/ajipro.jpg`,
+      : `${siteUrl}/images/newpp2.png`,
     dateCreated: project.createdAt,
     datePublished: project.createdAt,
     dateModified: project.createdAt,

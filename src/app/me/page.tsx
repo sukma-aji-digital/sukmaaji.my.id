@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "profile",
     images: [
       {
-        url: "https://sukmaaji.my.id/images/ajipro.jpg",
+        url: "https://sukmaaji.my.id/images/newpp2.png",
         width: 800,
         height: 800,
         alt: "Muhammad Aji Sukma - Backend Developer & Tech Enthusiast",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       "Founder Sukmaaji Digital yang passionate dalam pengembangan aplikasi web dan sistem informasi. Spesialisasi Laravel, PHP, dan arsitektur API scalable.",
     images: [
       {
-        url: "https://sukmaaji.my.id/images/ajipro.jpg",
+        url: "https://sukmaaji.my.id/images/newpp2.png",
         alt: "Muhammad Aji Sukma - Backend Developer & Tech Enthusiast",
       },
     ],
@@ -190,7 +190,7 @@ export default function MePage() {
             url: "https://sukmaaji.my.id/me",
             image: {
               "@type": "ImageObject",
-              url: "https://sukmaaji.my.id/images/ajipro.jpg",
+              url: "https://sukmaaji.my.id/images/newpp2.png",
               width: 800,
               height: 800,
               caption: "Muhammad Aji Sukma - Backend Developer & Tech Enthusiast",
@@ -281,7 +281,7 @@ export default function MePage() {
             <div className="animate-fade-in delay-300 flex justify-center">
               <div className="relative">
                 <Image
-                  src="/images/ajipro.jpg"
+                  src="/images/newpp2.png"
                   alt="Muhammad Aji Sukma"
                   width={320}
                   height={320}
