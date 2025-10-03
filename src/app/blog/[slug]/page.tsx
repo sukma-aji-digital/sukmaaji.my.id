@@ -87,7 +87,7 @@ export default async function BlogPost({ params }: Props) {
             Kembali ke Blog
           </Link>
 
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-3">
               {/* Featured Image */}
