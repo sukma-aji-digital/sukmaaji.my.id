@@ -16,10 +16,8 @@ export default function HeroSection() {
               Solusi Digital untuk Bisnis Anda
             </h1>
             <p className="text-slate-dark text-lg mb-8 max-w-xl">
-              Sukma Aji Digital adalah perusahaan yang bergerak di bidang jasa digital website,
-              pengembangan sistem informasi, manajemen jaringan, dan penyewaan server VPS. Kami
-              berkomitmen memberikan layanan terbaik untuk mendukung pertumbuhan bisnis Anda di era
-              digital.
+              Sukma Aji Digital menyediakan layanan pengembangan website, sistem informasi,
+              manajemen jaringan, dan penyewaan VPS untuk mendukung pertumbuhan bisnis Anda.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Link

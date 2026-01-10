@@ -21,7 +21,6 @@ export default function WebsiteDevelopmentPage() {
         "Responsive Design",
         "Basic SEO Setup",
         "Contact Form",
-        "Social Media Integration",
         "1 Bulan Maintenance",
       ],
     },
@@ -30,12 +29,10 @@ export default function WebsiteDevelopmentPage() {
       price: "Rp 5.000.000",
       features: [
         "Website Multi-page (5-10 halaman)",
-        "Content Management System",
         "Advanced SEO Optimization",
         "Blog Integration",
         "Analytics Setup",
         "3 Bulan Maintenance",
-        "Free SSL Certificate",
       ],
       popular: true,
     },
@@ -44,7 +41,6 @@ export default function WebsiteDevelopmentPage() {
       price: "Rp 10.000.000+",
       features: [
         "Custom Web Application",
-        "E-commerce Integration",
         "User Authentication",
         "Database Integration",
         "API Development",

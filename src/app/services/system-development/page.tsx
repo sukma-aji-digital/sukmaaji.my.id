@@ -27,12 +27,6 @@ export default function SystemDevelopmentPage() {
         "Platform jual beli online dengan fitur lengkap: inventory, payment gateway, shipping",
     },
     {
-      icon: "fas fa-graduation-cap",
-      title: "Sistem Akademik",
-      description:
-        "LMS, sistem nilai, absensi digital, dan manajemen akademik untuk institusi pendidikan",
-    },
-    {
       icon: "fas fa-warehouse",
       title: "Sistem Inventory",
       description: "Manajemen stok, gudang, purchase order, dan supply chain management",
@@ -70,21 +64,19 @@ export default function SystemDevelopmentPage() {
   const packages = [
     {
       name: "Sistem Basic",
-      price: "Rp 15.000.000",
+      price: "Rp 5.000.000",
       period: "mulai dari",
       features: [
         "Analisis kebutuhan sistem",
         "Design database & UI/UX",
         "Development core features",
         "Testing & deployment",
-        "User training",
         "3 bulan support",
-        "Source code included",
       ],
     },
     {
       name: "Sistem Professional",
-      price: "Rp 35.000.000",
+      price: "Rp 10.000.000",
       period: "mulai dari",
       features: [
         "Semua fitur Basic",
@@ -100,18 +92,9 @@ export default function SystemDevelopmentPage() {
     },
     {
       name: "Sistem Enterprise",
-      price: "Rp 75.000.000+",
+      price: "Contact us",
       period: "mulai dari",
-      features: [
-        "Semua fitur Professional",
-        "Custom workflow engine",
-        "Advanced analytics",
-        "Third-party integrations",
-        "Load balancing",
-        "1 tahun support",
-        "Dedicated support team",
-        "Regular updates",
-      ],
+      features: ["all Custom fitur Professional"],
     },
   ];
 

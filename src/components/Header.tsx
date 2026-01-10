@@ -86,22 +86,13 @@ export default function Header() {
           <Link href="/blog" className={getLinkClasses("/blog")}>
             Blog
           </Link>
-          <Link href="/games" className={getLinkClasses("/games")}>
+          {/* <Link href="/games" className={getLinkClasses("/games")}>
             Games
-          </Link>
+            </Link> */}
           <Link href="/projects" className={getLinkClasses("/projects")}>
             Projects
           </Link>
-          <Link href="/#about" className={getLinkClasses("/#about")}>
-            Tentang
-          </Link>
           <DropdownMenu title="Jasa" items={serviceItems} isActive={isActive("/services")} />
-          <Link href="/#portfolio" className={getLinkClasses("/#portfolio")}>
-            Portfolio
-          </Link>
-          <Link href="/#contact" className={getLinkClasses("/#contact")}>
-            Kontak
-          </Link>
           <Link href="/me" className={getLinkClasses("/me")}>
             Me
           </Link>

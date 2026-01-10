@@ -36,12 +36,10 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="bg-dark-200 rounded-2xl p-8 border border-dark-100 card-hover">
-              <h3 className="text-xl font-semibold text-white mb-4">Profil Perusahaan</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">Profil</h3>
               <p className="text-slate-dark mb-6">
-                Sukma Aji Digital didirikan untuk membantu bisnis dan organisasi bertransformasi
-                secara digital. Kami menawarkan layanan pembuatan website, pengembangan sistem
-                informasi, manajemen jaringan, dan penyewaan server VPS dengan standar profesional
-                dan teknologi terkini.
+                Sukma Aji Digital menyediakan layanan pengembangan website, sistem informasi, dan
+                server VPS dengan kualitas profesional untuk kebutuhan bisnis Anda.
               </p>
               <p className="text-slate-dark mb-6">
                 Kami percaya bahwa solusi digital yang tepat dapat meningkatkan efisiensi,
