@@ -14,7 +14,7 @@ tags:
     "Sains",
     "Tokoh",
   ]
-image: "/images/blog/ajimenara2.webp"
+image: "/images/blog/johnmccarthy.webp"
 ---
 
 ## Sang Bapak Kecerdasan Buatan
