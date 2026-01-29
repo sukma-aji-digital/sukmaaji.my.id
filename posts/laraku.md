@@ -3,7 +3,18 @@ title: "Ubuntu Web Dev Environment ala Laragon"
 date: "2026-01-30"
 excerpt: "Panduan lengkap setup environment web development di Ubuntu 24.04 dengan stack Apache, PHP, Redis, MariaDB, auto SSL, dan auto .test domain, serta script otomatisasi ala Laragon."
 tags:
-["Ubuntu", "Web Development", "Laragon", "Apache", "PHP", "MariaDB", "Redis", "SSL", "Linux", "DevOps"]
+  [
+    "Ubuntu",
+    "Web Development",
+    "Laragon",
+    "Apache",
+    "PHP",
+    "MariaDB",
+    "Redis",
+    "SSL",
+    "Linux",
+    "DevOps",
+  ]
 image: "/images/blog/sslaraku.png"
 ---
 
