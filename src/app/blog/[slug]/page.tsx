@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CopyLinkButton, CopyLinkCard } from "@/components/ShareButtons";
 import NewsletterSubscription from "@/components/NewsletterSubscription";
+import BlogContent from "@/components/BlogContent";
 import { getPostData, getAllPostSlugs, getSortedPostsData } from "@/lib/blog";
 
 interface Props {
@@ -139,10 +140,7 @@ export default async function BlogPost({ params }: Props) {
                 </header>
 
                 {/* Article content */}
-                <div
-                  className="blog-content max-w-none prose-invert break-words"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                <BlogContent content={post.content} />
 
                 {/* Article footer */}
                 <footer className="mt-12 pt-8 border-t border-dark-100">
