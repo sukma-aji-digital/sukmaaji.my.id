@@ -1,6 +1,6 @@
 ---
 title: "Auto Nginx SSL untuk Laravel on Ubuntu 24.04 (FOR DEVELOPMENT)"
-date: "2026-01-30"
+date: "2026-02-01"
 excerpt: "Code untuk auto nginx SSL di Laravel pada environment web development di Ubuntu 24.04 dengan stack Nginx, PHP, MariaDB, auto SSL, dan auto .test domain, serta script otomatisasi ala Laragon."
 tags:
   [
