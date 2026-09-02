@@ -650,6 +650,7 @@ body {
   font-size: 14px;
   color: #334155;
   line-height: 1.7;
+  justify-content: flex-end;
 }
 
 .cv-experience-list li::before {

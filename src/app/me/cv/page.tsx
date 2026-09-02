@@ -197,7 +197,7 @@ export default function CVPage() {
                 Software Engineer dan Full-Stack Web Developer lulusan Sistem
                 Informasi dengan spesialisasi pengembangan aplikasi web modern
                 berbasis ekosistem PHP Laravel dan JavaScript. Berpengalaman
-                dalam merancang arsitektur sistem hulu-ke-hilir: mulai dari
+                dalam merancang arsitektur sistem hulu-ke-hilir, mulai dari
                 pemodelan basis data, perancangan RESTful API, integrasi front-end
                 dinamis, hingga deployment dan konfigurasi server Linux (Nginx,
                 Apache). Memiliki rekam jejak dalam mengembangkan sistem
@@ -217,14 +217,13 @@ export default function CVPage() {
                 <div className="cv-skill-row">
                   <span className="cv-skill-category">Backend Framework</span>
                   <span className="cv-skill-items">
-                    PHP (Laravel 10,11 &amp; 12),  RESTful API
+                    PHP (Laravel Framework),  RESTful API
                   </span>
                 </div>
                 <div className="cv-skill-row">
                   <span className="cv-skill-category">Frontend Framework</span>
                   <span className="cv-skill-items">
-                    JavaScript, Tailwind CSS,
-                    Flowbite, FlyonUI, Bootstrap
+                    JavaScript, Tailwind CSS, Bootstrap
                   </span>
                 </div>
                 <div className="cv-skill-row">
@@ -249,7 +248,7 @@ export default function CVPage() {
                     Data Integration &amp; Utilities
                   </span>
                   <span className="cv-skill-items">
-                    Pentaho Data Integration (ETL), Postman, Shell/Bash Scripting
+                    Postman, Shell/Bash Scripting
                   </span>
                 </div>
               </div>
@@ -291,7 +290,7 @@ export default function CVPage() {
                     pembukuan transaksi berbasis Laravel dan MySQL.
                   </li>
                   <li>
-                    Mengotomatiskan alur sinkronisasi transaksi penjualan dan
+                    Melakukan otomatisasi alur sinkronisasi transaksi penjualan dan
                     rekapitulasi stok harian untuk meningkatkan akurasi data
                     serta mempercepat rekonsiliasi laporan keuangan.
                   </li>
@@ -320,22 +319,16 @@ export default function CVPage() {
                   </div>
                   <div className="cv-experience-meta">
                     <span className="cv-experience-date">
-                      <i className="far fa-calendar-alt"></i> Desember 2022 –
+                      <i className="far fa-calendar-alt"></i> Desember 2023 –
                       Sekarang
                     </span>
                   </div>
                 </div>
                 <ul className="cv-experience-list">
                   <li>
-                    Membangun aplikasi web interaktif full-stack menggunakan
-                    Laravel 11 dan React untuk generator diagram topologi
-                    jaringan SVG berbasis algoritma prosedural dan visualisasi
-                    node data.
-                  </li>
-                  <li>
                     Mengembangkan dan men-deploy situs web portofolio statis
                     berperforma tinggi menggunakan Next.js dan GitHub Pages
-                    dengan implementasi Static Site Generation (SSG), optimasi
+                    dengan implementasi Static Site Generator (SSG), optimasi
                     SEO, serta Open Graph metadata.
                   </li>
                   <li>
