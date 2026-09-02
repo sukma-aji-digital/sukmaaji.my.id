@@ -880,7 +880,6 @@ body {
 
   .cv-section {
     margin-bottom: 16px;
-    break-inside: avoid;
   }
 
   .cv-section-title {
@@ -888,10 +887,15 @@ body {
     break-after: avoid;
   }
 
-  .cv-experience-item {
+  .cv-experience-item,
+  .cv-education-item {
     break-inside: avoid;
     margin-bottom: 14px;
     padding-bottom: 14px;
+  }
+
+  .cv-skill-row {
+    break-inside: avoid;
   }
 
   .cv-experience-list li {
