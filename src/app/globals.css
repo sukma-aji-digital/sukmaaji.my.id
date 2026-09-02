@@ -436,8 +436,8 @@ body {
 }
 
 .cv-photo {
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 180px;
   border-radius: 12px;
   object-fit: cover;
   border: 3px solid #e8e8f0;
@@ -860,8 +860,8 @@ body {
   }
 
   .cv-photo {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 135px;
     border-width: 2px;
     box-shadow: none;
   }

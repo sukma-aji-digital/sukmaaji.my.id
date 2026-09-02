@@ -126,8 +126,8 @@ export default function CVPage() {
               <Image
                 src="/images/4x6.webp"
                 alt="Muhammad Aji Sukma - Full-Stack Web Developer"
-                width={140}
-                height={140}
+                width={120}
+                height={180}
                 className="cv-photo"
                 priority
               />
@@ -460,10 +460,26 @@ export default function CVPage() {
                   </li>
                 </ul>
               </article>
+
+              <article className="cv-education-item" style={{ marginTop: "20px" }}>
+                <div className="cv-experience-header">
+                  <div>
+                    <h3 className="cv-experience-role">
+                      Teknik Komputer dan Jaringan (TKJ)
+                    </h3>
+                    <p className="cv-experience-company">
+                      SMK Negeri 2 Kudus
+                    </p>
+                  </div>
+                  <div className="cv-experience-meta">
+                    <span className="cv-experience-date">
+                      <i className="far fa-calendar-alt"></i> 2018 – 2021
+                    </span>
+                  </div>
+                </div>
+              </article>
             </div>
           </section>
-
-          {/* ===== FOOTER ===== */}
           <footer className="cv-footer">
             <div className="cv-footer-line"></div>
             <p className="cv-footer-text">
