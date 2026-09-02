@@ -89,6 +89,14 @@ export default function MePage() {
       skills: ["Laravel", "MySQL", "Leadership", "Project Management"],
     },
     {
+      title: "System Designer & Full-Stack Developer",
+      company: "PT Multi Agen Indonesia Sejahtera",
+      period: "2025 (Freelance)",
+      description:
+        "Merancang dan mengembangkan Sistem Informasi Manajemen Sales Haji dan Umroh dari tahap perancangan arsitektur sistem, basis data, hingga deployment dan launching di produksi.",
+      skills: ["Laravel", "MySQL", "System Design", "Full-Stack"],
+    },
+    {
       title: "Freelance Web Developer",
       company: "Various Clients",
       period: "2020 - 2022",
@@ -155,8 +163,8 @@ export default function MePage() {
     {
       icon: "fas fa-envelope",
       title: "Email",
-      info: "sukmaajidigital@gmail.com",
-      link: "mailto:sukmaajidigital@gmail.com",
+      info: "sukmaaji.digital@gmail.com",
+      link: "mailto:sukmaaji.digital@gmail.com",
       linkText: "Kirim Email",
     },
     {
