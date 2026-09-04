@@ -570,6 +570,7 @@ body {
   font-size: 14px;
   color: #475569;
   line-height: 1.6;
+  text-align: justify;
 }
 
 /* ---- EXPERIENCE ---- */
@@ -650,7 +651,7 @@ body {
   font-size: 14px;
   color: #334155;
   line-height: 1.7;
-  justify-content: flex-end;
+  text-align: justify;
 }
 
 .cv-experience-list li::before {
@@ -903,11 +904,13 @@ body {
     font-size: 10pt;
     margin-bottom: 4px;
     line-height: 1.55;
+    text-align: justify;
   }
 
   .cv-summary-text {
     font-size: 10pt;
     line-height: 1.6;
+    text-align: justify;
   }
 
   .cv-skill-category,
